@@ -1,0 +1,1858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tour Divide Both Ways — dontcoast.com</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:       #f1efec;
+      --white:       #111110;
+      --off-white:   #333330;
+      --accent:      #0fa8cc;
+      --accent-dark: #0b8aaa;
+      --mid:         #888580;
+      --surface:     rgba(0,0,0,0.04);
+      --border:      rgba(0,0,0,0.09);
+      --font-display:'Bebas Neue', sans-serif;
+      --font-body:   'DM Sans', sans-serif;
+      --font-mono:   'DM Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 2.5rem;
+      background: rgba(241,239,236,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      color: var(--mid);
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-logo:hover { color: var(--white); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      color: var(--mid);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--accent) !important;
+      color: #ffffff !important;
+      padding: 0.4rem 1.1rem !important;
+      border-radius: 2px;
+      font-weight: 500 !important;
+    }
+    .nav-cta:hover { background: var(--accent-dark) !important; }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 2.5rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(241,239,236,0.1) 0%, rgba(241,239,236,0) 30%, rgba(241,239,236,0.6) 70%, rgba(241,239,236,1) 100%),
+        url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1800&q=80') center/cover no-repeat;
+      z-index: 0;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      position: relative; z-index: 1;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 0.9rem;
+      opacity: 0; transform: translateY(14px);
+      animation: fadeUp 0.7s ease 0.2s forwards;
+    }
+    h1.hero-title {
+      position: relative; z-index: 1;
+      font-family: var(--font-display);
+      font-size: clamp(5rem, 13vw, 12rem);
+      line-height: 0.88;
+      color: var(--white);
+      opacity: 0; transform: translateY(22px);
+      animation: fadeUp 0.9s ease 0.35s forwards;
+    }
+    h1.hero-title span { display: block; color: var(--accent); }
+    .hero-sub {
+      position: relative; z-index: 1;
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      color: var(--off-white);
+      max-width: 500px;
+      line-height: 1.7;
+      opacity: 0; transform: translateY(14px);
+      animation: fadeUp 0.7s ease 0.6s forwards;
+    }
+    .hero-stats {
+      position: relative; z-index: 1;
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 3rem;
+      opacity: 0; transform: translateY(14px);
+      animation: fadeUp 0.7s ease 0.78s forwards;
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: var(--white);
+      line-height: 1;
+    }
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      color: var(--mid);
+      text-transform: uppercase;
+      margin-top: 0.2rem;
+    }
+    .hero-ctas {
+      position: relative; z-index: 1;
+      margin-top: 2.5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0; transform: translateY(14px);
+      animation: fadeUp 0.7s ease 0.95s forwards;
+    }
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2.5rem; right: 2.5rem;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 1.3s forwards;
+    }
+    .scroll-indicator span {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      color: var(--mid);
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+    .scroll-bar {
+      width: 1px; height: 50px;
+      background: rgba(0,0,0,0.2);
+      overflow: hidden; position: relative;
+    }
+    .scroll-bar::after {
+      content: '';
+      position: absolute;
+      top: -100%; left: 0;
+      width: 100%; height: 100%;
+      background: var(--accent);
+      animation: scrollDrop 2.2s ease-in-out 1.5s infinite;
+    }
+
+    /* HERO PHOTO */
+    .hero-photo {
+      position: absolute;
+      right: 2.5rem;
+      top: 5rem;
+      width: clamp(380px, 52vw, 780px);
+      aspect-ratio: 3 / 2;
+      z-index: 3;
+      opacity: 0;
+      transform: rotate(1.8deg) translateY(16px);
+      animation: fadeUpPhoto 1s ease 1.1s forwards;
+      filter: drop-shadow(-10px 16px 36px rgba(0,0,0,0.72)) drop-shadow(-2px 5px 10px rgba(0,0,0,0.45));
+    }
+
+    .hero-photo-inner {
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      padding: 0.75rem;
+      position: relative;
+    }
+
+    .hero-photo-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* placeholder state */
+    .hero-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .hero-photo-placeholder span {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.2);
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    @keyframes fadeUpPhoto {
+      to { opacity: 1; transform: rotate(1.8deg) translateY(0); }
+    }
+
+    @media (max-width: 960px) {
+      .hero-photo { display: none; }
+    }
+
+    /* STRAVA */
+    #strava {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 2.5rem;
+      background: rgba(15,168,204,0.04);
+    }
+    .strava-inner { max-width: 1200px; margin: 0 auto; }
+    .strava-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .strava-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--white);
+      line-height: 1;
+    }
+    .strava-status {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.64rem;
+      letter-spacing: 0.12em;
+      color: var(--mid);
+      text-transform: uppercase;
+    }
+    .status-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--mid);
+    }
+    .status-dot.live {
+      background: #5dba7d;
+      box-shadow: 0 0 6px rgba(93,186,125,0.6);
+      animation: pulse 2s ease infinite;
+    }
+    .strava-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.5px;
+    }
+    .strava-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.75rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.25s;
+    }
+    .strava-card:hover { background: rgba(0,0,0,0.05); }
+    .strava-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+    .strava-card:hover::before { opacity: 1; }
+    .strava-card-label {
+      font-family: var(--font-mono);
+      font-size: 0.59rem;
+      letter-spacing: 0.15em;
+      color: var(--mid);
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .strava-card-value {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 2.8vw, 2.8rem);
+      color: var(--white);
+      line-height: 1;
+      transition: color 0.2s;
+    }
+    .strava-card:hover .strava-card-value { color: var(--accent); }
+    .strava-card-unit {
+      font-family: var(--font-mono);
+      font-size: 0.61rem;
+      color: var(--mid);
+      letter-spacing: 0.1em;
+      margin-top: 0.35rem;
+    }
+    .strava-card-sub {
+      font-size: 0.77rem;
+      color: var(--mid);
+      margin-top: 0.5rem;
+      line-height: 1.45;
+    }
+    .strava-note {
+      margin-top: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.63rem;
+      color: var(--mid);
+      letter-spacing: 0.08em;
+    }
+    .strava-note a { color: var(--accent); text-decoration: none; }
+    .strava-note a:hover { text-decoration: underline; }
+    .skeleton {
+      background: linear-gradient(90deg, var(--surface) 25%, rgba(0,0,0,0.06) 50%, var(--surface) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.8s infinite;
+      border-radius: 2px;
+    }
+
+    /* SHARED SECTION */
+    section { padding: 7rem 2.5rem; }
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.67rem;
+      letter-spacing: 0.22em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 1.1rem;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 5.5vw, 5rem);
+      line-height: 0.93;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    /* RIDE */
+    #ride { max-width: 1200px; margin: 0 auto; }
+    .ride-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .ride-body p {
+      color: var(--off-white);
+      font-size: 1.03rem;
+      line-height: 1.78;
+      margin-bottom: 1.2rem;
+    }
+    .ride-body p strong { color: var(--white); font-weight: 500; }
+    .route-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 2rem;
+    }
+    .route-point {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .route-point:last-child { border-bottom: none; }
+    .route-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 0.45rem;
+      flex-shrink: 0;
+    }
+    .route-name {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+    .route-detail {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--mid);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 0.15rem;
+    }
+    .route-connector {
+      width: 1px; height: 22px;
+      background: var(--border);
+      margin-left: calc(1rem + 3px);
+      margin-top: -0.4rem;
+      margin-bottom: -0.4rem;
+    }
+
+    /* ITINERARY TABLE */
+    .itinerary-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      overflow: hidden;
+      max-height: 520px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent) transparent;
+    }
+    .itinerary-card::-webkit-scrollbar { width: 3px; }
+    .itinerary-card::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+    .itinerary-header {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      padding: 0.75rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(15,168,204,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+    .itinerary-header span {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    .itinerary-row {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      padding: 0.65rem 1.5rem;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      align-items: center;
+      transition: background 0.15s;
+    }
+    .itinerary-row:last-child { border-bottom: none; }
+    .itinerary-row:hover { background: rgba(15,168,204,0.08); }
+    .itinerary-row.terminus {
+      background: rgba(15,168,204,0.1);
+    }
+    .itinerary-row.terminus .itin-mile { color: var(--accent); }
+    .itinerary-row.terminus .itin-name { color: var(--accent); font-weight: 500; }
+    .itinerary-row.turnaround {
+      background: rgba(0,0,0,0.04);
+    }
+    .itinerary-row.turnaround .itin-mile { color: var(--white); }
+    .itinerary-row.turnaround .itin-name { color: var(--white); font-weight: 500; }
+
+    .itin-mile {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--mid);
+      letter-spacing: 0.08em;
+    }
+    .itin-name {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--off-white);
+      letter-spacing: 0.04em;
+    }
+
+    .itinerary-note {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: var(--mid);
+      letter-spacing: 0.1em;
+      padding: 0.75rem 1.5rem;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    /* VIDEO */
+    #video {
+      background: rgba(0,0,0,0.015);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .video-inner { max-width: 880px; margin: 0 auto; text-align: center; }
+    .video-intro { color: var(--mid); font-size: 0.95rem; margin-bottom: 2.5rem; }
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      border-radius: 3px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 0 80px rgba(15,168,204,0.08);
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+
+    /* WHY */
+    #why { max-width: 1200px; margin: 0 auto; }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      margin-top: 3rem;
+    }
+    .why-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2.25rem;
+      transition: background 0.25s;
+    }
+    .why-card:hover { background: rgba(0,0,0,0.05); }
+    .why-num {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      color: rgba(15,168,204,0.15);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+    .why-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      letter-spacing: 0.03em;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+    .why-card p { color: var(--mid); font-size: 0.88rem; line-height: 1.68; }
+
+    /* SUPPORT */
+    #support { background: var(--accent); padding: 7rem 2.5rem; }
+    .support-inner { max-width: 780px; margin: 0 auto; text-align: center; }
+    #support .section-label { color: rgba(255,255,255,0.6); }
+    #support .section-title { color: #fff; }
+    .support-body {
+      color: rgba(255,255,255,0.85);
+      font-size: 1.03rem;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .support-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    /* UPDATES */
+    #updates { max-width: 1200px; margin: 0 auto; }
+    .updates-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 2.5rem;
+    }
+    .updates-header a {
+      font-family: var(--font-mono);
+      font-size: 0.67rem;
+      color: var(--mid);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .updates-header a:hover { color: var(--white); }
+    .updates-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+    }
+    .update-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: background 0.25s;
+    }
+    .update-card:hover { background: rgba(0,0,0,0.05); }
+    .update-date {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .update-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+    .update-card p { font-size: 0.875rem; color: var(--mid); line-height: 1.62; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      letter-spacing: 0.06em;
+      color: var(--white);
+    }
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+    .footer-links a {
+      font-family: var(--font-mono);
+      font-size: 0.63rem;
+      color: var(--mid);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-copy { font-family: var(--font-mono); font-size: 0.62rem; color: var(--mid); letter-spacing: 0.1em; }
+
+    hr.divider { border: none; border-top: 1px solid var(--border); }
+
+    /* BUTTONS */
+    .btn-primary {
+      background: var(--accent); color: #fff;
+      padding: 0.85rem 2.1rem;
+      font-family: var(--font-mono); font-size: 0.73rem; letter-spacing: 0.15em;
+      text-transform: uppercase; text-decoration: none; border-radius: 2px; font-weight: 500;
+      transition: background 0.2s, transform 0.15s; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
+    .btn-secondary {
+      background: transparent; color: var(--white);
+      padding: 0.85rem 2.1rem;
+      font-family: var(--font-mono); font-size: 0.73rem; letter-spacing: 0.15em;
+      text-transform: uppercase; text-decoration: none; border-radius: 2px;
+      border: 1px solid rgba(0,0,0,0.18);
+      transition: border-color 0.2s, transform 0.15s; display: inline-block;
+    }
+    .btn-secondary:hover { border-color: var(--white); transform: translateY(-1px); }
+    .btn-black {
+      background: #111110; color: #f1efec;
+      padding: 0.85rem 2.25rem;
+      font-family: var(--font-mono); font-size: 0.73rem; letter-spacing: 0.15em;
+      text-transform: uppercase; text-decoration: none; border-radius: 2px; font-weight: 500;
+      transition: background 0.2s, transform 0.15s; display: inline-block;
+    }
+    .btn-black:hover { background: #2a2a28; transform: translateY(-1px); }
+    .btn-outline-black {
+      background: transparent; color: #fff;
+      padding: 0.85rem 2.25rem;
+      font-family: var(--font-mono); font-size: 0.73rem; letter-spacing: 0.15em;
+      text-transform: uppercase; text-decoration: none; border-radius: 2px;
+      border: 1.5px solid rgba(255,255,255,0.5);
+      transition: border-color 0.2s, transform 0.15s; display: inline-block;
+    }
+    .btn-outline-black:hover { border-color: #fff; transform: translateY(-1px); }
+
+    /* MUSIC */
+    #music {
+      background: rgba(0,0,0,0.015);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .music-inner {
+      max-width: 880px;
+      margin: 0 auto;
+    }
+    .music-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      margin-top: 0.5rem;
+    }
+    .music-copy p {
+      color: var(--off-white);
+      font-size: 1rem;
+      line-height: 1.75;
+      margin-bottom: 1.1rem;
+    }
+    .music-copy p strong { color: var(--white); font-weight: 500; }
+    .music-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      color: var(--mid);
+      text-transform: uppercase;
+    }
+    .music-badge svg { opacity: 0.5; }
+
+    /* Apple Music embed wrapper */
+    .apple-music-embed {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 0 60px rgba(15,168,204,0.08);
+      background: #e8e6e2;
+      min-height: 450px;
+      display: flex;
+      flex-direction: column;
+    }
+    .apple-music-embed iframe {
+      width: 100%;
+      flex: 1;
+      border: none;
+      min-height: 450px;
+    }
+
+    /* Placeholder state (shown when no URL is set) */
+    .music-placeholder {
+      min-height: 450px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      background: #e8e6e2;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+    }
+    .music-placeholder-icon {
+      width: 56px; height: 56px;
+      background: linear-gradient(135deg, #fc3c44, #ff6b6b);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+    }
+    .music-placeholder h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      letter-spacing: 0.03em;
+      color: var(--white);
+    }
+    .music-placeholder p {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--mid);
+      line-height: 1.6;
+      max-width: 220px;
+    }
+    .music-placeholder code {
+      color: var(--accent);
+      background: rgba(15,168,204,0.1);
+      padding: 0.1em 0.4em;
+      border-radius: 3px;
+      font-size: 0.75em;
+    }
+
+    @media (max-width: 960px) {
+      .music-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    /* GEAR */
+    #gear { max-width: 1200px; margin: 0 auto; }
+
+    .gear-tabs {
+      display: flex;
+      gap: 0;
+      margin-top: 2.5rem;
+      margin-bottom: 0;
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .gear-tabs::-webkit-scrollbar { display: none; }
+
+    .gear-tab {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      padding: 0.85rem 1.75rem;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      white-space: nowrap;
+      transition: color 0.2s, border-color 0.2s;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+    }
+    .gear-tab:hover { color: var(--white); }
+    .gear-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+    .gear-panels { margin-top: 0; }
+    .gear-panel { display: none; padding-top: 2rem; }
+    .gear-panel.active { display: block; }
+
+    .gear-panel-intro {
+      color: var(--mid);
+      font-size: 0.88rem;
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+      max-width: 600px;
+    }
+
+    /* TABLE */
+    .gear-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--border);
+    }
+
+    .gear-table-head {
+      display: grid;
+      grid-template-columns: 1fr 2fr 80px 60px;
+      padding: 0.6rem 1.25rem;
+      background: rgba(15,168,204,0.08);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 72px;
+      z-index: 2;
+    }
+
+    .gear-table-head span {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+
+    .gear-row {
+      display: grid;
+      grid-template-columns: 1fr 2fr 80px 60px;
+      padding: 0.85rem 1.25rem;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      align-items: center;
+      transition: background 0.15s;
+    }
+    .gear-row:last-child { border-bottom: none; }
+    .gear-row:hover { background: rgba(0,0,0,0.04); }
+
+    .gear-row-name {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      color: var(--white);
+    }
+
+    .gear-row-note {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.03em;
+      color: var(--mid);
+      padding-right: 1rem;
+    }
+
+    .gear-row-tag {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(15,168,204,0.8);
+    }
+
+    .gear-row-weight {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      color: var(--off-white);
+      text-align: right;
+    }
+
+    .gear-row-weight.placeholder { color: var(--mid); }
+
+    .gear-table-footer {
+      display: grid;
+      grid-template-columns: 1fr 2fr 80px 60px;
+      padding: 0.75rem 1.25rem;
+      border-top: 1px solid var(--border);
+      background: rgba(0,0,0,0.025);
+    }
+
+    .gear-table-footer-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      grid-column: 1 / 4;
+    }
+
+    .gear-table-total {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--accent);
+      text-align: right;
+      letter-spacing: 0.03em;
+    }
+
+    @media (max-width: 960px) {
+      .gear-table-head { grid-template-columns: 1fr 80px; }
+      .gear-table-head span:nth-child(2),
+      .gear-table-head span:nth-child(3) { display: none; }
+      .gear-row { grid-template-columns: 1fr 60px; }
+      .gear-row-note,
+      .gear-row-tag { display: none; }
+      .gear-table-footer { grid-template-columns: 1fr 60px; }
+      .gear-table-footer-label { grid-column: 1; }
+      .gear-tab { padding: 0.75rem 1.1rem; font-size: 0.62rem; }
+    }
+
+    /* HISTORY — full width */
+    #history-section {
+      position: relative;
+      padding: 8rem 2.5rem;
+      overflow: hidden;
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    /* subtle grain texture behind */
+    #history-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    /* big ambient glow behind quote */
+    #history-section::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px; height: 400px;
+      background: radial-gradient(ellipse, rgba(15,168,204,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .history-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .history-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.67rem;
+      letter-spacing: 0.22em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+    }
+
+    .history-poem {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 2.5vw, 2.1rem);
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+      color: rgba(0,0,0,0.55);
+      margin-bottom: 0;
+    }
+
+    .history-poem .line-accent {
+      display: block;
+      color: var(--white);
+    }
+
+    .history-poem .line-gold {
+      display: block;
+      color: var(--white);
+    }
+
+    .history-poem .line-dim {
+      display: block;
+      color: rgba(0,0,0,0.3);
+    }
+
+    /* attempt timeline — horizontal */
+    .history-timeline {
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      gap: 0;
+      margin: 4rem auto 0;
+      max-width: 800px;
+      border: 1px solid var(--border);
+    }
+
+    .timeline-item {
+      flex: 1;
+      padding: 1.5rem 1rem;
+      border-right: 1px solid var(--border);
+      position: relative;
+      transition: background 0.2s;
+    }
+    .timeline-item:last-child { border-right: none; }
+    .timeline-item:hover { background: rgba(0,0,0,0.03); }
+
+    .timeline-item.is-finish { background: rgba(15,168,204,0.08); }
+    .timeline-item.is-next   { background: rgba(232,160,32,0.04); }
+
+    .timeline-num {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      line-height: 1;
+      color: var(--mid);
+      margin-bottom: 0.4rem;
+    }
+    .timeline-item.is-finish .timeline-num { color: var(--accent); }
+    .timeline-item.is-next   .timeline-num { color: var(--accent); }
+
+    .timeline-desc {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      color: var(--mid);
+      text-transform: uppercase;
+      line-height: 1.5;
+    }
+    .timeline-item.is-finish .timeline-desc { color: rgba(15,168,204,0.8); }
+    .timeline-item.is-next   .timeline-desc { color: rgba(15,168,204,0.8); }
+
+    .timeline-badge {
+      display: inline-block;
+      margin-top: 0.6rem;
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+    }
+    .timeline-badge.dnf      { background: var(--surface); color: var(--mid); border: 1px solid var(--border); }
+    .timeline-badge.finish   { background: rgba(15,168,204,0.12); color: var(--accent); border: 1px solid rgba(15,168,204,0.3); }
+    .timeline-badge.upcoming { background: rgba(15,168,204,0.1); color: var(--accent); border: 1px solid rgba(15,168,204,0.25); animation: pulse 2.5s ease infinite; }
+
+    /* stats row */
+    .history-stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      margin: 1.5px auto 0;
+      max-width: 800px;
+      border: 1px solid var(--border);
+      border-top: none;
+    }
+
+    .hstat {
+      flex: 1;
+      padding: 1.25rem 1rem;
+      border-right: 1px solid var(--border);
+    }
+    .hstat:last-child { border-right: none; }
+
+    .hstat-num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--white);
+      line-height: 1;
+    }
+    .hstat-label {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      color: var(--mid);
+      text-transform: uppercase;
+      margin-top: 0.25rem;
+    }
+
+    /* COUNTDOWN — full width centered */
+    .countdown-wrap {
+      margin: 4rem auto 0;
+      max-width: 800px;
+    }
+
+    .countdown-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.67rem;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .countdown-digits {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      border: 1px solid var(--border);
+    }
+
+    .countdown-unit {
+      flex: 1;
+      padding: 1.75rem 1rem;
+      border-right: 1px solid var(--border);
+    }
+    .countdown-unit:last-child { border-right: none; }
+
+    .countdown-num {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      color: var(--white);
+      line-height: 1;
+    }
+    .countdown-unit-label {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.14em;
+      color: var(--mid);
+      text-transform: uppercase;
+      margin-top: 0.4rem;
+    }
+
+    @media (max-width: 720px) {
+      #history-section { padding: 5rem 1.5rem; }
+      .history-timeline { flex-wrap: wrap; }
+      .timeline-item { flex: 1 1 50%; border-bottom: 1px solid var(--border); }
+      .history-stats-row { flex-wrap: wrap; }
+      .hstat { flex: 1 1 33%; }
+      .countdown-digits { flex-wrap: wrap; }
+      .countdown-unit { flex: 1 1 50%; }
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes scrollDrop { 0% { top: -100%; } 50% { top: 0%; } 100% { top: 100%; } }
+    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+    /* RESPONSIVE */
+    @media (max-width: 960px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      #hero { padding: 0 1.5rem 4rem; }
+      .hero-stats { gap: 1.8rem; }
+      section { padding: 5rem 1.5rem; }
+      #strava { padding: 3.5rem 1.5rem; }
+      .strava-grid { grid-template-columns: repeat(2, 1fr); }
+      .ride-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .why-grid { grid-template-columns: 1fr; }
+      .updates-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="#">dontcoast.com</a>
+    <ul class="nav-links">
+      <li><a href="#ride">The Ride</a></li>
+      <li><a href="#history">History</a></li>
+      <li><a href="https://www.youtube.com/@jjjjustin" target="_blank">Watch</a></li>
+      <li><a href="#music">Music</a></li>
+      <li><a href="#gear">Gear</a></li>
+      <li><a href="gallery.html">Photos</a></li>
+      <li><a href="#support" class="nav-cta">Support</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+
+    <!-- ─── HERO PHOTO (3:2 landscape print, bleeds off right edge) ───
+         To use a real photo: replace the .hero-photo-placeholder div
+         with: <img src="photos/your-photo.jpg" alt="">
+    ─────────────────────────────────────────────────────────── -->
+    <div class="hero-photo">
+      <div class="hero-photo-inner">
+        <div class="hero-photo-placeholder">
+          <span>3:2 landscape<br>photo here</span>
+        </div>
+      </div>
+    </div>
+    <p class="hero-eyebrow">Summer 2025 &nbsp;·&nbsp; Antelope Wells → Banff → Antelope Wells</p>
+    <h1 class="hero-title">
+      Tour Divide<br>
+      <span>Both Ways</span>
+    </h1>
+    <p class="hero-sub">5,500 miles. 400,000 feet of elevation. No sponsors. No coasting. The Great Divide Mountain Bike Route — ridden both ways in a single continuous push.</p>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">5,500</div>
+        <div class="stat-label">Total Miles</div>
+      </div>
+      <div>
+        <div class="stat-num">400k</div>
+        <div class="stat-label">Feet of Elevation</div>
+      </div>
+      <div>
+        <div class="stat-num">May 23</div>
+        <div class="stat-label">Yo-yo Départ</div>
+      </div>
+    </div>
+    <div class="hero-ctas">
+      <a href="#support" class="btn-primary">Support the Ride</a>
+      <a href="#video" class="btn-secondary">Watch the Announcement</a>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-bar"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+
+
+  <!-- RIDE -->
+  <section>
+    <div id="ride">
+      <p class="section-label">The Route</p>
+      <div class="ride-grid">
+        <div class="ride-body">
+          <h2 class="section-title">What is the<br>Tour Divide?</h2>
+          <p>The <strong>Great Divide Mountain Bike Route</strong> is the longest off-pavement cycling route in the world — 2,745 miles of remote dirt, gravel, and backcountry roads tracing the Continental Divide from Canada to Mexico.</p>
+          <p>Every summer, riders attempt the <strong>Tour Divide</strong>: an unsupported, self-navigated traverse from Banff, Alberta to Antelope Wells, New Mexico. No crew, no support vehicles, no drafting.</p>
+          <p>This summer, I'm riding it <strong>both ways</strong> — starting at the southern terminus, riding north to Banff, then turning around and riding the entire thing back. Unsupported. Solo. No sponsors.</p>
+          <p>It has never been done as a single continuous effort in both directions. This is my attempt.</p>
+        </div>
+        <div>
+          <p class="section-label" style="margin-bottom:1rem">27 Waypoints · Antelope Wells to Banff</p>
+          <div class="itinerary-card">
+            <div class="itinerary-header">
+              <span>Mile</span>
+              <span>Location</span>
+            </div>
+            <div class="itinerary-row terminus">
+              <div class="itin-mile">0</div>
+              <div class="itin-name">Antelope Wells, NM ↑ Start</div>
+            </div>
+            <div class="itinerary-row">
+              <div class="itin-mile">70</div>
+              <div class="itin-name">Hachita, NM</div>
+            </div>
+            <div class="itinerary-row">
+              <div class="itin-mile">155</div>
+              <div class="itin-name">Silver City, NM</div>
+            </div>
+            <div class="itinerary-row">
+              <div class="itin-mile">330</div>
+              <div class="itin-name">Pie Town, NM</div>
+            </div>
+            <div class="itinerary-row">
+              <div class="itin-mile">400</div>
+              <div class="itin-name">Grants, NM</div>
+            </div>
+            <div class="itinerary-row">
+              <div class="itin-mile">525</div>
+              <div class="itin-name">Cuba, NM</div>
+            </div>
+            <div class="itinerary-row">
+              <div class="itin-mile">600</div>
+              <div class="itin-name">Abiquiu, NM</div>
+            </div>
+            <div class="itinerary-row">
+              <div class="itin-mile">770</div>
+              <div class="itin-name">Del Norte, CO</div>
+            </div>
+            <div class="itinerary-row">
+              <div class="itin-mile">925</div>
+              <div class="itin-name">Salida, CO</div>
+            </div>
+            <div class="itinerary-row">
+              <div class="itin-mile">970</div>
+              <div class="itin-name">Hartsel, CO</div>
+            </div>
+            <div class="itinerary-row">
+              <div class="itin-mile">1035</div>
+              <div class="itin-name">Frisco, CO</div>
+            </div>
+            <div class="itinerary-row">
+              <div class="itin-mile">1165</div>
+              <div class="itin-name">Steamboat Springs, CO</div>
+            </div>
+            <div class="itinerary-row">
+              <div class="itin-mile">1300</div>
+              <div class="itin-name">Wamsutter, WY</div>
+            </div>
+            <div class="itinerary-row">
+              <div class="itin-mile">1400</div>
+              <div class="itin-name">Atlantic City, WY</div>
+            </div>
+            <div class="itinerary-row">
+              <div class="itin-mile">1485</div>
+              <div class="itin-name">Pinedale, WY</div>
+            </div>
+            <div class="itinerary-row">
+              <div class="itin-mile">1710</div>
+              <div class="itin-name">Island Park, ID</div>
+            </div>
+            <div class="itinerary-row">
+              <div class="itin-mile">1810</div>
+              <div class="itin-name">Lima, MT</div>
+            </div>
+            <div class="itinerary-row">
+              <div class="itin-mile">1945</div>
+              <div class="itin-name">Wise River, MT</div>
+            </div>
+            <div class="itinerary-row">
+              <div class="itin-mile">2000</div>
+              <div class="itin-name">Butte, MT</div>
+            </div>
+            <div class="itinerary-row">
+              <div class="itin-mile">2070</div>
+              <div class="itin-name">Helena, MT</div>
+            </div>
+            <div class="itinerary-row">
+              <div class="itin-mile">2130</div>
+              <div class="itin-name">Lincoln, MT</div>
+            </div>
+            <div class="itinerary-row">
+              <div class="itin-mile">2170</div>
+              <div class="itin-name">Ovando, MT</div>
+            </div>
+            <div class="itinerary-row">
+              <div class="itin-mile">2340</div>
+              <div class="itin-name">Whitefish, MT</div>
+            </div>
+            <div class="itinerary-row">
+              <div class="itin-mile">2430</div>
+              <div class="itin-name">Eureka, MT</div>
+            </div>
+            <div class="itinerary-row">
+              <div class="itin-mile">2450</div>
+              <div class="itin-name">US / CAN Border</div>
+            </div>
+            <div class="itinerary-row">
+              <div class="itin-mile">2545</div>
+              <div class="itin-name">Fernie, BC</div>
+            </div>
+            <div class="itinerary-row turnaround">
+              <div class="itin-mile">2700</div>
+              <div class="itin-name">Banff, AB ↩ Turnaround</div>
+            </div>
+          </div>
+          <p class="itinerary-note">Miles shown Antelope Wells → Banff (one direction = 2,700 mi). Total both ways: 5,400 mi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTORY -->
+  <div id="history-section">
+    <div class="history-inner">
+      <p class="history-eyebrow">Both Ways</p>
+
+      <div class="history-poem">
+        <span class="line-dim">The Tour Divide is a 2,750 mile bike race.</span>
+        <span class="line-dim">I've started three times.</span>
+        <span class="line-accent">Finished once.</span>
+        <span class="line-dim" style="margin-top:1rem">Out there I'm just a shape</span>
+        <span class="line-dim">moving through the landscape.</span>
+        <span class="line-accent">Too small to matter to the mountains.</span>
+        <span class="line-accent">Exactly small enough.</span>
+        <span class="line-dim" style="margin-top:1rem">This time I'm going both ways.</span>
+        <span class="line-accent">Antelope Wells → Banff → Antelope Wells.</span>
+      </div>
+
+      <div class="countdown-wrap">
+        <p class="countdown-eyebrow">Yo-yo Départ &nbsp;·&nbsp; Antelope Wells, NM &nbsp;·&nbsp; May 23, 2026</p>
+        <div class="countdown-digits">
+          <div class="countdown-unit">
+            <div class="countdown-num" id="cd-days">—</div>
+            <div class="countdown-unit-label">Days</div>
+          </div>
+          <div class="countdown-unit">
+            <div class="countdown-num" id="cd-hours">—</div>
+            <div class="countdown-unit-label">Hours</div>
+          </div>
+          <div class="countdown-unit">
+            <div class="countdown-num" id="cd-mins">—</div>
+            <div class="countdown-unit-label">Minutes</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- VIDEO -->
+  <section id="video">
+    <div class="video-inner">
+      <p class="section-label">Announcement</p>
+      <h2 class="section-title">Watch the Video</h2>
+      <p class="video-intro">Everything you need to know about the ride, the route, and why I'm doing this.</p>
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/aw73zP4r-t4"
+          title="Tour Divide Both Ways Announcement"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- MUSIC -->
+  <section id="music">
+    <div class="music-inner">
+      <div class="music-layout">
+        <div class="music-copy">
+          <p class="section-label">On the Bike</p>
+          <h2 class="section-title">The Soundtrack</h2>
+          <p>Miles of dirt road, hours of silence broken only by wind and gravel. Music is the other fuel. This is what's playing across 5,400 miles of the Continental Divide.</p>
+          <p><strong>Follow the playlist</strong> and ride along — updated as the route evolves, from the desert heat of New Mexico to the peaks of the Canadian Rockies.</p>
+          <div class="music-badge">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 0C3.582 0 0 3.582 0 8s3.582 8 8 8 8-3.582 8-8-3.582-8-8-8zm3.5 11.5c-.2.3-.6.4-.9.2L7 9.5V5c0-.4.3-.7.7-.7s.7.3.7.7v3.6l3.1 1.8c.3.2.4.6.2.9z" fill="currentColor"/>
+            </svg>
+            Apple Music
+          </div>
+        </div>
+
+        <div id="musicPlayer">
+          <!-- PLACEHOLDER: Replace APPLE_MUSIC_EMBED_URL below with your real embed URL.
+               Format: https://embed.music.apple.com/us/playlist/your-playlist-id
+               To get it: open playlist in Apple Music → ··· menu → Share → Copy Embed Code
+               Then paste just the src URL here. -->
+          <div class="music-placeholder">
+            <div class="music-placeholder-icon">♫</div>
+            <h3>Playlist Coming Soon</h3>
+            <p>Swap in your Apple Music embed URL via <code>APPLE_MUSIC_URL</code> in the script below.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- WHY -->
+  <section>
+    <div id="why">
+      <p class="section-label">Why This</p>
+      <h2 class="section-title">No Sponsors.<br>No Safety Net.</h2>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-num">01</div>
+          <h3>Self-Funded</h3>
+          <p>No corporate sponsors. No brand deals. This ride is funded entirely by people who believe in what it represents — doing hard things without a safety net.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-num">02</div>
+          <h3>Unsupported</h3>
+          <p>No crew vehicle. No supply drops. Everything I need goes on the bike. Food, gear, shelter — sourced from towns along the route, just like every other rider.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-num">03</div>
+          <h3>Both Directions</h3>
+          <p>North to south is already one of the hardest things a person can do on a bicycle. Turning around and doing it back challenges what we think is possible.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GEAR -->
+  <section>
+    <div id="gear">
+      <p class="section-label">What's on the Bike</p>
+      <h2 class="section-title">Gear List</h2>
+
+      <div class="gear-tabs">
+        <button class="gear-tab active" data-tab="bike">The Bike</button>
+        <button class="gear-tab" data-tab="bags">Bags & Setup</button>
+        <button class="gear-tab" data-tab="clothing">Clothing</button>
+        <button class="gear-tab" data-tab="nav">Navigation & Electronics</button>
+      </div>
+
+      <div class="gear-panels">
+
+        <!-- THE BIKE -->
+        <div class="gear-panel active" id="panel-bike">
+          <p class="gear-panel-intro">The build optimized for 5,500 miles of mixed terrain — dirt roads, gravel, and backcountry double track along the Continental Divide.</p>
+          <div class="gear-table">
+            <div class="gear-table-head">
+              <span>Item</span>
+              <span>Notes</span>
+              <span>Category</span>
+              <span style="text-align:right">Weight</span>
+            </div>
+            <div class="gear-row"><div class="gear-row-name">Frame</div><div class="gear-row-note">Add your frame here</div><div class="gear-row-tag">Frame</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-row"><div class="gear-row-name">Fork</div><div class="gear-row-note">Add your fork here</div><div class="gear-row-tag">Cockpit</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-row"><div class="gear-row-name">Drivetrain</div><div class="gear-row-note">Add your drivetrain here</div><div class="gear-row-tag">Drivetrain</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-row"><div class="gear-row-name">Wheels</div><div class="gear-row-note">Add your wheelset here</div><div class="gear-row-tag">Wheels</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-row"><div class="gear-row-name">Tires</div><div class="gear-row-note">Add your tires here</div><div class="gear-row-tag">Wheels</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-row"><div class="gear-row-name">Brakes</div><div class="gear-row-note">Add your brakes here</div><div class="gear-row-tag">Brakes</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-row"><div class="gear-row-name">Cockpit / Bars</div><div class="gear-row-note">Add your bars &amp; stem here</div><div class="gear-row-tag">Cockpit</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-row"><div class="gear-row-name">Saddle</div><div class="gear-row-note">Add your saddle here</div><div class="gear-row-tag">Contact Points</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-table-footer">
+              <div class="gear-table-footer-label">Category total</div>
+              <div class="gear-table-total" id="total-bike">— g</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BAGS -->
+        <div class="gear-panel" id="panel-bags">
+          <p class="gear-panel-intro">Everything carried on the bike — no panniers, no trailer. All weight distributed across frame, bar, seat, and top tube bags.</p>
+          <div class="gear-table">
+            <div class="gear-table-head">
+              <span>Item</span>
+              <span>Notes</span>
+              <span>Category</span>
+              <span style="text-align:right">Weight</span>
+            </div>
+            <div class="gear-row"><div class="gear-row-name">Frame Bag</div><div class="gear-row-note">Add your frame bag here</div><div class="gear-row-tag">Frame</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-row"><div class="gear-row-name">Handlebar Bag</div><div class="gear-row-note">Add your handlebar bag here</div><div class="gear-row-tag">Front</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-row"><div class="gear-row-name">Seat Bag</div><div class="gear-row-note">Add your seat bag here</div><div class="gear-row-tag">Rear</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-row"><div class="gear-row-name">Top Tube Bag</div><div class="gear-row-note">Add your top tube bag here</div><div class="gear-row-tag">Frame</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-row"><div class="gear-row-name">Feed Bags</div><div class="gear-row-note">Add your feed bags here</div><div class="gear-row-tag">Cockpit</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-row"><div class="gear-row-name">Shelter</div><div class="gear-row-note">Add your shelter / bivy here</div><div class="gear-row-tag">Sleep System</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-row"><div class="gear-row-name">Sleeping Bag</div><div class="gear-row-note">Add your sleeping bag here</div><div class="gear-row-tag">Sleep System</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-row"><div class="gear-row-name">Sleeping Pad</div><div class="gear-row-note">Add your sleeping pad here</div><div class="gear-row-tag">Sleep System</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-table-footer">
+              <div class="gear-table-footer-label">Category total</div>
+              <div class="gear-table-total" id="total-bags">— g</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CLOTHING -->
+        <div class="gear-panel" id="panel-clothing">
+          <p class="gear-panel-intro">Layering system built for desert heat, mountain cold, and everything in between — from New Mexico summers to Canadian Rockies weather.</p>
+          <div class="gear-table">
+            <div class="gear-table-head">
+              <span>Item</span>
+              <span>Notes</span>
+              <span>Category</span>
+              <span style="text-align:right">Weight</span>
+            </div>
+            <div class="gear-row"><div class="gear-row-name">Helmet</div><div class="gear-row-note">Add your helmet here</div><div class="gear-row-tag">Head</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-row"><div class="gear-row-name">Kit / Bibs</div><div class="gear-row-note">Add your riding kit here</div><div class="gear-row-tag">Base Layer</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-row"><div class="gear-row-name">Shoes</div><div class="gear-row-note">Add your shoes here</div><div class="gear-row-tag">Feet</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-row"><div class="gear-row-name">Rain Jacket</div><div class="gear-row-note">Add your rain jacket here</div><div class="gear-row-tag">Waterproof</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-row"><div class="gear-row-name">Insulation Layer</div><div class="gear-row-note">Add your insulation layer here</div><div class="gear-row-tag">Warmth</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-row"><div class="gear-row-name">Gloves</div><div class="gear-row-note">Add your gloves here</div><div class="gear-row-tag">Hands</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-row"><div class="gear-row-name">Leg Warmers / Rain Pants</div><div class="gear-row-note">Add your leg coverage here</div><div class="gear-row-tag">Legs</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-row"><div class="gear-row-name">Off-Bike Shoes</div><div class="gear-row-note">Add your camp shoes here</div><div class="gear-row-tag">Camp</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-table-footer">
+              <div class="gear-table-footer-label">Category total</div>
+              <div class="gear-table-total" id="total-clothing">— g</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- NAV & ELECTRONICS -->
+        <div class="gear-panel" id="panel-nav">
+          <p class="gear-panel-intro">Navigation, power, communication, and light — everything needed to move safely through remote terrain day and night.</p>
+          <div class="gear-table">
+            <div class="gear-table-head">
+              <span>Item</span>
+              <span>Notes</span>
+              <span>Category</span>
+              <span style="text-align:right">Weight</span>
+            </div>
+            <div class="gear-row"><div class="gear-row-name">GPS Device</div><div class="gear-row-note">Add your GPS here</div><div class="gear-row-tag">Navigation</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-row"><div class="gear-row-name">Satellite Communicator</div><div class="gear-row-note">Add your sat comms device here</div><div class="gear-row-tag">Safety</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-row"><div class="gear-row-name">Front Light</div><div class="gear-row-note">Add your front light here</div><div class="gear-row-tag">Lighting</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-row"><div class="gear-row-name">Rear Light</div><div class="gear-row-note">Add your rear light here</div><div class="gear-row-tag">Lighting</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-row"><div class="gear-row-name">Power Bank</div><div class="gear-row-note">Add your battery pack here</div><div class="gear-row-tag">Power</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-row"><div class="gear-row-name">Dynamo Hub / Charging</div><div class="gear-row-note">Add your charging setup here</div><div class="gear-row-tag">Power</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-row"><div class="gear-row-name">Phone</div><div class="gear-row-note">Add your phone / backup nav here</div><div class="gear-row-tag">Navigation</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-row"><div class="gear-row-name">Headlamp</div><div class="gear-row-note">Add your headlamp here</div><div class="gear-row-tag">Lighting</div><div class="gear-row-weight placeholder">— g</div></div>
+            <div class="gear-table-footer">
+              <div class="gear-table-footer-label">Category total</div>
+              <div class="gear-table-total" id="total-nav">— g</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- SUPPORT -->
+  <section id="support">
+    <div class="support-inner">
+      <p class="section-label">Be Part of It</p>
+      <h2 class="section-title">Support the Ride</h2>
+      <p class="support-body">This ride has no sponsors — it runs on the support of people who want to see it happen. Your contribution goes directly toward gear, food, logistics, and keeping the wheels turning across 5,500 miles of backcountry.</p>
+      <div class="support-ctas">
+        <a href="https://www.patreon.com" target="_blank" class="btn-black">Become a Patron</a>
+        <a href="https://www.paypal.com/donate" target="_blank" class="btn-outline-black">One-Time Donation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRAVA -->
+  <div id="strava">
+    <div class="strava-inner">
+      <div class="strava-header">
+        <div>
+          <p class="section-label">Training Progress</p>
+          <h2>Year-to-Date on Strava</h2>
+        </div>
+        <div class="strava-status">
+          <div class="status-dot" id="statusDot"></div>
+          <span id="statusText">Loading...</span>
+        </div>
+      </div>
+      <div class="strava-grid" id="stravaGrid"></div>
+      <p class="strava-note">
+        ⚡ Data from Strava. To go live: set <code>USE_REAL_DATA = true</code> and add your
+        <a href="https://www.strava.com/settings/api" target="_blank">Strava API token</a> in the script below.
+      </p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-logo">TDBW</div>
+    <ul class="footer-links">
+      <li><a href="#ride">The Ride</a></li>
+      <li><a href="https://www.youtube.com/@jjjjustin" target="_blank">Watch</a></li>
+      <li><a href="gallery.html">Photos</a></li>
+      <li><a href="#support">Support</a></li>
+    </ul>
+    <p class="footer-copy">© 2025 dontcoast.com</p>
+  </footer>
+
+  <script>
+    // ─────────────────────────────────────────────────────────
+    // STRAVA CONFIG
+    // 1. Go to https://www.strava.com/settings/api → create an app
+    // 2. Complete OAuth to get an access_token with read activity scope
+    // 3. Set USE_REAL_DATA = true and paste your token
+    // ─────────────────────────────────────────────────────────
+    const STRAVA_CONFIG = {
+      USE_REAL_DATA: false,
+      ACCESS_TOKEN:  'YOUR_TOKEN_HERE',
+    };
+
+    // Placeholder data (shown until Strava is connected)
+    const PLACEHOLDER = {
+      ytd_ride_totals: {
+        distance:      4890 * 1609.34,  // ~3,040 miles in metres
+        moving_time:   632400,           // seconds
+        elevation_gain:19050,            // metres (~62,500 ft)
+        count:         187,
+      }
+    };
+
+    function fmt(n)   { return Number(n).toLocaleString(); }
+    function mi(m)    { return fmt(Math.round(m / 1609.34)); }
+    function ft(m)    { return fmt(Math.round(m * 3.28084)); }
+    function hrs(s)   { return fmt(Math.round(s / 3600)); }
+
+    async function fetchStrava() {
+      if (!STRAVA_CONFIG.USE_REAL_DATA) return null;
+      try {
+        const res = await fetch('https://www.strava.com/api/v3/athletes/stats', {
+          headers: { Authorization: `Bearer ${STRAVA_CONFIG.ACCESS_TOKEN}` }
+        });
+        if (!res.ok) throw new Error(res.status);
+        return await res.json();
+      } catch (e) {
+        console.warn('Strava fetch failed, using placeholder:', e);
+        return null;
+      }
+    }
+
+    function renderStrava(data) {
+      const ytd  = data.ytd_ride_totals;
+      const dot  = document.getElementById('statusDot');
+      const txt  = document.getElementById('statusText');
+      const live = STRAVA_CONFIG.USE_REAL_DATA && data !== PLACEHOLDER;
+
+      dot.className   = 'status-dot' + (live ? ' live' : '');
+      txt.textContent = live ? 'Live Strava data' : 'Placeholder data · connect Strava to go live';
+
+      const pct = Math.min(100, Math.round((ytd.distance / 1609.34) / 5500 * 100));
+
+      const cards = [
+        { label: 'Miles Ridden (YTD)',    value: mi(ytd.distance),        unit: 'miles',        sub: `${pct}% of the 5,500 mi goal` },
+        { label: 'Elevation Gained (YTD)',value: ft(ytd.elevation_gain),  unit: 'feet climbed', sub: 'Cumulative YTD' },
+        { label: 'Hours in the Saddle',   value: hrs(ytd.moving_time),    unit: 'hours moving', sub: 'Year to date' },
+        { label: 'Rides Logged',          value: fmt(ytd.count),          unit: 'activities',   sub: 'Year to date' },
+        { label: 'Avg Miles / Ride',      value: (ytd.distance / 1609.34 / ytd.count).toFixed(1), unit: 'mi per ride', sub: 'YTD average' },
+      ];
+
+      document.getElementById('stravaGrid').innerHTML = cards.map(c => `
+        <div class="strava-card">
+          <div class="strava-card-label">${c.label}</div>
+          <div class="strava-card-value">${c.value}</div>
+          <div class="strava-card-unit">${c.unit}</div>
+          <div class="strava-card-sub">${c.sub}</div>
+        </div>
+      `).join('');
+    }
+
+    function showSkeletons() {
+      document.getElementById('stravaGrid').innerHTML = Array(5).fill(0).map(() => `
+        <div class="strava-card">
+          <div class="strava-card-label">Loading</div>
+          <div class="skeleton" style="height:2.6rem;width:65%;margin:0.5rem 0"></div>
+          <div class="skeleton" style="height:0.6rem;width:40%;margin-top:0.4rem"></div>
+        </div>
+      `).join('');
+    }
+
+    async function init() {
+      showSkeletons();
+      const data = await fetchStrava();
+      renderStrava(data || PLACEHOLDER);
+    }
+
+    init();
+  </script>  <script>
+    // ─────────────────────────────────────────────────────────
+    // APPLE MUSIC CONFIG
+    // 1. Open your playlist in Apple Music (desktop or web)
+    // 2. Click ··· → Share → Copy Embed Code
+    // 3. Paste just the URL from the src="..." attribute below
+    // Example: https://embed.music.apple.com/us/playlist/tour-divide-both-ways/pl.abc123
+    // ─────────────────────────────────────────────────────────
+    const APPLE_MUSIC_URL = ''; // ← paste your embed URL here
+
+    (function () {
+      const player = document.getElementById('musicPlayer');
+      if (!player) return;
+      if (APPLE_MUSIC_URL && APPLE_MUSIC_URL.length > 0) {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'apple-music-embed';
+        const iframe = document.createElement('iframe');
+        iframe.src = APPLE_MUSIC_URL;
+        iframe.allow = 'autoplay *; encrypted-media *; fullscreen *; clipboard-write';
+        iframe.sandbox = 'allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation';
+        iframe.style.minHeight = '450px';
+        wrapper.appendChild(iframe);
+        player.innerHTML = '';
+        player.appendChild(wrapper);
+      }
+      // If no URL set, the placeholder div stays visible
+    })();
+  </script>
+
+  <script>
+    // Countdown to May 23, 2026
+    function updateCountdown() {
+      const target = new Date('2026-05-23T00:00:00');
+      const now    = new Date();
+      const diff   = target - now;
+      if (diff <= 0) {
+        document.getElementById('cd-days').textContent  = '0';
+        document.getElementById('cd-hours').textContent = '0';
+        document.getElementById('cd-mins').textContent  = '0';
+        document.getElementById('cd-secs').textContent  = '0';
+        return;
+      }
+      const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins  = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      document.getElementById('cd-days').textContent  = days;
+      document.getElementById('cd-hours').textContent = String(hours).padStart(2,'0');
+      document.getElementById('cd-mins').textContent  = String(mins).padStart(2,'0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+
+  <script>
+    // Gear tabs + weight totals
+    function calcTotal(panelId) {
+      const panel = document.getElementById(panelId);
+      if (!panel) return;
+      const totalEl = panel.querySelector('.gear-table-total');
+      if (!totalEl) return;
+      let sum = 0;
+      let hasAny = false;
+      panel.querySelectorAll('.gear-row-weight:not(.placeholder)').forEach(el => {
+        const val = parseInt(el.textContent.replace(/[^0-9]/g, ''), 10);
+        if (!isNaN(val)) { sum += val; hasAny = true; }
+      });
+      totalEl.textContent = hasAny ? sum.toLocaleString() + ' g' : '— g';
+    }
+
+    document.querySelectorAll('.gear-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.gear-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.gear-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        const panel = document.getElementById('panel-' + tab.dataset.tab);
+        panel.classList.add('active');
+        calcTotal(panel.id);
+      });
+    });
+
+    // calc totals on load for visible panel
+    calcTotal('panel-bike');
+  </script>
+
+</body>
+</html>
