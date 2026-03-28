@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Don't Coast</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;600&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <span class="nav-logo">Don't Coast</span>
+    <div class="nav-links">
+      <a href="#ride">The Ride</a>
+      <a href="#support">Support</a>
+      <a href="#gear">Gear</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-route">
+        <span>Antelope Wells, NM</span>
+        <span class="route-arrow">→ Banff, AB → Antelope Wells, NM</span>
+      </div>
+      <h1>Yo-Yo</h1>
+      <p class="hero-sub">5,500 miles. 20 days. One continuous effort.</p>
+      <p class="hero-date">Departing May 23, 2026</p>
+    </section>
+
+    <!-- VIDEO -->
+    <section class="video-section" id="ride">
+      <div class="video-wrap">
+        <iframe
+          src="https://www.youtube.com/embed/aw73zP4r-t4"
+          title="Don't Coast — Tour Divide Yo-Yo Announcement"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about">
+      <div class="about-inner">
+        <p>Don't Coast is a personal project built around forward motion — as much a creative pursuit as it is a physical one. It started on the bike as a reminder to keep pedaling and stay engaged, and has since become a way of approaching work, process, and long-term ideas.</p>
+        <p>Cycling has been a constant in my life and a primary source of inspiration. The repetition, the terrain, and the time spent moving through landscapes all shape how I think and create. That connection carries directly into work across writing, photography, video, and design.</p>
+        <p>Much of this is currently centered around the Tour Divide, where I document the miles, the gear, and the people along the way.</p>
+      </div>
+    </section>
+
+    <!-- SUPPORT -->
+    <section class="support" id="support">
+      <div class="support-inner">
+        <h2>Pay The Other Way</h2>
+        <p class="support-desc">The goal of this ride is to raise enough money to fund the return trip — Banff back to Antelope Wells — during the 20 days it takes to get there. If this ride moves you, consider contributing.</p>
+        <div class="support-buttons">
+          <a class="btn btn-primary" href="https://www.buymeacoffee.com/jjjjustin" target="_blank" rel="noopener">Buy Me a Coffee</a>
+          <a class="btn btn-secondary" href="https://venmo.com/jjjjustin" target="_blank" rel="noopener">Venmo @jjjjustin</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- GEAR -->
+    <section class="gear" id="gear">
+      <div class="gear-inner">
+        <h2>Gear List</h2>
+        <div class="tabs">
+          <button class="tab active" data-tab="bike">Bike</button>
+          <button class="tab" data-tab="bags">Bags</button>
+          <button class="tab" data-tab="clothing">Clothing</button>
+          <button class="tab" data-tab="electronics">Electronics</button>
+        </div>
+
+        <div class="tab-content active" id="tab-bike">
+          <table>
+            <thead>
+              <tr><th>Item</th><th>Brand</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td colspan="3" class="empty">Gear list coming soon.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tab-content" id="tab-bags">
+          <table>
+            <thead>
+              <tr><th>Item</th><th>Brand</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td colspan="3" class="empty">Gear list coming soon.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tab-content" id="tab-clothing">
+          <table>
+            <thead>
+              <tr><th>Item</th><th>Brand</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td colspan="3" class="empty">Gear list coming soon.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tab-content" id="tab-electronics">
+          <table>
+            <thead>
+              <tr><th>Item</th><th>Brand</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+              <tr><td colspan="3" class="empty">Gear list coming soon.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <span>Don't Coast — dontcoast.com</span>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
