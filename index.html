@@ -10,26 +10,22 @@
 </head>
 <body>
 
-  <nav class="nav">
-    <span class="nav-logo">Don't Coast</span>
-    <div class="nav-links">
-      <a href="#ride">The Ride</a>
-      <a href="#support">Support</a>
-      <a href="#gear">Gear</a>
-    </div>
-  </nav>
-
   <main>
 
     <!-- HERO -->
     <section class="hero">
+      <img src="logo.png" alt="Don't Coast" class="hero-logo" />
       <div class="hero-route">
         <span>Antelope Wells, NM</span>
         <span class="route-arrow">→ Banff, AB → Antelope Wells, NM</span>
       </div>
-      <h1>Yo-Yo</h1>
       <p class="hero-sub">5,500 miles. 20 days. One continuous effort.</p>
       <p class="hero-date">Departing May 23, 2026</p>
+    </section>
+
+    <!-- ELEVATION -->
+    <section class="elevation">
+      <img src="Elevation Profile.svg" alt="Tour Divide Elevation Profile" />
     </section>
 
     <!-- VIDEO -->
@@ -54,14 +50,48 @@
       </div>
     </section>
 
+    <!-- SLIDER -->
+    <section class="slider">
+      <div class="slider-track">
+        <img src="images/DSC04438 Large.jpeg" alt="">
+        <img src="images/DSC04450 Large.jpeg" alt="">
+        <img src="images/DSC04475 Large.jpeg" alt="">
+        <img src="images/DSC04481 Large.jpeg" alt="">
+        <img src="images/DSC04493 Large.jpeg" alt="">
+        <img src="images/DSC04541 Large.jpeg" alt="">
+        <img src="images/DSC04565 Large.jpeg" alt="">
+        <img src="images/DSC04578 Large.jpeg" alt="">
+        <img src="images/DSC04588 Large.jpeg" alt="">
+        <img src="images/DSC04591 Large.jpeg" alt="">
+        <img src="images/DSC08224 Large.jpeg" alt="">
+        <img src="images/DSC08251 Large.jpeg" alt="">
+        <img src="images/DSC08262 Large.jpeg" alt="">
+        <img src="images/DSC08265 Large.jpeg" alt="">
+        <img src="images/DSC08291 Large.jpeg" alt="">
+        <img src="images/DSC08294 Large.jpeg" alt="">
+        <img src="images/DSC08296 Large.jpeg" alt="">
+        <img src="images/DSC08328 Large.jpeg" alt="">
+        <img src="images/DSC08329 Large.jpeg" alt="">
+        <img src="images/DSC08346 Large.jpeg" alt="">
+        <img src="images/DSC08363 Large.jpeg" alt="">
+        <img src="images/DSC08370 Large.jpeg" alt="">
+      </div>
+    </section>
+
     <!-- SUPPORT -->
     <section class="support" id="support">
       <div class="support-inner">
         <h2>Pay The Other Way</h2>
-        <p class="support-desc">The goal of this ride is to raise enough money to fund the return trip — Banff back to Antelope Wells — during the 20 days it takes to get there. If this ride moves you, consider contributing.</p>
+        <p class="support-desc">The goal of this ride is to raise enough money to fund the return trip — Banff back to Antelope Wells — during the 20 days it takes to get there. There are far more important things you could be sharing your resources with, but one of the most important things we can do is follow our dreams and make use of our freedoms. If this ride moves you, consider contributing.</p>
         <div class="support-buttons">
-          <a class="btn btn-primary" href="https://www.buymeacoffee.com/jjjjustin" target="_blank" rel="noopener">Buy Me a Coffee</a>
-          <a class="btn btn-secondary" href="https://venmo.com/jjjjustin" target="_blank" rel="noopener">Venmo @jjjjustin</a>
+          <a class="btn btn-primary" href="https://www.buymeacoffee.com/jjjjustin" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 8h-2V5h2v3zm0-5H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zM2 21h18v-2H2v2z"/></svg>
+            Buy Me a Coffee
+          </a>
+          <a class="btn btn-secondary" href="https://venmo.com/jjjjustin" target="_blank" rel="noopener">
+            <svg width="20" height="21" viewBox="0 0 502 534" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M473.33 0C492.77 32 501.54 64.96 501.54 106.59C501.54 239.38 387.78 411.88 295.45 533.01H84.57L0 29.07L184.65 11.6L229.36 370.18C271.14 302.35 322.7 195.76 322.7 123.09C322.7 83.31 315.86 56.22 305.17 33.91L473.33 0Z"/></svg>
+            Venmo @jjjjustin
+          </a>
         </div>
       </div>
     </section>
@@ -130,6 +160,33 @@
   </footer>
 
   <script>
+    const slider = document.querySelector('.slider');
+    let isDown = false, startX, scrollLeft;
+    let paused = false, pos = 0, raf;
+
+    function animate() {
+      if (!paused) {
+        pos += 0.5;
+        if (pos >= slider.scrollWidth - slider.clientWidth) pos = 0;
+        slider.scrollLeft = pos;
+      }
+      raf = requestAnimationFrame(animate);
+    }
+
+    raf = requestAnimationFrame(animate);
+
+    // Mouse drag
+    slider.addEventListener('mousedown', e => { isDown = true; paused = true; slider.classList.add('grabbing'); startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
+    slider.addEventListener('mouseleave', () => { if (isDown) { isDown = false; slider.classList.remove('grabbing'); pos = slider.scrollLeft; paused = false; } });
+    slider.addEventListener('mouseup', () => { if (isDown) { isDown = false; slider.classList.remove('grabbing'); pos = slider.scrollLeft; paused = false; } });
+    slider.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); slider.scrollLeft = scrollLeft - (e.pageX - slider.offsetLeft - startX); });
+
+    // Touch swipe
+    let touchStartX, touchScrollLeft;
+    slider.addEventListener('touchstart', e => { paused = true; touchStartX = e.touches[0].pageX; touchScrollLeft = slider.scrollLeft; });
+    slider.addEventListener('touchmove', e => { slider.scrollLeft = touchScrollLeft - (e.touches[0].pageX - touchStartX); });
+    slider.addEventListener('touchend', () => { pos = slider.scrollLeft; paused = false; });
+
     document.querySelectorAll('.tab').forEach(tab => {
       tab.addEventListener('click', () => {
         document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
