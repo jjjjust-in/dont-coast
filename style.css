@@ -4,7 +4,7 @@
 :root {
   --bg: #ece9e3;
   --fg: #1c1c1c;
-  --muted: #888;
+  --muted: #1c1c1c;
   --border: #bfbab0;
 }
 
@@ -86,31 +86,29 @@ body::before {
 }
 
 .hero-route {
-  font-size: 12px;
-  letter-spacing: 0.1em;
+  font-size: 11px;
+  letter-spacing: 0.13em;
   color: var(--fg);
   text-transform: uppercase;
-  margin-bottom: 16px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  justify-content: center;
+  margin-bottom: 28px;
 }
 
-.route-arrow { color: var(--fg); }
-
-.hero-sub {
-  font-size: 18px;
-  color: var(--fg);
-  margin-bottom: 16px;
-  letter-spacing: 0.01em;
-}
-
-.hero-date {
-  font-size: 13px;
-  color: var(--fg);
-  letter-spacing: 0.06em;
+.section-label {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
+  color: var(--fg);
+  text-decoration: underline;
+  margin-bottom: 12px;
+}
+
+.hero-desc {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--muted);
+  max-width: 560px;
+  margin: 0 auto;
 }
 
 /* ── ELEVATION ── */
@@ -125,6 +123,71 @@ body::before {
   height: auto;
   display: block;
   filter: invert(1);
+}
+
+/* ── ROUTE ── */
+.route-section {
+  padding: 40px 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.route-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.basemap-svg {
+  height: 1000px;
+  width: auto;
+  display: block;
+}
+
+.route-svg {
+  height: 1012px;
+  width: auto;
+  display: block;
+  filter: brightness(0);
+  position: absolute;
+  top: 0;
+  left: 77px;
+}
+
+.route-dot {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: #e8b820;
+  border: 2px solid #1c1c1c;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(232, 184, 32, 0.6); }
+  70%  { box-shadow: 0 0 0 10px rgba(232, 184, 32, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(232, 184, 32, 0); }
+}
+
+/* ── TRACKLEADERS LINK ── */
+.trackleaders-link {
+  text-align: center;
+  padding: 0 24px 40px;
+}
+
+.trackleaders-link a {
+  font-size: 11px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--fg);
+  text-decoration: none;
+  border-bottom: 1px solid var(--fg);
+  padding-bottom: 2px;
+}
+
+.trackleaders-link a:hover {
+  opacity: 0.6;
 }
 
 /* ── MAP ── */
@@ -192,7 +255,7 @@ body::before {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   cursor: grab;
-  margin-bottom: 4px;
+  margin: 60px 0;
 }
 
 .slider::-webkit-scrollbar { display: none; }
@@ -217,9 +280,7 @@ body::before {
 
 /* ── SUPPORT ── */
 .support {
-  border-top: 1px solid var(--border);
-  padding: 80px 24px;
-  background: var(--fg);
+  padding: 0 24px 80px;
   color: var(--bg);
   display: flex;
   justify-content: center;
@@ -232,20 +293,13 @@ body::before {
   text-align: center;
 }
 
-.support h2 {
-  font-family: 'Work Sans', sans-serif;
-  font-size: clamp(32px, 6vw, 56px);
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 20px;
-}
 
 .support-desc {
-  font-size: 16px;
-  line-height: 1.8;
-  color: #aaa;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--muted);
   margin-bottom: 36px;
-  max-width: 520px;
+  max-width: 560px;
 }
 
 .support-buttons {
@@ -279,12 +333,12 @@ body::before {
 
 .btn-secondary {
   background: transparent;
-  color: var(--bg);
+  color: var(--fg);
   border: 1px solid #555;
 }
 
 .btn-secondary:hover {
-  border-color: var(--bg);
+  border-color: var(--fg);
 }
 
 /* ── GEAR ── */
@@ -372,6 +426,82 @@ td.empty {
 }
 
 tbody tr:hover { background: rgba(0,0,0,0.02); }
+
+/* ── BIKE PHOTO ── */
+.bike-photo {
+  text-align: center;
+  padding: 0 24px 60px;
+}
+
+.bike-hotspot-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.bike-hotspot-wrap img {
+  width: 66vw;
+  height: auto;
+  display: block;
+}
+
+.hotspot {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #e8b820;
+  border: 2px solid #1c1c1c;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.15s;
+}
+
+.hotspot:hover {
+  background: #d4a017;
+}
+
+
+.hotspot-card {
+  position: absolute;
+  background: #1c1c1c;
+  color: #ece9e3;
+  padding: 14px 16px;
+  min-width: 180px;
+  text-align: left;
+  transform: translate(-50%, -100%);
+  display: none;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.hotspot-card.visible {
+  display: block;
+}
+
+.hotspot-card-name {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+}
+
+.hotspot-card-brand {
+  font-size: 11px;
+  opacity: 0.6;
+  margin-bottom: 10px;
+  letter-spacing: 0.04em;
+}
+
+.hotspot-card-link {
+  font-size: 11px;
+  color: #ece9e3;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(236,233,227,0.3);
+  padding-bottom: 1px;
+}
 
 /* ── FOOTER ── */
 .footer {

@@ -15,42 +15,22 @@
     <!-- HERO -->
     <section class="hero">
       <img src="logo.png" alt="Don't Coast" class="hero-logo" />
-      <div class="hero-route">
-        <span>Antelope Wells, NM</span>
-        <span class="route-arrow">→ Banff, AB → Antelope Wells, NM</span>
-      </div>
-      <p class="hero-sub">5,500 miles. 20 days each way. One continuous effort.</p>
-      <p class="hero-date">Departing May 23, 2026</p>
+<h2 class="section-label">Tour Divide</h2>
+      <p class="hero-desc">The Tour Divide is a 2,700-mile self-supported mountain bike race from Banff, Alberta to Antelope Wells, New Mexico, following the spine of the Rocky Mountains along the Continental Divide. No crew, no support, no set schedule. Riders carry everything they need and navigate entirely on their own, moving through some of the most remote terrain in North America.</p>
     </section>
 
-    <!-- VIDEO -->
-    <section class="video-section" id="ride">
-      <div class="video-wrap">
-        <iframe
-          src="https://www.youtube.com/embed/aw73zP4r-t4"
-          title="Don't Coast — Tour Divide Yo-Yo Announcement"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
+    <!-- ROUTE -->
+    <section class="route-section">
+      <div class="route-wrap" id="routeWrap">
+        <img src="basemap.svg" alt="Basemap" class="basemap-svg" />
+        <img src="routepath.svg" alt="Tour Divide Route" class="route-svg" id="routeSvg" />
+        <div class="route-dot" id="routeDot" style="display:none"></div>
       </div>
     </section>
 
-    <!-- MAP -->
-    <section class="map-section">
-      <div class="map-wrap">
-        <iframe width="1000" height="850" frameborder="0" scrolling="no" src="https://trackleaders.com/tourdivide25f.php" allowfullscreen></iframe>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section class="about">
-      <div class="about-inner">
-        <p>Don't Coast is a personal project built around forward motion — as much a creative pursuit as it is a physical one. It started on the bike as a reminder to keep pedaling and stay engaged, and has since become a way of approaching work, process, and long-term ideas.</p>
-        <p>Cycling has been a constant in my life and a primary source of inspiration. The repetition, the terrain, and the time spent moving through landscapes all shape how I think and create. That connection carries directly into work across writing, photography, video, and design.</p>
-        <p>Much of this is currently centered around the Tour Divide, where I document the miles, the gear, and the people along the way.</p>
-      </div>
-    </section>
+    <div class="trackleaders-link">
+      <a href="https://trackleaders.com/tourdivide26f.php" target="_blank" rel="noopener">Trackleaders Race Tracker →</a>
+    </div>
 
     <!-- SLIDER -->
     <section class="slider">
@@ -83,16 +63,10 @@
     <!-- SUPPORT -->
     <section class="support" id="support">
       <div class="support-inner">
-        <h2>Pay The Other Way</h2>
-        <p class="support-desc">The Tour Divide is often called the most expensive "free" bike race in the world. Beyond the bike and gear, the real cost shows up day by day, around $75 to keep moving. Gas station food, the occasional hot meal, a motel bed every few days, and whatever it takes to keep the bike rolling across 2,700 miles of remote terrain. It adds up quickly.</p>
-        <p class="support-desc">I'm launching this site the day I roll out of Antelope Wells. From there, it's roughly 20 days north to Banff for the Grand Depart, then straight back south to where it all started. 40 days total.</p>
-        <p class="support-desc">There are better places to put your money, no question. But if following along brings you something, and you feel like sending a little fuel my way, it goes a long way out here. A coffee, a Red Bull, a pack of peanut butter cups. It all counts. If the ride resonates, you can support it below.</p>
+        <h2 class="section-label">My Tour Divide Story</h2>
+        <p class="support-desc">Fourth Tour Divide attempt in as many years. A month before my first Tour Divide attempt I lost my job. Sold my truck to fund the second. Maxed out credit cards on the third. This year will be no different. I'm not telling you this for your sympathy or to prove my stupidity. I'm telling you because there is no perfect scenario that leads you to the start line. There never will be. You go anyway. That's what this ride means to me. If it means something to you too, consider sending me a few dollars.</p>
         <div class="support-buttons">
-          <a class="btn btn-primary" href="https://www.buymeacoffee.com/jjjjustin" target="_blank" rel="noopener">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 8h-2V5h2v3zm0-5H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zM2 21h18v-2H2v2z"/></svg>
-            Buy Me a Coffee
-          </a>
-          <a class="btn btn-secondary" href="https://venmo.com/jjjjustin" target="_blank" rel="noopener">
+<a class="btn btn-secondary" href="https://venmo.com/jjjjustin" target="_blank" rel="noopener">
             <svg width="20" height="21" viewBox="0 0 502 534" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M473.33 0C492.77 32 501.54 64.96 501.54 106.59C501.54 239.38 387.78 411.88 295.45 533.01H84.57L0 29.07L184.65 11.6L229.36 370.18C271.14 302.35 322.7 195.76 322.7 123.09C322.7 83.31 315.86 56.22 305.17 33.91L473.33 0Z"/></svg>
             Venmo @jjjjustin
           </a>
@@ -100,116 +74,169 @@
       </div>
     </section>
 
-    <!-- GEAR -->
-    <section class="gear" id="gear">
-      <div class="gear-inner">
-        <h2>Gear List</h2>
-        <div class="tabs">
-          <button class="tab active" data-tab="bike">Bike</button>
-          <button class="tab" data-tab="bags">Bags</button>
-          <button class="tab" data-tab="clothing">Clothing</button>
-          <button class="tab" data-tab="electronics">Electronics</button>
-        </div>
-
-        <div class="tab-content active" id="tab-bike">
-          <table>
-            <thead>
-              <tr><th>Item</th><th>Brand</th><th>Notes</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Frame</td><td>Salsa</td><td>Cutthroat Carbon, size L</td></tr>
-              <tr><td>Fork</td><td>Salsa</td><td>Carbon, 100mm travel</td></tr>
-              <tr><td>Drivetrain</td><td>SRAM</td><td>Eagle AXS 12-speed wireless</td></tr>
-              <tr><td>Crankset</td><td>SRAM</td><td>Quarq DZero, 30t chainring</td></tr>
-              <tr><td>Cassette</td><td>SRAM</td><td>Eagle 10-52t</td></tr>
-              <tr><td>Brakes</td><td>SRAM</td><td>Level Ultimate, 160/160mm rotors</td></tr>
-              <tr><td>Wheels</td><td>Industry Nine</td><td>Hydra hubs, carbon rims 29"</td></tr>
-              <tr><td>Tires</td><td>Schwalbe</td><td>Thunder Burt 2.35, tubeless</td></tr>
-              <tr><td>Handlebar</td><td>Salsa</td><td>Woodchipper Drop, 44cm</td></tr>
-              <tr><td>Stem</td><td>Salsa</td><td>Guide, 90mm</td></tr>
-              <tr><td>Saddle</td><td>Brooks</td><td>C17 Carved Ti rails</td></tr>
-              <tr><td>Seatpost</td><td>PNW</td><td>Cascade dropper, 150mm</td></tr>
-              <tr><td>Pedals</td><td>Shimano</td><td>SPD M540</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="tab-content" id="tab-bags">
-          <table>
-            <thead>
-              <tr><th>Item</th><th>Brand</th><th>Notes</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Frame Bag</td><td>Revelate Designs</td><td>Full-frame, custom fit</td></tr>
-              <tr><td>Handlebar Bag</td><td>Revelate Designs</td><td>Sweetroll 16L</td></tr>
-              <tr><td>Seat Bag</td><td>Revelate Designs</td><td>Terrapin 14L</td></tr>
-              <tr><td>Top Tube Bag</td><td>Revelate Designs</td><td>Mag-Tank 2000</td></tr>
-              <tr><td>Feed Bags</td><td>Revelate Designs</td><td>Egress Pocket, pair</td></tr>
-              <tr><td>Gas Tank</td><td>Revelate Designs</td><td>0.8L stem bag</td></tr>
-              <tr><td>Fork Cages</td><td>Salsa</td><td>Anything Cage HD, x2</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="tab-content" id="tab-clothing">
-          <table>
-            <thead>
-              <tr><th>Item</th><th>Brand</th><th>Notes</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>Bib Shorts</td><td>Pas Normal Studios</td><td>Mechanism, x2 pairs</td></tr>
-              <tr><td>Jersey</td><td>Pas Normal Studios</td><td>Mechanism long sleeve, x2</td></tr>
-              <tr><td>Rain Jacket</td><td>Patagonia</td><td>Houdini, packed in feed bag</td></tr>
-              <tr><td>Insulation</td><td>Patagonia</td><td>Nano Puff, for camp/cold descents</td></tr>
-              <tr><td>Arm Warmers</td><td>Castelli</td><td>Convertible 2, x1 pair</td></tr>
-              <tr><td>Knee Warmers</td><td>Castelli</td><td>Sorpasso, x1 pair</td></tr>
-              <tr><td>Gloves</td><td>Specialized</td><td>Trail Air, x1 pair</td></tr>
-              <tr><td>Helmet</td><td>Smith</td><td>Engage MIPS</td></tr>
-              <tr><td>Shoes</td><td>Shimano</td><td>RX800, size 44</td></tr>
-              <tr><td>Socks</td><td>Darn Tough</td><td>Merino micro crew, x3 pairs</td></tr>
-              <tr><td>Base Layer</td><td>Pas Normal Studios</td><td>Essential merino, x1</td></tr>
-              <tr><td>Casual Shorts</td><td>Patagonia</td><td>Baggies, worn off-bike</td></tr>
-              <tr><td>Sun Sleeves</td><td>DeSoto</td><td>Arm Coolers, UV protection</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="tab-content" id="tab-electronics">
-          <table>
-            <thead>
-              <tr><th>Item</th><th>Brand</th><th>Notes</th></tr>
-            </thead>
-            <tbody>
-              <tr><td>GPS Computer</td><td>Garmin</td><td>Edge 1040 Solar</td></tr>
-              <tr><td>Satellite Tracker</td><td>Garmin</td><td>inReach Mini 2, required for race</td></tr>
-              <tr><td>Dynamo Hub</td><td>SON</td><td>28 Disc, powers USB charger</td></tr>
-              <tr><td>Dynamo Charger</td><td>Sinewave</td><td>Reactor, 5W USB output</td></tr>
-              <tr><td>Power Bank</td><td>Anker</td><td>737, 24000mAh</td></tr>
-              <tr><td>Front Light</td><td>Busch &amp; Müller</td><td>IQ-X, dynamo-powered</td></tr>
-              <tr><td>Rear Light</td><td>Exposure</td><td>TraceR, USB rechargeable</td></tr>
-              <tr><td>Phone</td><td>Apple</td><td>iPhone 15 Pro, offline maps</td></tr>
-              <tr><td>Camera</td><td>Sony</td><td>ZV-1 II, compact point-and-shoot</td></tr>
-              <tr><td>Headphones</td><td>Shokz</td><td>OpenRun Pro, bone conduction</td></tr>
-              <tr><td>Cable Kit</td><td>—</td><td>USB-C x3, Lightning x1, zip ties</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
   </main>
 
-  <!-- ELEVATION -->
-  <section class="elevation">
-    <img src="Elevation Profile.svg" alt="Tour Divide Elevation Profile" />
-  </section>
+  <div class="bike-photo">
+    <div class="bike-hotspot-wrap" id="bikeWrap">
+      <img src="images/DSC09399-2.jpg" alt="Tour Divide bike" id="bikeImg" />
+
+      <!-- HOTSPOTS -->
+      <button class="hotspot" style="left:32%;top:34.5%" data-index="0" aria-label="Rear Rack"></button>
+      <button class="hotspot" style="left:53.9%;top:51.3%" data-index="1" aria-label="Frame"></button>
+      <button class="hotspot" style="left:48%;top:47.5%" data-index="2" aria-label="Frame Bag"></button>
+      <button class="hotspot" style="left:69%;top:21%" data-index="3" aria-label="Aerobar Pak"></button>
+      <button class="hotspot" style="left:58.5%;top:25%" data-index="4" aria-label="Top Tube Bag"></button>
+      <button class="hotspot" style="left:34.8%;top:16.9%" data-index="5" aria-label="Saddle"></button>
+      <button class="hotspot" style="left:72.5%;top:65.8%" data-index="6" aria-label="Brakes"></button>
+      <button class="hotspot" style="left:78.3%;top:66.7%" data-index="7" aria-label="Front Hub"></button>
+      <button class="hotspot" style="left:72.1%;top:52.9%" data-index="8" aria-label="Fork"></button>
+      <button class="hotspot" style="left:77.3%;top:10.6%" data-index="9" aria-label="Aero Bars"></button>
+      <button class="hotspot" style="left:21.4%;top:44.2%" data-index="10" aria-label="Panniers"></button>
+      <button class="hotspot" style="left:53.4%;top:71.5%" data-index="11" aria-label="Pedals"></button>
+      <button class="hotspot" style="left:22.74%;top:65.47%" data-index="12" aria-label="Wheels"></button>
+      <button class="hotspot" style="left:41.68%;top:70%" data-index="13" aria-label="Chainring"></button>
+      <button class="hotspot" style="left:44.31%;top:70%" data-index="14" aria-label="Bottom Bracket"></button>
+      <button class="hotspot" style="left:41.94%;top:37.33%" data-index="15" aria-label="Bottle Mounts"></button>
+      <button class="hotspot" style="left:91.7%;top:57.13%" data-index="16" aria-label="Tires"></button>
+      <button class="hotspot" style="left:25.42%;top:25%" data-index="18" aria-label="Rear Bag Straps"></button>
+      <button class="hotspot" style="left:22.84%;top:28.91%" data-index="17" aria-label="Dry Bag"></button>
+
+      <!-- TOOLTIP -->
+      <div class="hotspot-card" id="hotspotCard">
+        <p class="hotspot-card-name" id="hName"></p>
+        <p class="hotspot-card-brand" id="hBrand"></p>
+        <a class="hotspot-card-link" id="hLink" target="_blank" rel="noopener">Visit Site →</a>
+      </div>
+    </div>
+  </div>
 
   <footer class="footer">
     <img src="smalltape.png" alt="" class="footer-tape" />
     <p class="footer-copy">© 2026 Don't Coast. All rights reserved.</p>
   </footer>
 
+
   <script>
+    const hotspots = [
+      { name: 'Rat Tail Rear Rack', brand: 'Mica Cycles', url: 'https://micacycles.com' },
+      { name: 'Fenrir Ti Frame', brand: 'Otso', url: 'https://otsocycles.com' },
+      { name: 'FramePak', brand: 'JPaks', url: 'https://www.jpaks.com' },
+      { name: 'Aerobar Pak', brand: 'JPaks', url: 'https://www.jpaks.com' },
+      { name: 'Footlong EXT', brand: 'JPaks', url: 'https://www.jpaks.com' },
+      { name: 'C13 Saddle', brand: 'Brooks', url: 'https://brooksengland.com' },
+      { name: 'Equal Brakes', brand: 'Growtac', url: 'https://velo-orange.com' },
+      { name: 'SON28 Hub Dynamo', brand: 'Schmidt', url: 'https://nabendynamo.de/en/products/hub-dynamos/for-standard-forks/' },
+      { name: 'Fox 32 Stepcast Fork', brand: 'Fox', url: 'https://ridefox.com' },
+      { name: 'Boner Aero Bars', brand: 'DOOM', url: 'https://www.doombars.com' },
+      { name: 'UL Panniers', brand: 'San Util', url: 'https://sanutildesign.com' },
+      { name: 'Waveform Pedals', brand: 'Wolf Tooth Components', url: 'https://wolftoothcomponents.com' },
+      { name: 'Wanderer Rims / Hydra2 Hubs', brand: 'WeAreOne / Industry Nine', url: 'https://industrynine.com' },
+      { name: '32x18 Chainring', brand: 'Wolf Tooth', url: 'https://wolftoothcomp.com' },
+      { name: 'Bottom Bracket', brand: 'Wolf Tooth', url: 'https://wolftoothcomp.com' },
+      { name: 'Hose Clamp Bottle Mounts', brand: 'King Cage', url: 'https://kingcage.com' },
+      { name: 'Mezcal 29x2.2" w/ Air Liner Inserts', brand: 'Vittoria', url: 'https://vittoria.com' },
+      { name: 'Ultra PE Dry Bag', brand: 'Rockgeist', url: 'https://rockgeist.com/product/dyneema-bikepacking-dry-bag/' },
+      { name: 'Rear Bag Straps', brand: 'Austere Manufacturing', url: 'https://austeremanufacturing.com' }
+    ];
+
+    const card = document.getElementById('hotspotCard');
+    const hName = document.getElementById('hName');
+    const hBrand = document.getElementById('hBrand');
+    const hLink = document.getElementById('hLink');
+
+    let hideTimer;
+
+    function showCard(btn) {
+      clearTimeout(hideTimer);
+      const d = hotspots[+btn.dataset.index];
+      hName.textContent = d.name;
+      hBrand.textContent = d.brand;
+      hLink.href = d.url.startsWith('http') ? d.url : 'https://' + d.url;
+      const wrap = document.getElementById('bikeWrap');
+      const wRect = wrap.getBoundingClientRect();
+      const bRect = btn.getBoundingClientRect();
+      card.style.left = (bRect.left - wRect.left + bRect.width / 2) + 'px';
+      card.style.top = (bRect.top - wRect.top - 8) + 'px';
+      card.classList.add('visible');
+    }
+
+    function scheduleHide() {
+      hideTimer = setTimeout(() => card.classList.remove('visible'), 200);
+    }
+
+    document.querySelectorAll('.hotspot').forEach(btn => {
+      btn.addEventListener('mouseenter', () => showCard(btn));
+      btn.addEventListener('mouseleave', scheduleHide);
+    });
+
+    card.addEventListener('mouseenter', () => clearTimeout(hideTimer));
+    card.addEventListener('mouseleave', scheduleHide);
+
+    // Route position dot — uses SVG path geometry for exact placement
+    // The routepath is a closed ribbon: traces from Antelope Wells (bottom) up to
+    // Banff (midpoint of path length) and back down to Antelope Wells.
+    const LAT_BANFF = 51.17, LAT_ANTELOPE = 31.33;
+    let routePathEl = null, routeTotalLength = 0;
+
+    async function initRoutePath() {
+      const res = await fetch('routepath.svg');
+      const text = await res.text();
+      const doc = new DOMParser().parseFromString(text, 'image/svg+xml');
+      const pathData = doc.querySelector('path').getAttribute('d');
+
+      const ns = 'http://www.w3.org/2000/svg';
+      const offSvg = document.createElementNS(ns, 'svg');
+      offSvg.setAttribute('viewBox', '0 0 1080 1920');
+      offSvg.setAttribute('width', '1080');
+      offSvg.setAttribute('height', '1920');
+      offSvg.style.cssText = 'position:fixed;top:-9999px;left:-9999px;pointer-events:none';
+      const offPath = document.createElementNS(ns, 'path');
+      offPath.setAttribute('d', pathData);
+      offSvg.appendChild(offPath);
+      document.body.appendChild(offSvg);
+
+      routePathEl = offPath;
+      routeTotalLength = offPath.getTotalLength();
+
+      // Wait for route image to be loaded before placing dot
+      const img = document.getElementById('routeSvg');
+      if (img.complete) {
+        placeRouteDot((LAT_BANFF + LAT_ANTELOPE) / 2, null);
+      } else {
+        img.addEventListener('load', () => placeRouteDot((LAT_BANFF + LAT_ANTELOPE) / 2, null));
+      }
+    }
+
+    function placeRouteDot(lat, lng) {
+      if (!routePathEl) return;
+      const dot = document.getElementById('routeDot');
+      const img = document.getElementById('routeSvg');
+
+      // progress: 0 = Banff (midpoint of path), 1 = Antelope Wells (start/end of path)
+      const progress = Math.max(0, Math.min(1, (LAT_BANFF - lat) / (LAT_BANFF - LAT_ANTELOPE)));
+      const pathLen = (1 - progress) * (routeTotalLength / 2);
+      const pt = routePathEl.getPointAtLength(pathLen);
+
+      const scaleX = img.clientWidth / 1080;
+      const scaleY = img.clientHeight / 1920;
+      dot.style.left = (img.offsetLeft + pt.x * scaleX) + 'px';
+      dot.style.top  = (img.offsetTop  + pt.y * scaleY) + 'px';
+      dot.style.display = 'block';
+    }
+
+    initRoutePath();
+
+    async function updateRoutePosition() {
+      try {
+        const res = await fetch('/.netlify/functions/garmin');
+        const { lat, lng } = await res.json();
+        if (lat && lng) placeRouteDot(lat, lng);
+      } catch (e) { /* keep default position */ }
+    }
+
+    updateRoutePosition();
+    setInterval(updateRoutePosition, 5 * 60 * 1000); // every 5 minutes
+
     const slider = document.querySelector('.slider');
     let isDown = false, startX, scrollLeft;
     let paused = false, pos = 0, raf;
@@ -225,26 +252,15 @@
 
     raf = requestAnimationFrame(animate);
 
-    // Mouse drag
     slider.addEventListener('mousedown', e => { isDown = true; paused = true; slider.classList.add('grabbing'); startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
     slider.addEventListener('mouseleave', () => { if (isDown) { isDown = false; slider.classList.remove('grabbing'); pos = slider.scrollLeft; paused = false; } });
     slider.addEventListener('mouseup', () => { if (isDown) { isDown = false; slider.classList.remove('grabbing'); pos = slider.scrollLeft; paused = false; } });
     slider.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); slider.scrollLeft = scrollLeft - (e.pageX - slider.offsetLeft - startX); });
 
-    // Touch swipe
     let touchStartX, touchScrollLeft;
     slider.addEventListener('touchstart', e => { paused = true; touchStartX = e.touches[0].pageX; touchScrollLeft = slider.scrollLeft; });
     slider.addEventListener('touchmove', e => { slider.scrollLeft = touchScrollLeft - (e.touches[0].pageX - touchStartX); });
     slider.addEventListener('touchend', () => { pos = slider.scrollLeft; paused = false; });
-
-    document.querySelectorAll('.tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-        tab.classList.add('active');
-        document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
-      });
-    });
   </script>
 
 </body>
