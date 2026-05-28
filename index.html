@@ -5,34 +5,448 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Don't Coast</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;600&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;600&family=Work+Sans:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <main>
+  <!-- FIXED CORNER LOGO -->
+  <div class="site-logo">
+    <img src="logo.png" alt="Don't Coast" />
+  </div>
 
-    <!-- HERO -->
-    <section class="hero">
-      <img src="logo.png" alt="Don't Coast" class="hero-logo" />
-<h2 class="section-label">Tour Divide</h2>
-      <p class="hero-desc">The Tour Divide is a 2,700-mile self-supported mountain bike race from Banff, Alberta to Antelope Wells, New Mexico, following the spine of the Rocky Mountains along the Continental Divide. No crew, no support, no set schedule. Riders carry everything they need and navigate entirely on their own, moving through some of the most remote terrain in North America.</p>
-    </section>
+  <!-- ─── HERO BACKGROUND (fixed) ─── -->
+  <div class="hero-bg"></div>
 
-    <!-- ROUTE -->
-    <section class="route-section">
-      <div class="route-wrap" id="routeWrap">
-        <img src="basemap.svg" alt="Basemap" class="basemap-svg" />
-        <img src="routepath.svg" alt="Tour Divide Route" class="route-svg" id="routeSvg" />
-        <div class="route-dot" id="routeDot" style="display:none"></div>
+  <!-- ─── WHAT ─── -->
+  <section class="page-section section-what" id="what">
+    <div class="section-content">
+      <h1 class="section-headline">Tour Divide</h1>
+      <p class="hero-date">June 12, 2026</p>
+      <p class="section-body">A 2,700-mile self-supported mountain bike race from Banff, Alberta to Antelope Wells, New Mexico, following the spine of the Rocky Mountains along the Continental Divide. No crew, no support, no set schedule. Riders carry everything they need and navigate entirely on their own, moving through some of the most remote terrain in North America.</p>
+      <p class="scroll-hint">SEE MORE ↓</p>
+    </div>
+    <p class="hero-credit">Photo: <a href="https://www.eddieclarkmedia.com" target="_blank" rel="noopener">Eddie Clark</a> / 2025 Tour Divide</p>
+  </section>
+
+  <!-- ─── TRACKER + UPDATES ─── -->
+  <section class="page-section section-when" id="when">
+
+    <!-- full-width header -->
+    <div class="tracker-header">
+      <h2 class="section-headline">JJJJustin Tracker</h2>
+      <div class="tracker-meta">
+        <span class="tracker-dot" id="trackerDot"></span>
+        <span class="tracker-meta-text" id="trackerStatusText">Connecting</span>
       </div>
-    </section>
-
-    <div class="trackleaders-link">
-      <a href="https://trackleaders.com/tourdivide26f.php" target="_blank" rel="noopener">Trackleaders Race Tracker →</a>
     </div>
 
-    <!-- SLIDER -->
+    <!-- bordered box: stats + split -->
+    <div class="tracker-box">
+    <div class="stats-bar">
+      <div class="stat">
+        <span class="stat-value" id="raceClock">--</span>
+        <span class="stat-label">Race Clock</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value" id="statCovered">--</span>
+        <span class="stat-label">Miles Covered</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value" id="statRemaining">--</span>
+        <span class="stat-label">Miles Remaining</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value" id="statPercent">--%</span>
+        <span class="stat-label">Complete</span>
+      </div>
+    </div>
+
+    <!-- 50/50 split: updates | map -->
+    <div class="tracker-lower">
+
+      <div class="tracker-updates-col">
+        <div class="tracker-col-header">Route Journal</div>
+        <div class="tracker-scroll-frame">
+        <div class="tracker-updates-scroll" id="updatesTimeline">
+          <div class="updates-day">
+            <div class="updates-day-label">Day 01</div>
+            <div class="update-item">
+              <div class="update-stats">
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">Banff, AB</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">Eureka, MT</span></div>
+                <div class="update-stat"><span class="update-stat-label">Miles</span><span class="update-stat-value">131</span></div>
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">8:00 AM</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">9:45 PM</span></div>
+                <div class="update-stat"><span class="update-stat-label">Elevation</span><span class="update-stat-value">9,200 ft</span></div>
+              </div>
+              <div class="update-images">
+                <img class="update-img" src="images/DSC08291 Large.jpeg" alt="" />
+                <img class="update-img" src="images/DSC08294 Large.jpeg" alt="" />
+                <img class="update-img" src="images/DSC08296 Large.jpeg" alt="" />
+                <img class="update-img" src="images/DSC08328 Large.jpeg" alt="" />
+                <img class="update-img" src="images/DSC08329 Large.jpeg" alt="" />
+              </div>
+              <ul class="update-text"><li>Banff. Grand Depart.</li><li>200 riders and none of us are talking about how far Antelope Wells is.</li><li>Legs feel good. Weather held. Let's go.</li></ul>
+            </div>
+          </div>
+          <div class="updates-day">
+            <div class="updates-day-label">Day 02</div>
+            <div class="update-item">
+              <div class="update-stats">
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">Eureka, MT</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">Whitefish, MT</span></div>
+                <div class="update-stat"><span class="update-stat-label">Miles</span><span class="update-stat-value">118</span></div>
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">5:15 AM</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">8:30 PM</span></div>
+                <div class="update-stat"><span class="update-stat-label">Elevation</span><span class="update-stat-value">7,800 ft</span></div>
+              </div>
+              <div class="update-images">
+                <img class="update-img" src="images/DSC08328 Large.jpeg" alt="" />
+                <img class="update-img" src="images/DSC08329 Large.jpeg" alt="" />
+              </div>
+              <ul class="update-text"><li>Snow on Elk Pass. Hike-a-bike for about 2 miles.</li><li>Worth every step.</li><li>Slept under a sky I didn't deserve.</li></ul>
+            </div>
+          </div>
+          <div class="updates-day">
+            <div class="updates-day-label">Day 03</div>
+            <div class="update-item">
+              <div class="update-stats">
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">Whitefish, MT</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">Seeley Lake, MT</span></div>
+                <div class="update-stat"><span class="update-stat-label">Miles</span><span class="update-stat-value">143</span></div>
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">4:45 AM</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">9:00 PM</span></div>
+                <div class="update-stat"><span class="update-stat-label">Elevation</span><span class="update-stat-value">11,100 ft</span></div>
+              </div>
+              <div class="update-images">
+                <img class="update-img" src="images/DSC08346 Large.jpeg" alt="" />
+              </div>
+              <ul class="update-text"><li>Flatted twice before 7am.</li><li>Road gods testing me early. Patched, pumped, moving.</li><li>This stretch is everything.</li></ul>
+            </div>
+          </div>
+          <div class="updates-day">
+            <div class="updates-day-label">Day 04</div>
+            <div class="update-item">
+              <div class="update-stats">
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">Seeley Lake, MT</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">Lincoln, MT</span></div>
+                <div class="update-stat"><span class="update-stat-label">Miles</span><span class="update-stat-value">127</span></div>
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">5:00 AM</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">7:15 PM</span></div>
+                <div class="update-stat"><span class="update-stat-label">Elevation</span><span class="update-stat-value">8,400 ft</span></div>
+              </div>
+              <div class="update-images">
+                <img class="update-img" src="images/DSC08363 Large.jpeg" alt="" />
+                <img class="update-img" src="images/DSC08370 Large.jpeg" alt="" />
+              </div>
+              <ul class="update-text"><li>Montana. The roads get bigger and so does everything else.</li><li>Ate a full pizza in Whitefish. No regrets.</li></ul>
+            </div>
+          </div>
+          <div class="updates-day">
+            <div class="updates-day-label">Day 05</div>
+            <div class="update-item">
+              <div class="update-stats">
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">Lincoln, MT</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">Anaconda, MT</span></div>
+                <div class="update-stat"><span class="update-stat-label">Miles</span><span class="update-stat-value">138</span></div>
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">4:30 AM</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">8:45 PM</span></div>
+                <div class="update-stat"><span class="update-stat-label">Elevation</span><span class="update-stat-value">10,600 ft</span></div>
+              </div>
+              <div class="update-images">
+                <img class="update-img" src="images/DSC04438 Large.jpeg" alt="" />
+                <img class="update-img" src="images/DSC04450 Large.jpeg" alt="" />
+              </div>
+              <ul class="update-text"><li>Headwind since dawn. The kind that makes you question your life choices.</li><li>Still here. Still pedaling.</li></ul>
+            </div>
+          </div>
+          <div class="updates-day">
+            <div class="updates-day-label">Day 06</div>
+            <div class="update-item">
+              <div class="update-stats">
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">Anaconda, MT</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">Lima, MT</span></div>
+                <div class="update-stat"><span class="update-stat-label">Miles</span><span class="update-stat-value">152</span></div>
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">5:30 AM</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">9:30 PM</span></div>
+                <div class="update-stat"><span class="update-stat-label">Elevation</span><span class="update-stat-value">8,900 ft</span></div>
+              </div>
+              <div class="update-images">
+                <img class="update-img" src="images/DSC04475 Large.jpeg" alt="" />
+              </div>
+              <ul class="update-text"><li>Lincoln. Resupply done.</li><li>Knee talking a little but nothing serious.</li><li>Took a nap under a tree for 40 minutes. Luxury.</li></ul>
+            </div>
+          </div>
+          <div class="updates-day">
+            <div class="updates-day-label">Day 07</div>
+            <div class="update-item">
+              <div class="update-stats">
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">Lima, MT</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">Island Park, ID</span></div>
+                <div class="update-stat"><span class="update-stat-label">Miles</span><span class="update-stat-value">146</span></div>
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">4:00 AM</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">10:00 PM</span></div>
+                <div class="update-stat"><span class="update-stat-label">Elevation</span><span class="update-stat-value">9,700 ft</span></div>
+              </div>
+              <div class="update-images">
+                <img class="update-img" src="images/DSC04481 Large.jpeg" alt="" />
+                <img class="update-img" src="images/DSC04493 Large.jpeg" alt="" />
+              </div>
+              <ul class="update-text"><li>One week in. Feels like a month. Also feels like yesterday.</li><li>The math doesn't add up but neither does riding 200 miles a day so here we are.</li></ul>
+            </div>
+          </div>
+          <div class="updates-day">
+            <div class="updates-day-label">Day 08</div>
+            <div class="update-item">
+              <div class="update-stats">
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">Island Park, ID</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">Dubois, WY</span></div>
+                <div class="update-stat"><span class="update-stat-label">Miles</span><span class="update-stat-value">129</span></div>
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">4:30 AM</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">8:00 PM</span></div>
+                <div class="update-stat"><span class="update-stat-label">Elevation</span><span class="update-stat-value">7,300 ft</span></div>
+              </div>
+              <div class="update-images">
+                <img class="update-img" src="images/DSC04541 Large.jpeg" alt="" />
+              </div>
+              <ul class="update-text"><li>Basin. Thunderstorm rolled in at 3am.</li><li>Sat under my bivy listening to it pass.</li><li>Back on the bike by 4:30.</li></ul>
+            </div>
+          </div>
+          <div class="updates-day">
+            <div class="updates-day-label">Day 09</div>
+            <div class="update-item">
+              <div class="update-stats">
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">Dubois, WY</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">Pinedale, WY</span></div>
+                <div class="update-stat"><span class="update-stat-label">Miles</span><span class="update-stat-value">141</span></div>
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">5:00 AM</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">9:15 PM</span></div>
+                <div class="update-stat"><span class="update-stat-label">Elevation</span><span class="update-stat-value">8,500 ft</span></div>
+              </div>
+              <div class="update-images">
+                <img class="update-img" src="images/DSC04565 Large.jpeg" alt="" />
+                <img class="update-img" src="images/DSC04578 Large.jpeg" alt="" />
+              </div>
+              <ul class="update-text"><li>Wyoming. Endless. Beautiful. Cruel.</li><li>The wind here is personal.</li><li>Ate my last Snickers somewhere around mile 1100.</li></ul>
+            </div>
+          </div>
+          <div class="updates-day">
+            <div class="updates-day-label">Day 10</div>
+            <div class="update-item">
+              <div class="update-stats">
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">Pinedale, WY</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">Rawlins, WY</span></div>
+                <div class="update-stat"><span class="update-stat-label">Miles</span><span class="update-stat-value">157</span></div>
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">4:15 AM</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">10:30 PM</span></div>
+                <div class="update-stat"><span class="update-stat-label">Elevation</span><span class="update-stat-value">6,200 ft</span></div>
+              </div>
+              <div class="update-images">
+                <img class="update-img" src="images/DSC04588 Large.jpeg" alt="" />
+              </div>
+              <ul class="update-text"><li>Pinedale. Hot shower at a gas station bathroom. I am not ashamed.</li><li>Slept four hours in a park. Dreamed about nothing.</li></ul>
+            </div>
+          </div>
+          <div class="updates-day">
+            <div class="updates-day-label">Day 11</div>
+            <div class="update-item">
+              <div class="update-stats">
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">Rawlins, WY</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">Steamboat Springs, CO</span></div>
+                <div class="update-stat"><span class="update-stat-label">Miles</span><span class="update-stat-value">163</span></div>
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">3:45 AM</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">9:00 PM</span></div>
+                <div class="update-stat"><span class="update-stat-label">Elevation</span><span class="update-stat-value">10,400 ft</span></div>
+              </div>
+              <div class="update-images">
+                <img class="update-img" src="images/DSC04591 Large.jpeg" alt="" />
+                <img class="update-img" src="images/DSC08224 Large.jpeg" alt="" />
+              </div>
+              <ul class="update-text"><li>South Pass. The halfway marker.</li><li>Took a photo, ate some crackers, kept moving.</li><li>No ceremony. That's not what this is.</li></ul>
+            </div>
+          </div>
+          <div class="updates-day">
+            <div class="updates-day-label">Day 12</div>
+            <div class="update-item">
+              <div class="update-stats">
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">Steamboat Springs, CO</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">Silverthorne, CO</span></div>
+                <div class="update-stat"><span class="update-stat-label">Miles</span><span class="update-stat-value">136</span></div>
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">4:00 AM</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">8:45 PM</span></div>
+                <div class="update-stat"><span class="update-stat-label">Elevation</span><span class="update-stat-value">13,800 ft</span></div>
+              </div>
+              <div class="update-images">
+                <img class="update-img" src="images/DSC08251 Large.jpeg" alt="" />
+              </div>
+              <ul class="update-text"><li>Woke up with a flat. Fixed it in the dark.</li><li>Was back riding before sunrise.</li><li>This is the job now.</li></ul>
+            </div>
+          </div>
+          <div class="updates-day">
+            <div class="updates-day-label">Day 13</div>
+            <div class="update-item">
+              <div class="update-stats">
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">Silverthorne, CO</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">Salida, CO</span></div>
+                <div class="update-stat"><span class="update-stat-label">Miles</span><span class="update-stat-value">148</span></div>
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">4:30 AM</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">9:30 PM</span></div>
+                <div class="update-stat"><span class="update-stat-label">Elevation</span><span class="update-stat-value">14,200 ft</span></div>
+              </div>
+              <div class="update-images">
+                <img class="update-img" src="images/DSC08262 Large.jpeg" alt="" />
+                <img class="update-img" src="images/DSC08265 Large.jpeg" alt="" />
+              </div>
+              <ul class="update-text"><li>Colorado border. Something shifts when you cross it.</li><li>The climbs get harder but the light gets better. Fair trade.</li></ul>
+            </div>
+          </div>
+          <div class="updates-day">
+            <div class="updates-day-label">Day 14</div>
+            <div class="update-item">
+              <div class="update-stats">
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">Salida, CO</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">Del Norte, CO</span></div>
+                <div class="update-stat"><span class="update-stat-label">Miles</span><span class="update-stat-value">122</span></div>
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">5:00 AM</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">8:00 PM</span></div>
+                <div class="update-stat"><span class="update-stat-label">Elevation</span><span class="update-stat-value">12,600 ft</span></div>
+              </div>
+              <div class="update-images">
+                <img class="update-img" src="images/DSC08291 Large.jpeg" alt="" />
+              </div>
+              <ul class="update-text"><li>Steamboat. Stayed an hour longer than I should have.</li><li>Worth it. The pie was not optional.</li></ul>
+            </div>
+          </div>
+          <div class="updates-day">
+            <div class="updates-day-label">Day 15</div>
+            <div class="update-item">
+              <div class="update-stats">
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">Del Norte, CO</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">Chama, NM</span></div>
+                <div class="update-stat"><span class="update-stat-label">Miles</span><span class="update-stat-value">154</span></div>
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">3:30 AM</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">10:00 PM</span></div>
+                <div class="update-stat"><span class="update-stat-label">Elevation</span><span class="update-stat-value">11,900 ft</span></div>
+              </div>
+              <div class="update-images">
+                <img class="update-img" src="images/DSC08294 Large.jpeg" alt="" />
+                <img class="update-img" src="images/DSC08296 Large.jpeg" alt="" />
+              </div>
+              <ul class="update-text"><li>Biggest climb of the route. Walked some of it. Not ashamed.</li><li>The view at the top erased everything below it.</li></ul>
+            </div>
+          </div>
+          <div class="updates-day">
+            <div class="updates-day-label">Day 16</div>
+            <div class="update-item">
+              <div class="update-stats">
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">Chama, NM</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">Cuba, NM</span></div>
+                <div class="update-stat"><span class="update-stat-label">Miles</span><span class="update-stat-value">119</span></div>
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">4:00 AM</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">7:30 PM</span></div>
+                <div class="update-stat"><span class="update-stat-label">Elevation</span><span class="update-stat-value">9,100 ft</span></div>
+              </div>
+              <div class="update-images">
+                <img class="update-img" src="images/DSC04438 Large.jpeg" alt="" />
+              </div>
+              <ul class="update-text"><li>Crashed on a descent. Slow speed, soft landing, bruised ego.</li><li>Sat in the dirt for five minutes, got back on.</li></ul>
+            </div>
+          </div>
+          <div class="updates-day">
+            <div class="updates-day-label">Day 17</div>
+            <div class="update-item">
+              <div class="update-stats">
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">Cuba, NM</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">Pie Town, NM</span></div>
+                <div class="update-stat"><span class="update-stat-label">Miles</span><span class="update-stat-value">162</span></div>
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">3:00 AM</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">9:00 PM</span></div>
+                <div class="update-stat"><span class="update-stat-label">Elevation</span><span class="update-stat-value">7,800 ft</span></div>
+              </div>
+              <div class="update-images">
+                <img class="update-img" src="images/DSC04450 Large.jpeg" alt="" />
+                <img class="update-img" src="images/DSC04475 Large.jpeg" alt="" />
+              </div>
+              <ul class="update-text"><li>New Mexico. The heat is real.</li><li>Started riding at 3am to beat it.</li><li>The dark desert is something else entirely.</li></ul>
+            </div>
+          </div>
+          <div class="updates-day">
+            <div class="updates-day-label">Day 18</div>
+            <div class="update-item">
+              <div class="update-stats">
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">Pie Town, NM</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">Silver City, NM</span></div>
+                <div class="update-stat"><span class="update-stat-label">Miles</span><span class="update-stat-value">134</span></div>
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">3:30 AM</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">6:45 PM</span></div>
+                <div class="update-stat"><span class="update-stat-label">Elevation</span><span class="update-stat-value">8,300 ft</span></div>
+              </div>
+              <div class="update-images">
+                <img class="update-img" src="images/DSC04481 Large.jpeg" alt="" />
+              </div>
+              <ul class="update-text"><li>300 miles left. The number used to seem impossible.</li><li>Now it just seems like two more days. Funny how that works.</li></ul>
+            </div>
+          </div>
+          <div class="updates-day">
+            <div class="updates-day-label">Day 19</div>
+            <div class="update-item">
+              <div class="update-stats">
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">Silver City, NM</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">Lordsburg, NM</span></div>
+                <div class="update-stat"><span class="update-stat-label">Miles</span><span class="update-stat-value">108</span></div>
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">4:00 AM</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">5:30 PM</span></div>
+                <div class="update-stat"><span class="update-stat-label">Elevation</span><span class="update-stat-value">5,600 ft</span></div>
+              </div>
+              <div class="update-images">
+                <img class="update-img" src="images/DSC04493 Large.jpeg" alt="" />
+                <img class="update-img" src="images/DSC04541 Large.jpeg" alt="" />
+              </div>
+              <ul class="update-text"><li>Silver City. Last real stop.</li><li>Ate everything on the menu. Charged everything. Slept six hours.</li><li>Tomorrow is the last day.</li></ul>
+            </div>
+          </div>
+          <div class="updates-day">
+            <div class="updates-day-label">Day 20</div>
+            <div class="update-item">
+              <div class="update-stats">
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">Lordsburg, NM</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">Antelope Wells, NM</span></div>
+                <div class="update-stat"><span class="update-stat-label">Miles</span><span class="update-stat-value">83</span></div>
+                <div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">4:30 AM</span></div>
+                <div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">2:15 PM</span></div>
+                <div class="update-stat"><span class="update-stat-label">Elevation</span><span class="update-stat-value">3,200 ft</span></div>
+              </div>
+              <div class="update-images">
+                <img class="update-img" src="images/DSC04565 Large.jpeg" alt="" />
+                <img class="update-img" src="images/DSC04578 Large.jpeg" alt="" />
+                <img class="update-img" src="images/DSC04588 Large.jpeg" alt="" />
+              </div>
+              <ul class="update-text"><li>Antelope Wells. The gate.</li><li>I sat on the ground for a long time and didn't think about anything.</li><li>That felt right. See you next year.</li></ul>
+            </div>
+          </div>
+        </div>
+        </div><!-- /tracker-scroll-frame -->
+      </div>
+
+      <div class="tracker-map-col">
+        <div class="tracker-col-header">The Route</div>
+        <div class="route-wrap" id="routeWrap">
+          <img src="basemap.svg" alt="Basemap" class="basemap-svg" />
+          <img src="routepath.svg" alt="Tour Divide Route" class="route-svg" id="routeSvg" />
+          <div class="route-dot" id="routeDot" style="display:none"></div>
+        </div>
+        <div class="trackleaders-link">
+          <a href="https://trackleaders.com/tourdivide26f.php" target="_blank" rel="noopener" class="btn btn-primary">Trackleaders Race Tracker →</a>
+        </div>
+      </div>
+
+    </div><!-- /tracker-lower -->
+    </div><!-- /tracker-box -->
+  </section>
+
+  <!-- ─── WHO ─── -->
+  <section class="page-section section-who" id="who">
     <section class="slider">
       <div class="slider-track">
         <img src="images/DSC04438 Large.jpeg" alt="">
@@ -59,55 +473,121 @@
         <img src="images/DSC08370 Large.jpeg" alt="">
       </div>
     </section>
-
-    <!-- SUPPORT -->
-    <section class="support" id="support">
-      <div class="support-inner">
-        <h2 class="section-label">My Tour Divide Story</h2>
-        <p class="support-desc">Fourth Tour Divide attempt in as many years. A month before my first Tour Divide attempt I lost my job. Sold my truck to fund the second. Maxed out credit cards on the third. This year will be no different. I'm not telling you this for your sympathy or to prove my stupidity. I'm telling you because there is no perfect scenario that leads you to the start line. There never will be. You go anyway. That's what this ride means to me. If it means something to you too, consider sending me a few dollars.</p>
+    <div class="who-content-grid">
+      <div class="section-content">
+        <h2 class="section-headline">My Tour<br>Divide Story</h2>
+        <p class="section-body">This year will be my fourth attempt. A month before my first I lost my job. Sold my truck to fund the second. Maxed out credit cards on the third. This year will be no different. I'm not telling you this for your sympathy or to broadcast my financial insecurities. I'm telling you because there is no perfect scenario that leads you to the start line. There never will be. You go anyway. That's what this ride means to me. If it means something to you too, consider buying me a few Reese's.</p>
         <div class="support-buttons">
-<a class="btn btn-secondary" href="https://venmo.com/jjjjustin" target="_blank" rel="noopener">
-            <svg width="20" height="21" viewBox="0 0 502 534" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M473.33 0C492.77 32 501.54 64.96 501.54 106.59C501.54 239.38 387.78 411.88 295.45 533.01H84.57L0 29.07L184.65 11.6L229.36 370.18C271.14 302.35 322.7 195.76 322.7 123.09C322.7 83.31 315.86 56.22 305.17 33.91L473.33 0Z"/></svg>
+          <a class="btn btn-secondary" href="https://venmo.com/jjjjustin" target="_blank" rel="noopener">
+            <svg width="17" height="18" viewBox="0 0 502 534" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M473.33 0C492.77 32 501.54 64.96 501.54 106.59C501.54 239.38 387.78 411.88 295.45 533.01H84.57L0 29.07L184.65 11.6L229.36 370.18C271.14 302.35 322.7 195.76 322.7 123.09C322.7 83.31 315.86 56.22 305.17 33.91L473.33 0Z"/></svg>
             Venmo @jjjjustin
           </a>
         </div>
       </div>
-    </section>
 
-  </main>
-
-  <div class="bike-photo">
-    <div class="bike-hotspot-wrap" id="bikeWrap">
-      <img src="images/DSC09399-2.jpg" alt="Tour Divide bike" id="bikeImg" />
-
-      <!-- HOTSPOTS -->
-      <button class="hotspot" style="left:32%;top:34.5%" data-index="0" aria-label="Rear Rack"></button>
-      <button class="hotspot" style="left:53.9%;top:51.3%" data-index="1" aria-label="Frame"></button>
-      <button class="hotspot" style="left:48%;top:47.5%" data-index="2" aria-label="Frame Bag"></button>
-      <button class="hotspot" style="left:69%;top:21%" data-index="3" aria-label="Aerobar Pak"></button>
-      <button class="hotspot" style="left:58.5%;top:25%" data-index="4" aria-label="Top Tube Bag"></button>
-      <button class="hotspot" style="left:34.8%;top:16.9%" data-index="5" aria-label="Saddle"></button>
-      <button class="hotspot" style="left:72.5%;top:65.8%" data-index="6" aria-label="Brakes"></button>
-      <button class="hotspot" style="left:78.3%;top:66.7%" data-index="7" aria-label="Front Hub"></button>
-      <button class="hotspot" style="left:72.1%;top:52.9%" data-index="8" aria-label="Fork"></button>
-      <button class="hotspot" style="left:77.3%;top:10.6%" data-index="9" aria-label="Aero Bars"></button>
-      <button class="hotspot" style="left:21.4%;top:44.2%" data-index="10" aria-label="Panniers"></button>
-      <button class="hotspot" style="left:53.4%;top:71.5%" data-index="11" aria-label="Pedals"></button>
-      <button class="hotspot" style="left:22.74%;top:65.47%" data-index="12" aria-label="Wheels"></button>
-      <button class="hotspot" style="left:41.68%;top:70%" data-index="13" aria-label="Chainring"></button>
-      <button class="hotspot" style="left:44.31%;top:70%" data-index="14" aria-label="Bottom Bracket"></button>
-      <button class="hotspot" style="left:41.94%;top:37.33%" data-index="15" aria-label="Bottle Mounts"></button>
-      <button class="hotspot" style="left:91.7%;top:57.13%" data-index="16" aria-label="Tires"></button>
-      <button class="hotspot" style="left:25.42%;top:25%" data-index="18" aria-label="Rear Bag Straps"></button>
-      <button class="hotspot" style="left:22.84%;top:28.91%" data-index="17" aria-label="Dry Bag"></button>
-
-      <!-- TOOLTIP -->
-      <div class="hotspot-card" id="hotspotCard">
-        <p class="hotspot-card-name" id="hName"></p>
-        <p class="hotspot-card-brand" id="hBrand"></p>
-        <a class="hotspot-card-link" id="hLink" target="_blank" rel="noopener">Visit Site →</a>
+      <div class="who-timeline">
+        <div class="timeline-video-wrap" id="timelineVideoWrap">
+          <a id="timelineVideoLink" href="#" target="_blank" rel="noopener">
+            <img id="timelineVideoThumb" class="timeline-video-thumb" src="" alt="" />
+          </a>
+        </div>
+        <div class="timeline-dots-row">
+          <div class="timeline-item timeline-item--current" data-video="YOUTUBE_ID_2026">
+            <div class="timeline-dot"></div>
+            <span class="timeline-year">2026</span>
+          </div>
+          <div class="timeline-item" data-video="pzGovAmOSmo">
+            <div class="timeline-dot"></div>
+            <span class="timeline-year">2025</span>
+          </div>
+          <div class="timeline-item" data-video="84BY81nPovI">
+            <div class="timeline-dot"></div>
+            <span class="timeline-year">2024</span>
+          </div>
+          <div class="timeline-item" data-video="a7bV7EF_VPM">
+            <div class="timeline-dot"></div>
+            <span class="timeline-year">2023</span>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
+
+
+  <!-- ─── THE BUILD ─── -->
+  <section class="page-section section-build" id="build">
+
+    <div class="build-headline-wrap">
+      <h2 class="build-headline">
+        <button class="build-title active" data-panel="bike">The Bike</button>
+        <span class="build-slash"> / </span>
+        <button class="build-title" data-panel="kit">The Kit</button>
+      </h2>
+    </div>
+
+    <div class="build-slider">
+    <div class="build-slider-track">
+
+    <!-- Bike panel -->
+    <div class="build-panel" id="panel-bike">
+    <div class="bike-photo">
+      <div class="bike-hotspot-wrap" id="bikeWrap">
+        <img src="images/DSC09399-2.jpg" alt="Tour Divide bike" id="bikeImg" />
+        <img src="images/DSC09399-2color.jpg" alt="" class="bike-img-color" />
+
+        <button class="hotspot" style="left:32%;top:34.5%" data-index="0" aria-label="Rear Rack"></button>
+        <button class="hotspot" style="left:53.9%;top:51.3%" data-index="1" aria-label="Frame"></button>
+        <button class="hotspot" style="left:48%;top:47.5%" data-index="2" aria-label="Frame Bag"></button>
+        <button class="hotspot" style="left:69%;top:21%" data-index="3" aria-label="Aerobar Pak"></button>
+        <button class="hotspot" style="left:58.5%;top:25%" data-index="4" aria-label="Top Tube Bag"></button>
+        <button class="hotspot" style="left:34.8%;top:16.9%" data-index="5" aria-label="Saddle"></button>
+        <button class="hotspot" style="left:72.5%;top:65.8%" data-index="6" aria-label="Brakes"></button>
+        <button class="hotspot" style="left:78.3%;top:66.7%" data-index="7" aria-label="Front Hub"></button>
+        <button class="hotspot" style="left:72.1%;top:52.9%" data-index="8" aria-label="Fork"></button>
+        <button class="hotspot" style="left:77.3%;top:10.6%" data-index="9" aria-label="Aero Bars"></button>
+        <button class="hotspot" style="left:21.4%;top:44.2%" data-index="10" aria-label="Panniers"></button>
+        <button class="hotspot" style="left:53.4%;top:71.5%" data-index="11" aria-label="Pedals"></button>
+        <button class="hotspot" style="left:22.74%;top:65.47%" data-index="12" aria-label="Wheels"></button>
+        <button class="hotspot" style="left:41.68%;top:70%" data-index="13" aria-label="Chainring"></button>
+        <button class="hotspot" style="left:44.31%;top:70%" data-index="14" aria-label="Bottom Bracket"></button>
+        <button class="hotspot" style="left:41.94%;top:37.33%" data-index="15" aria-label="Bottle Mounts"></button>
+        <button class="hotspot" style="left:91.7%;top:57.13%" data-index="16" aria-label="Tires"></button>
+        <button class="hotspot" style="left:25.42%;top:25%" data-index="18" aria-label="Rear Bag Straps"></button>
+        <button class="hotspot" style="left:22.84%;top:28.91%" data-index="17" aria-label="Dry Bag"></button>
+
+        <div class="hotspot-card">
+          <p class="hotspot-card-name"></p>
+          <p class="hotspot-card-brand"></p>
+          <a class="hotspot-card-link" target="_blank" rel="noopener">Visit Site →</a>
+        </div>
+      </div>
+    </div>
+    </div><!-- /panel-bike -->
+
+    <!-- Kit panel -->
+    <div class="build-panel" id="panel-kit">
+    <div class="bike-photo">
+      <div class="bike-hotspot-wrap" id="kitWrap">
+        <img src="images/DSC04541 Large.jpeg" alt="Tour Divide kit (placeholder)" id="kitImg" />
+        <!-- hotspots added here once kit laydown image is ready -->
+        <div class="hotspot-card">
+          <p class="hotspot-card-name"></p>
+          <p class="hotspot-card-brand"></p>
+          <a class="hotspot-card-link" target="_blank" rel="noopener">Visit Site →</a>
+        </div>
+      </div>
+    </div>
+    </div><!-- /panel-kit -->
+
+    </div><!-- /build-slider-track -->
+    </div><!-- /build-slider -->
+
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true">
+    <button class="lightbox-close" aria-label="Close">&#x2715;</button>
+    <img class="lightbox-image" id="lightboxImg" src="" alt="" />
   </div>
 
   <footer class="footer">
@@ -139,42 +619,62 @@
       { name: 'Rear Bag Straps', brand: 'Austere Manufacturing', url: 'https://austeremanufacturing.com' }
     ];
 
-    const card = document.getElementById('hotspotCard');
-    const hName = document.getElementById('hName');
-    const hBrand = document.getElementById('hBrand');
-    const hLink = document.getElementById('hLink');
+    const kitItems = [
+      // Add kit items here once the laydown image is ready
+      // { name: 'Item Name', brand: 'Brand', url: 'https://...' }
+    ];
 
-    let hideTimer;
+    function setupHotspots(wrapEl, itemsData) {
+      if (!wrapEl) return;
+      const card = wrapEl.querySelector('.hotspot-card');
+      const nameEl = card.querySelector('.hotspot-card-name');
+      const brandEl = card.querySelector('.hotspot-card-brand');
+      const linkEl = card.querySelector('.hotspot-card-link');
+      let hideTimer;
 
-    function showCard(btn) {
-      clearTimeout(hideTimer);
-      const d = hotspots[+btn.dataset.index];
-      hName.textContent = d.name;
-      hBrand.textContent = d.brand;
-      hLink.href = d.url.startsWith('http') ? d.url : 'https://' + d.url;
-      const wrap = document.getElementById('bikeWrap');
-      const wRect = wrap.getBoundingClientRect();
-      const bRect = btn.getBoundingClientRect();
-      card.style.left = (bRect.left - wRect.left + bRect.width / 2) + 'px';
-      card.style.top = (bRect.top - wRect.top - 8) + 'px';
-      card.classList.add('visible');
+      wrapEl.querySelectorAll('.hotspot').forEach(btn => {
+        btn.addEventListener('mouseenter', () => {
+          clearTimeout(hideTimer);
+          const d = itemsData[+btn.dataset.index];
+          if (!d) return;
+          nameEl.textContent = d.name;
+          brandEl.textContent = d.brand;
+          linkEl.href = d.url.startsWith('http') ? d.url : 'https://' + d.url;
+          const wRect = wrapEl.getBoundingClientRect();
+          const bRect = btn.getBoundingClientRect();
+          card.style.left = (bRect.left - wRect.left + bRect.width / 2) + 'px';
+          card.style.top = (bRect.top - wRect.top - 8) + 'px';
+          card.classList.add('visible');
+        });
+        btn.addEventListener('mouseleave', () => {
+          hideTimer = setTimeout(() => card.classList.remove('visible'), 200);
+        });
+      });
+
+      card.addEventListener('mouseenter', () => clearTimeout(hideTimer));
+      card.addEventListener('mouseleave', () => {
+        hideTimer = setTimeout(() => card.classList.remove('visible'), 200);
+      });
     }
 
-    function scheduleHide() {
-      hideTimer = setTimeout(() => card.classList.remove('visible'), 200);
-    }
+    setupHotspots(document.getElementById('bikeWrap'), hotspots);
+    setupHotspots(document.getElementById('kitWrap'), kitItems);
 
-    document.querySelectorAll('.hotspot').forEach(btn => {
-      btn.addEventListener('mouseenter', () => showCard(btn));
-      btn.addEventListener('mouseleave', scheduleHide);
+    // Build section switcher
+    const buildTrack = document.querySelector('.build-slider-track');
+    const buildPanels = ['bike', 'kit'];
+    document.querySelectorAll('.build-title').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const index = buildPanels.indexOf(btn.dataset.panel);
+        if (index < 0) return;
+        document.querySelectorAll('.build-title').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        buildTrack.style.transform = `translateX(${-index * 100}%)`;
+      });
     });
 
-    card.addEventListener('mouseenter', () => clearTimeout(hideTimer));
-    card.addEventListener('mouseleave', scheduleHide);
 
-    // Route position dot — uses SVG path geometry for exact placement
-    // The routepath is a closed ribbon: traces from Antelope Wells (bottom) up to
-    // Banff (midpoint of path length) and back down to Antelope Wells.
+    // Route dot
     const LAT_BANFF = 51.17, LAT_ANTELOPE = 31.33;
     let routePathEl = null, routeTotalLength = 0;
 
@@ -198,7 +698,6 @@
       routePathEl = offPath;
       routeTotalLength = offPath.getTotalLength();
 
-      // Wait for route image to be loaded before placing dot
       const img = document.getElementById('routeSvg');
       if (img.complete) {
         placeRouteDot((LAT_BANFF + LAT_ANTELOPE) / 2, null);
@@ -211,12 +710,9 @@
       if (!routePathEl) return;
       const dot = document.getElementById('routeDot');
       const img = document.getElementById('routeSvg');
-
-      // progress: 0 = Banff (midpoint of path), 1 = Antelope Wells (start/end of path)
       const progress = Math.max(0, Math.min(1, (LAT_BANFF - lat) / (LAT_BANFF - LAT_ANTELOPE)));
       const pathLen = (1 - progress) * (routeTotalLength / 2);
       const pt = routePathEl.getPointAtLength(pathLen);
-
       const scaleX = img.clientWidth / 1080;
       const scaleY = img.clientHeight / 1920;
       dot.style.left = (img.offsetLeft + pt.x * scaleX) + 'px';
@@ -227,16 +723,51 @@
     initRoutePath();
 
     async function updateRoutePosition() {
+      const statusText = document.getElementById('trackerStatusText');
+      const statusDot = document.getElementById('trackerDot');
       try {
         const res = await fetch('/.netlify/functions/garmin');
-        const { lat, lng } = await res.json();
-        if (lat && lng) placeRouteDot(lat, lng);
-      } catch (e) { /* keep default position */ }
+        const data = await res.json();
+        const { lat, lng, distanceMiles, distanceRemaining, percentComplete } = data;
+
+        if (lat && lng) {
+          placeRouteDot(lat, lng);
+          statusText.textContent = 'Live';
+          statusDot.className = 'tracker-dot live';
+        } else {
+          statusText.textContent = 'Awaiting Signal';
+          statusDot.className = 'tracker-dot waiting';
+        }
+
+        document.getElementById('statCovered').textContent   = distanceMiles ? distanceMiles.toLocaleString() : '--';
+        document.getElementById('statRemaining').textContent = distanceRemaining ? distanceRemaining.toLocaleString() : '--';
+        document.getElementById('statPercent').textContent   = percentComplete != null ? percentComplete + '%' : '--%';
+      } catch (e) {
+        statusText.textContent = 'Not Tracking';
+        statusDot.className = 'tracker-dot offline';
+      }
     }
 
     updateRoutePosition();
-    setInterval(updateRoutePosition, 5 * 60 * 1000); // every 5 minutes
+    setInterval(updateRoutePosition, 5 * 60 * 1000);
 
+    // Race clock
+    const raceStart = new Date('2026-06-12T07:30:00-06:00');
+
+    function updateRaceClock() {
+      const el = document.getElementById('raceClock');
+      const diff = Date.now() - raceStart;
+      if (diff < 0) { el.textContent = '--'; return; }
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      el.textContent = `${d}d ${h}h ${m}m`;
+    }
+
+    updateRaceClock();
+    setInterval(updateRaceClock, 60000);
+
+    // Slider
     const slider = document.querySelector('.slider');
     let isDown = false, startX, scrollLeft;
     let paused = false, pos = 0, raf;
@@ -261,6 +792,198 @@
     slider.addEventListener('touchstart', e => { paused = true; touchStartX = e.touches[0].pageX; touchScrollLeft = slider.scrollLeft; });
     slider.addEventListener('touchmove', e => { slider.scrollLeft = touchScrollLeft - (e.touches[0].pageX - touchStartX); });
     slider.addEventListener('touchend', () => { pos = slider.scrollLeft; paused = false; });
+
+    // Updates timeline
+    const RACE_START_MS = new Date('2026-06-12T07:30:00-06:00').getTime();
+
+    function dayNumber(timestamp) {
+      return Math.max(1, Math.floor((timestamp - RACE_START_MS) / 86400000) + 1);
+    }
+
+    function formatTime(timestamp) {
+      return new Date(timestamp).toLocaleTimeString('en-US', {
+        hour: 'numeric', minute: '2-digit', hour12: true, timeZone: 'America/Denver'
+      });
+    }
+
+    async function loadUpdates() {
+      const container = document.getElementById('updatesTimeline');
+      try {
+        const res = await fetch('/.netlify/functions/get-updates');
+        const updates = await res.json();
+        if (!updates.length) return; // keep preview HTML
+
+        // Group by day
+        const days = {};
+        updates.forEach(u => {
+          const day = dayNumber(u.timestamp);
+          if (!days[day]) days[day] = [];
+          days[day].push(u);
+        });
+
+        container.innerHTML = '';
+        Object.keys(days).sort((a, b) => a - b).forEach(day => {
+          const dayEl = document.createElement('div');
+          dayEl.className = 'updates-day';
+          dayEl.innerHTML = `<div class="updates-day-label">Day ${String(day).padStart(2, '0')}</div>`;
+
+          days[day].forEach(u => {
+            const item = document.createElement('div');
+            item.className = 'update-item';
+            let html = '';
+
+            // Structured stats block
+            const hasStats = u.startTime || u.endTime || u.miles || u.elevation || u.startLocation || u.endLocation;
+            if (hasStats) {
+              html += `<div class="update-stats">`;
+              html += `<div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">${u.startLocation || '—'}</span></div>`;
+              html += `<div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">${u.endLocation || '—'}</span></div>`;
+              html += `<div class="update-stat"><span class="update-stat-label">Miles</span><span class="update-stat-value">${u.miles != null ? u.miles : '—'}</span></div>`;
+              html += `<div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">${u.startTime || '—'}</span></div>`;
+              html += `<div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">${u.endTime || '—'}</span></div>`;
+              html += `<div class="update-stat"><span class="update-stat-label">Elevation</span><span class="update-stat-value">${u.elevation != null ? u.elevation.toLocaleString() + ' ft' : '—'}</span></div>`;
+              html += `</div>`;
+            }
+
+            if (u.imageKeys && u.imageKeys.length) {
+              html += `<div class="update-images">` + u.imageKeys.map(k =>
+                `<img class="update-img" src="/.netlify/functions/get-media?key=${k}" alt="" loading="lazy" />`
+              ).join('') + `</div>`;
+            }
+            if (u.text) {
+              const lines = u.text.split('\n').filter(l => l.trim());
+              html += `<ul class="update-text">${lines.map(l => `<li>${l.trim()}</li>`).join('')}</ul>`;
+            }
+            if (u.audioKey) {
+              html += `<audio class="update-audio" controls src="/.netlify/functions/get-media?key=${u.audioKey}"></audio>`;
+            }
+            item.innerHTML = html;
+            dayEl.appendChild(item);
+          });
+
+          container.appendChild(dayEl);
+        });
+      } catch {}
+    }
+
+    loadUpdates();
+
+    // Timeline year click → thumbnail
+    const timelineWrap = document.getElementById('timelineVideoWrap');
+    const timelineThumb = document.getElementById('timelineVideoThumb');
+    const timelineLink = document.getElementById('timelineVideoLink');
+    const timelineItems = document.querySelectorAll('.timeline-item[data-video]');
+    let activeTimelineItem = null;
+
+    const timelineDotsRow = document.querySelector('.timeline-dots-row');
+    const thumbWidth = 400;
+
+    function positionThumbAbove(item) {
+      const rowRect = timelineDotsRow.getBoundingClientRect();
+      const itemRect = item.getBoundingClientRect();
+      const centerX = itemRect.left + itemRect.width / 2 - rowRect.left;
+      const left = Math.max(0, Math.min(centerX - thumbWidth / 2, rowRect.width - thumbWidth));
+      timelineWrap.style.left = left + 'px';
+    }
+
+    timelineItems.forEach(item => {
+      item.addEventListener('click', () => {
+        const id = item.dataset.video;
+        if (!id || id.startsWith('YOUTUBE_ID')) return;
+
+        if (activeTimelineItem === item) {
+          timelineWrap.classList.remove('active');
+          timelineItems.forEach(i => i.classList.remove('timeline-item--hovered'));
+          activeTimelineItem = null;
+          return;
+        }
+
+        timelineThumb.src = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+        timelineLink.href = `https://youtu.be/${id}`;
+        positionThumbAbove(item);
+        timelineWrap.classList.add('active');
+        timelineItems.forEach(i => i.classList.remove('timeline-item--hovered'));
+        item.classList.add('timeline-item--hovered');
+        activeTimelineItem = item;
+      });
+    });
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+
+    function openLightbox(src, alt) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || '';
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Static images: slider + bike/kit photos
+    document.querySelectorAll('.slider-track img, .bike-hotspot-wrap img').forEach(img => {
+      img.classList.add('lightbox-trigger');
+      img.addEventListener('click', () => openLightbox(img.src, img.alt));
+    });
+
+    // Update images: event delegation handles both static preview and dynamically loaded
+    document.getElementById('updatesTimeline').addEventListener('click', e => {
+      if (e.target.classList.contains('update-img')) {
+        openLightbox(e.target.src, e.target.alt);
+      }
+    });
+
+    // Close on backdrop click
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // ── DRAG-TO-SCROLL for image strips ──
+    function makeDraggable(el) {
+      if (el.children.length < 2) return;
+      let isDown = false, startX, scrollLeft;
+      el.addEventListener('mousedown', e => {
+        isDown = true;
+        el.classList.add('is-dragging');
+        startX = e.pageX - el.offsetLeft;
+        scrollLeft = el.scrollLeft;
+        e.preventDefault();
+      });
+      window.addEventListener('mouseup', () => {
+        if (!isDown) return;
+        isDown = false;
+        el.classList.remove('is-dragging');
+      });
+      el.addEventListener('mousemove', e => {
+        if (!isDown) return;
+        const x = e.pageX - el.offsetLeft;
+        el.scrollLeft = scrollLeft - (x - startX);
+      });
+    }
+
+    document.querySelectorAll('.update-images').forEach(makeDraggable);
+
+    // also wire up any dynamically rendered strips
+    const origRender = window._renderUpdates;
+    const updatesContainer = document.getElementById('updatesTimeline');
+    if (updatesContainer) {
+      new MutationObserver(() => {
+        updatesContainer.querySelectorAll('.update-images:not([data-drag])').forEach(el => {
+          el.dataset.drag = '1';
+          makeDraggable(el);
+        });
+      }).observe(updatesContainer, { childList: true, subtree: true });
+    }
   </script>
 
 </body>
