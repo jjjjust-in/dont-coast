@@ -1119,7 +1119,7 @@ body::before {
   .page-section { padding: 0 24px; }
   .section-rule { margin: 0 24px; }
   .section-headline { font-size: 42px; }
-  .section-what { min-height: auto; }
+  .section-what { min-height: 100vh; }
   .section-what .section-content { padding-top: 120px; padding-bottom: 60px; }
   .tracker-header { padding: 80px 0 24px; }
   .stats-bar { flex-direction: column; }
