@@ -389,16 +389,10 @@
         html += `</div>`;
       }
 
-      if (allImageKeys.length === 1) {
-        html += `<div class="update-images"><img class="update-img" src="/.netlify/functions/get-media?key=${allImageKeys[0]}" alt="" loading="lazy" /></div>`;
-      } else if (allImageKeys.length > 1) {
-        const imgHtml = allImageKeys.map((k, i) =>
-          `<img class="slideshow-img${i === 0 ? ' active' : ''}" src="/.netlify/functions/get-media?key=${k}" alt="" loading="lazy" />`
-        ).join('');
-        const dotHtml = allImageKeys.map((_, i) =>
-          `<button class="slideshow-dot${i === 0 ? ' active' : ''}"></button>`
-        ).join('');
-        html += `<div class="update-slideshow"><div class="slideshow-imgs">${imgHtml}</div><div class="slideshow-controls"><button class="slideshow-prev">←</button><div class="slideshow-dots">${dotHtml}</div><button class="slideshow-next">→</button></div></div>`;
+      if (allImageKeys.length) {
+        html += `<div class="update-images">` + allImageKeys.map(k =>
+          `<img class="update-img" src="/.netlify/functions/get-media?key=${k}" alt="" loading="lazy" />`
+        ).join('') + `</div>`;
       }
 
       if (allLines.length) {
@@ -491,7 +485,7 @@
 
     // Update images: event delegation handles both static preview and dynamically loaded
     document.getElementById('updatesTimeline').addEventListener('click', e => {
-      if (e.target.classList.contains('update-img') || e.target.classList.contains('slideshow-img')) {
+      if (e.target.classList.contains('update-img')) {
         openLightbox(e.target.src, e.target.alt);
       }
     });
