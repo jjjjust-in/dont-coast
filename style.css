@@ -1129,4 +1129,6 @@ body::before {
   .bike-hotspot-wrap img { width: 100vw; }
   .section-what .section-content { display: none; }
   .hero-credit { padding: 0 0 24px; text-align: left; }
+  .tracker-map-col { padding: 24px 0 16px; }
+  .section-when { padding-bottom: 48px; }
 }
