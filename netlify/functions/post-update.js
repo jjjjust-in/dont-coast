@@ -18,7 +18,7 @@ exports.handler = async (event) => {
   }
 
   const { text, images, audioData, audioType, startTime, endTime, miles, elevation, startLocation, endLocation } = body;
-  const store = getStore('journal');
+  const store = getStore({ name: 'journal', siteID: process.env.NETLIFY_SITE_ID, token: process.env.NETLIFY_AUTH_TOKEN });
   const id = Date.now();
   const update = {
     id, timestamp: id, text: text || '',

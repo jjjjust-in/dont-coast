@@ -1,7 +1,7 @@
 const { getStore } = require('@netlify/blobs');
 
 exports.handler = async () => {
-  const store = getStore('journal');
+  const store = getStore({ name: 'journal', siteID: process.env.NETLIFY_SITE_ID, token: process.env.NETLIFY_AUTH_TOKEN });
   let updates = [];
 
   try {

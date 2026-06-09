@@ -7,7 +7,7 @@ exports.handler = async (event) => {
     return { statusCode: 400, body: 'Invalid key' };
   }
 
-  const store = getStore('journal');
+  const store = getStore({ name: 'journal', siteID: process.env.NETLIFY_SITE_ID, token: process.env.NETLIFY_AUTH_TOKEN });
 
   try {
     const data = await store.get(key, { type: 'arrayBuffer' });
