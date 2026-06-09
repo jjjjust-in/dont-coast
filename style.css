@@ -1075,6 +1075,24 @@ body::before {
   opacity: 0.4;
 }
 
+.footer-venmo {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  opacity: 0.35;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+  transition: opacity 0.15s;
+}
+
+.footer-venmo:hover {
+  opacity: 0.7;
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 960px) {
   /* stack tracker layout */
