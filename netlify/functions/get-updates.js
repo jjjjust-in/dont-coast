@@ -1,20 +1,15 @@
-const { getStore } = require('@netlify/blobs');
-
 exports.handler = async () => {
-  const store = getStore({ name: 'journal', siteID: process.env.NETLIFY_SITE_ID, token: process.env.NETLIFY_AUTH_TOKEN });
-  let updates = [];
-
   try {
-    const raw = await store.get('updates');
-    if (raw) updates = JSON.parse(raw);
-  } catch {}
-
-  return {
-    statusCode: 200,
-    headers: {
-      'Content-Type': 'application/json',
-      'Cache-Control': 'no-cache'
-    },
-    body: JSON.stringify(updates)
-  };
+    const res = await fetch(
+      `https://raw.githubusercontent.com/jjjjust-in/dont-coast/main/journal.json?t=${Date.now()}`
+    );
+    const text = res.ok ? await res.text() : '[]';
+    return {
+      statusCode: 200,
+      headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-cache' },
+      body: text
+    };
+  } catch {
+    return { statusCode: 200, headers: { 'Content-Type': 'application/json' }, body: '[]' };
+  }
 };
