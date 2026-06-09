@@ -719,7 +719,7 @@ body::before {
 .slideshow-img {
   display: none;
   width: 100%;
-  max-height: 480px;
+  height: 480px;
   object-fit: cover;
   filter: grayscale(100%);
   cursor: zoom-in;
@@ -783,9 +783,9 @@ body::before {
 
 /* single image goes full width */
 .update-images:has(> .update-img:only-child) .update-img {
-  height: auto;
-  max-height: 480px;
+  height: 480px;
   width: 100%;
+  object-fit: cover;
   filter: grayscale(100%);
 }
 
