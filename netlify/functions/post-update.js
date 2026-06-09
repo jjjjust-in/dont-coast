@@ -24,7 +24,11 @@ async function ghPut(path, contentBuf, message, sha, token) {
       ...(sha ? { sha } : {})
     })
   });
-  return res.ok;
+  if (!res.ok) {
+    const errText = await res.text();
+    throw new Error(`GitHub PUT ${path} ${res.status}: ${errText}`);
+  }
+  return true;
 }
 
 exports.handler = async (event) => {
@@ -59,8 +63,12 @@ exports.handler = async (event) => {
       if (!data) continue;
       const ext = (type || 'image/jpeg').split('/')[1] || 'jpg';
       const filename = `journal-images/${id}-${i}.${ext}`;
-      const ok = await ghPut(filename, Buffer.from(data, 'base64'), `Add journal image ${id}-${i}`, undefined, ghToken);
-      if (ok) update.imageKeys.push(filename);
+      try {
+        await ghPut(filename, Buffer.from(data, 'base64'), `Add journal image ${id}-${i}`, undefined, ghToken);
+        update.imageKeys.push(filename);
+      } catch (err) {
+        return { statusCode: 500, body: err.message };
+      }
     }
   }
 
@@ -73,15 +81,17 @@ exports.handler = async (event) => {
 
   updates.push(update);
 
-  const ok = await ghPut(
-    'journal.json',
-    Buffer.from(JSON.stringify(updates, null, 2)),
-    `Journal entry ${id}`,
-    existing ? existing.sha : undefined,
-    ghToken
-  );
-
-  if (!ok) return { statusCode: 500, body: 'Failed to save to GitHub' };
+  try {
+    await ghPut(
+      'journal.json',
+      Buffer.from(JSON.stringify(updates, null, 2)),
+      `Journal entry ${id}`,
+      existing ? existing.sha : undefined,
+      ghToken
+    );
+  } catch (err) {
+    return { statusCode: 500, body: err.message };
+  }
 
   return {
     statusCode: 200,
