@@ -7,16 +7,17 @@ exports.handler = async (event) => {
   }
 
   try {
+    // Use raw media type — works for files > 1MB
     const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${key}`, {
       headers: {
         Authorization: `token ${process.env.GITHUB_TOKEN}`,
-        Accept: 'application/vnd.github.v3+json'
+        Accept: 'application/vnd.github.raw+json'
       }
     });
 
-    if (!res.ok) return { statusCode: 404, body: 'Not found' };
+    if (!res.ok) return { statusCode: res.status, body: 'Not found' };
 
-    const json = await res.json();
+    const buf = Buffer.from(await res.arrayBuffer());
     const ext = key.split('.').pop().toLowerCase();
     const mimeMap = { jpg: 'image/jpeg', jpeg: 'image/jpeg', png: 'image/png', gif: 'image/gif', webp: 'image/webp', heic: 'image/heic' };
     const contentType = mimeMap[ext] || 'image/jpeg';
@@ -24,10 +25,10 @@ exports.handler = async (event) => {
     return {
       statusCode: 200,
       headers: { 'Content-Type': contentType, 'Cache-Control': 'public, max-age=31536000' },
-      body: json.content.replace(/\n/g, ''),
+      body: buf.toString('base64'),
       isBase64Encoded: true
     };
-  } catch {
-    return { statusCode: 500, body: 'Error fetching image' };
+  } catch (err) {
+    return { statusCode: 500, body: err.message };
   }
 };
