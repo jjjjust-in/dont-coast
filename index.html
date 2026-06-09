@@ -437,9 +437,7 @@
           <img src="routepath.svg" alt="Tour Divide Route" class="route-svg" id="routeSvg" />
           <div class="route-dot" id="routeDot" style="display:none"></div>
         </div>
-        <div class="trackleaders-link">
-          <a href="https://trackleaders.com/tourdivide26f.php" target="_blank" rel="noopener" class="btn btn-primary">Trackleaders Race Tracker →</a>
-        </div>
+
       </div>
 
     </div><!-- /tracker-lower -->
@@ -499,7 +497,7 @@
     </div><!-- /build-slider -->
 
     <div class="parts-list-wrap">
-      <div class="tracker-col-header" style="width:66vw;margin:0 auto 16px;">Parts List</div>
+      <div class="parts-list-label">Parts List</div>
       <div class="parts-list" id="partsList"></div>
     </div>
 
@@ -580,7 +578,7 @@
     hotspots.forEach(h => {
       const item = document.createElement('div');
       item.className = 'parts-list-item';
-      item.innerHTML = `<a href="${h.url}" target="_blank" rel="noopener">${h.name}</a><span>${h.brand}</span>`;
+      item.innerHTML = `<a href="${h.url}" target="_blank" rel="noopener">${h.brand}</a><span>${h.name}</span>`;
       partsList.appendChild(item);
     });
 
