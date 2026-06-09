@@ -66,7 +66,7 @@
     <div class="tracker-lower">
 
       <div class="tracker-updates-col">
-        <div class="tracker-col-header">Route Journal</div>
+        <div class="tracker-col-header">Ride Journal</div>
         <div class="tracker-scroll-frame">
         <div class="tracker-updates-scroll" id="updatesTimeline">
           <div class="updates-day">
@@ -445,74 +445,6 @@
     </div><!-- /tracker-box -->
   </section>
 
-  <!-- ─── WHO ─── -->
-  <section class="page-section section-who" id="who">
-    <section class="slider">
-      <div class="slider-track">
-        <img src="images/DSC04438 Large.jpeg" alt="">
-        <img src="images/DSC04450 Large.jpeg" alt="">
-        <img src="images/DSC04475 Large.jpeg" alt="">
-        <img src="images/DSC04481 Large.jpeg" alt="">
-        <img src="images/DSC04493 Large.jpeg" alt="">
-        <img src="images/DSC04541 Large.jpeg" alt="">
-        <img src="images/DSC04565 Large.jpeg" alt="">
-        <img src="images/DSC04578 Large.jpeg" alt="">
-        <img src="images/DSC04588 Large.jpeg" alt="">
-        <img src="images/DSC04591 Large.jpeg" alt="">
-        <img src="images/DSC08224 Large.jpeg" alt="">
-        <img src="images/DSC08251 Large.jpeg" alt="">
-        <img src="images/DSC08262 Large.jpeg" alt="">
-        <img src="images/DSC08265 Large.jpeg" alt="">
-        <img src="images/DSC08291 Large.jpeg" alt="">
-        <img src="images/DSC08294 Large.jpeg" alt="">
-        <img src="images/DSC08296 Large.jpeg" alt="">
-        <img src="images/DSC08328 Large.jpeg" alt="">
-        <img src="images/DSC08329 Large.jpeg" alt="">
-        <img src="images/DSC08346 Large.jpeg" alt="">
-        <img src="images/DSC08363 Large.jpeg" alt="">
-        <img src="images/DSC08370 Large.jpeg" alt="">
-      </div>
-    </section>
-    <div class="who-content-grid">
-      <div class="section-content">
-        <h2 class="section-headline">My Tour<br>Divide Story</h2>
-        <p class="section-body">This year will be my fourth attempt. A month before my first I lost my job. Sold my truck to fund the second. Maxed out credit cards on the third. This year will be no different. I'm not telling you this for your sympathy or to broadcast my financial insecurities. I'm telling you because there is no perfect scenario that leads you to the start line. There never will be. You go anyway. That's what this ride means to me. If it means something to you too, consider buying me a few Reese's.</p>
-        <div class="support-buttons">
-          <a class="btn btn-secondary" href="https://venmo.com/jjjjustin" target="_blank" rel="noopener">
-            <svg width="17" height="18" viewBox="0 0 502 534" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M473.33 0C492.77 32 501.54 64.96 501.54 106.59C501.54 239.38 387.78 411.88 295.45 533.01H84.57L0 29.07L184.65 11.6L229.36 370.18C271.14 302.35 322.7 195.76 322.7 123.09C322.7 83.31 315.86 56.22 305.17 33.91L473.33 0Z"/></svg>
-            Venmo @jjjjustin
-          </a>
-        </div>
-      </div>
-
-      <div class="who-timeline">
-        <div class="timeline-video-wrap" id="timelineVideoWrap">
-          <a id="timelineVideoLink" href="#" target="_blank" rel="noopener">
-            <img id="timelineVideoThumb" class="timeline-video-thumb" src="" alt="" />
-          </a>
-        </div>
-        <div class="timeline-dots-row">
-          <div class="timeline-item timeline-item--current" data-video="YOUTUBE_ID_2026">
-            <div class="timeline-dot"></div>
-            <span class="timeline-year">2026</span>
-          </div>
-          <div class="timeline-item" data-video="pzGovAmOSmo">
-            <div class="timeline-dot"></div>
-            <span class="timeline-year">2025</span>
-          </div>
-          <div class="timeline-item" data-video="84BY81nPovI">
-            <div class="timeline-dot"></div>
-            <span class="timeline-year">2024</span>
-          </div>
-          <div class="timeline-item" data-video="a7bV7EF_VPM">
-            <div class="timeline-dot"></div>
-            <span class="timeline-year">2023</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
 
   <!-- ─── THE BUILD ─── -->
   <section class="page-section section-build" id="build">
@@ -520,8 +452,6 @@
     <div class="build-headline-wrap">
       <h2 class="build-headline">
         <button class="build-title active" data-panel="bike">The Bike</button>
-        <span class="build-slash"> / </span>
-        <button class="build-title" data-panel="kit">The Kit</button>
       </h2>
     </div>
 
@@ -564,21 +494,6 @@
     </div>
     </div><!-- /panel-bike -->
 
-    <!-- Kit panel -->
-    <div class="build-panel" id="panel-kit">
-    <div class="bike-photo">
-      <div class="bike-hotspot-wrap" id="kitWrap">
-        <img src="images/DSC04541 Large.jpeg" alt="Tour Divide kit (placeholder)" id="kitImg" />
-        <!-- hotspots added here once kit laydown image is ready -->
-        <div class="hotspot-card">
-          <p class="hotspot-card-name"></p>
-          <p class="hotspot-card-brand"></p>
-          <a class="hotspot-card-link" target="_blank" rel="noopener">Visit Site →</a>
-        </div>
-      </div>
-    </div>
-    </div><!-- /panel-kit -->
-
     </div><!-- /build-slider-track -->
     </div><!-- /build-slider -->
 
@@ -619,11 +534,6 @@
       { name: 'Rear Bag Straps', brand: 'Austere Manufacturing', url: 'https://austeremanufacturing.com' }
     ];
 
-    const kitItems = [
-      // Add kit items here once the laydown image is ready
-      // { name: 'Item Name', brand: 'Brand', url: 'https://...' }
-    ];
-
     function setupHotspots(wrapEl, itemsData) {
       if (!wrapEl) return;
       const card = wrapEl.querySelector('.hotspot-card');
@@ -658,20 +568,6 @@
     }
 
     setupHotspots(document.getElementById('bikeWrap'), hotspots);
-    setupHotspots(document.getElementById('kitWrap'), kitItems);
-
-    // Build section switcher
-    const buildTrack = document.querySelector('.build-slider-track');
-    const buildPanels = ['bike', 'kit'];
-    document.querySelectorAll('.build-title').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const index = buildPanels.indexOf(btn.dataset.panel);
-        if (index < 0) return;
-        document.querySelectorAll('.build-title').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        buildTrack.style.transform = `translateX(${-index * 100}%)`;
-      });
-    });
 
 
     // Route dot

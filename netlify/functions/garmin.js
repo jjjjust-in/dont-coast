@@ -13,7 +13,7 @@ function haversine(lat1, lon1, lat2, lon2) {
 
 exports.handler = async () => {
   try {
-    const res = await fetch(`https://share.garmin.com/Feed/Share/jjjjustin?d1=${RACE_START}`);
+    const res = await fetch(`https://share.garmin.com/Feed/Share/justinmckinley?d1=${RACE_START}`);
     const text = await res.text();
 
     // Parse all coordinate points from KML
