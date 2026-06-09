@@ -800,7 +800,7 @@ body::before {
   max-width: 960px;
   margin: 0 auto;
   padding: 48px 64px 64px;
-  columns: 2;
+  columns: 3;
   column-gap: 48px;
 }
 
