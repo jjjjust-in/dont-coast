@@ -391,7 +391,7 @@
 
       if (allImageKeys.length) {
         html += `<div class="update-images">` + allImageKeys.map(k =>
-          `<img class="update-img" src="/.netlify/functions/get-media?key=${k}" alt="" loading="lazy" />`
+          `<img class="update-img" src="/${k}" alt="" loading="lazy" />`
         ).join('') + `</div>`;
       }
 
@@ -400,7 +400,7 @@
       }
 
       allAudio.forEach(k => {
-        html += `<audio class="update-audio" controls src="/.netlify/functions/get-media?key=${k}"></audio>`;
+        html += `<audio class="update-audio" controls src="/${k}"></audio>`;
       });
 
       item.innerHTML = html;
