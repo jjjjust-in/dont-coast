@@ -217,6 +217,32 @@
       cursor: default;
     }
 
+    #progress-wrap {
+      display: none;
+      margin-top: 16px;
+    }
+
+    #progress-label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    #progress-bar-track {
+      height: 3px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    #progress-bar-fill {
+      height: 100%;
+      background: var(--fg);
+      border-radius: 2px;
+      width: 0%;
+      transition: width 0.2s ease;
+    }
+
     #status {
       margin-top: 14px;
       font-size: 13px;
@@ -285,6 +311,10 @@
   </div>
 
   <button class="btn-submit" id="submitBtn">Send Update</button>
+  <div id="progress-wrap">
+    <div id="progress-label">Preparing…</div>
+    <div id="progress-bar-track"><div id="progress-bar-fill"></div></div>
+  </div>
   <div id="status"></div>
 
   <script>
@@ -327,6 +357,21 @@
       e.target.value = '';
     });
 
+    const progressWrap = document.getElementById('progress-wrap');
+    const progressLabel = document.getElementById('progress-label');
+    const progressFill = document.getElementById('progress-bar-fill');
+
+    function setProgress(pct, label) {
+      progressWrap.style.display = 'block';
+      progressLabel.textContent = label;
+      progressFill.style.width = pct + '%';
+    }
+
+    function hideProgress() {
+      progressWrap.style.display = 'none';
+      progressFill.style.width = '0%';
+    }
+
     // Submit
     document.getElementById('submitBtn').addEventListener('click', async () => {
       const btn = document.getElementById('submitBtn');
@@ -336,19 +381,29 @@
       if (!token) { showStatus('Auth token required.', 'error'); return; }
 
       btn.disabled = true;
-      showStatus('Sending…', '');
+      showStatus('', '');
 
       // Collect bullets
       const lines = [...document.querySelectorAll('#bulletsList input')]
         .map(i => i.value.trim()).filter(Boolean);
 
-      // Encode images
-      const images = await Promise.all(selectedFiles.map(file => new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve({ data: reader.result.split(',')[1], type: file.type });
-        reader.onerror = reject;
-        reader.readAsDataURL(file);
-      })));
+      // Encode images with progress
+      const total = selectedFiles.length;
+      const images = [];
+      for (let i = 0; i < total; i++) {
+        setProgress(Math.round((i / (total + 1)) * 80), `Encoding photo ${i + 1} of ${total}…`);
+        const file = selectedFiles[i];
+        const encoded = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve({ data: reader.result.split(',')[1], type: file.type });
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+        images.push(encoded);
+      }
+
+      if (total > 0) setProgress(80, 'Uploading…');
+      else setProgress(50, 'Sending…');
 
       const body = {
         text: lines.join('\n'),
@@ -368,6 +423,9 @@
           body: JSON.stringify(body),
         });
 
+        setProgress(100, 'Done.');
+        setTimeout(hideProgress, 800);
+
         if (res.ok) {
           showStatus('Posted.', 'success');
           clearForm();
@@ -376,6 +434,7 @@
           showStatus(`Error ${res.status}: ${txt}`, 'error');
         }
       } catch (err) {
+        hideProgress();
         showStatus('Network error. Try again.', 'error');
       }
 
