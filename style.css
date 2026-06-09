@@ -1102,7 +1102,6 @@ body::before {
   .stat:last-child { border-bottom: none; }
   .section-who .slider { width: 100vw; }
   .bike-hotspot-wrap img { width: 100vw; }
-  .section-what .section-body,
-  .section-what .scroll-hint { display: none; }
+  .section-what .section-content { display: none; }
   .hero-credit { padding: 0 0 24px; text-align: left; }
 }
