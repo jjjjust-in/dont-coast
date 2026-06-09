@@ -680,13 +680,37 @@
     // Updates timeline
     const RACE_START_MS = new Date('2026-06-12T07:30:00-06:00').getTime();
 
-    function dayNumber(timestamp) {
-      return Math.max(1, Math.floor((timestamp - RACE_START_MS) / 86400000) + 1);
-    }
+    function renderEntries(entries, container) {
+      entries.forEach(u => {
+        const item = document.createElement('div');
+        item.className = 'update-item';
+        let html = '';
 
-    function formatTime(timestamp) {
-      return new Date(timestamp).toLocaleTimeString('en-US', {
-        hour: 'numeric', minute: '2-digit', hour12: true, timeZone: 'America/Denver'
+        const hasStats = u.startTime || u.endTime || u.miles || u.elevation || u.startLocation || u.endLocation;
+        if (hasStats) {
+          html += `<div class="update-stats">`;
+          html += `<div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">${u.startLocation || '—'}</span></div>`;
+          html += `<div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">${u.endLocation || '—'}</span></div>`;
+          html += `<div class="update-stat"><span class="update-stat-label">Miles</span><span class="update-stat-value">${u.miles != null ? u.miles : '—'}</span></div>`;
+          html += `<div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">${u.startTime || '—'}</span></div>`;
+          html += `<div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">${u.endTime || '—'}</span></div>`;
+          html += `<div class="update-stat"><span class="update-stat-label">Elevation</span><span class="update-stat-value">${u.elevation != null ? u.elevation.toLocaleString() + ' ft' : '—'}</span></div>`;
+          html += `</div>`;
+        }
+        if (u.imageKeys && u.imageKeys.length) {
+          html += `<div class="update-images">` + u.imageKeys.map(k =>
+            `<img class="update-img" src="/.netlify/functions/get-media?key=${k}" alt="" loading="lazy" />`
+          ).join('') + `</div>`;
+        }
+        if (u.text) {
+          const lines = u.text.split('\n').filter(l => l.trim());
+          html += `<ul class="update-text">${lines.map(l => `<li>${l.trim()}</li>`).join('')}</ul>`;
+        }
+        if (u.audioKey) {
+          html += `<audio class="update-audio" controls src="/.netlify/functions/get-media?key=${u.audioKey}"></audio>`;
+        }
+        item.innerHTML = html;
+        container.appendChild(item);
       });
     }
 
@@ -695,58 +719,48 @@
       try {
         const res = await fetch('/.netlify/functions/get-updates');
         const updates = await res.json();
-        if (!updates.length) return; // keep preview HTML
+        if (!updates.length) return;
 
-        // Group by day
-        const days = {};
+        // Split pre-race and race posts
+        const preRaceGroups = {};
+        const raceDayGroups = {};
+
         updates.forEach(u => {
-          const day = dayNumber(u.timestamp);
-          if (!days[day]) days[day] = [];
-          days[day].push(u);
+          if (u.timestamp < RACE_START_MS) {
+            const key = new Date(u.timestamp).toDateString();
+            if (!preRaceGroups[key]) preRaceGroups[key] = [];
+            preRaceGroups[key].push(u);
+          } else {
+            const day = Math.max(1, Math.floor((u.timestamp - RACE_START_MS) / 86400000) + 1);
+            if (!raceDayGroups[day]) raceDayGroups[day] = [];
+            raceDayGroups[day].push(u);
+          }
         });
 
         container.innerHTML = '';
-        Object.keys(days).sort((a, b) => a - b).forEach(day => {
-          const dayEl = document.createElement('div');
-          dayEl.className = 'updates-day';
-          dayEl.innerHTML = `<div class="updates-day-label">Day ${String(day).padStart(2, '0')}</div>`;
 
-          days[day].forEach(u => {
-            const item = document.createElement('div');
-            item.className = 'update-item';
-            let html = '';
-
-            // Structured stats block
-            const hasStats = u.startTime || u.endTime || u.miles || u.elevation || u.startLocation || u.endLocation;
-            if (hasStats) {
-              html += `<div class="update-stats">`;
-              html += `<div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">${u.startLocation || '—'}</span></div>`;
-              html += `<div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">${u.endLocation || '—'}</span></div>`;
-              html += `<div class="update-stat"><span class="update-stat-label">Miles</span><span class="update-stat-value">${u.miles != null ? u.miles : '—'}</span></div>`;
-              html += `<div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">${u.startTime || '—'}</span></div>`;
-              html += `<div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">${u.endTime || '—'}</span></div>`;
-              html += `<div class="update-stat"><span class="update-stat-label">Elevation</span><span class="update-stat-value">${u.elevation != null ? u.elevation.toLocaleString() + ' ft' : '—'}</span></div>`;
-              html += `</div>`;
-            }
-
-            if (u.imageKeys && u.imageKeys.length) {
-              html += `<div class="update-images">` + u.imageKeys.map(k =>
-                `<img class="update-img" src="/.netlify/functions/get-media?key=${k}" alt="" loading="lazy" />`
-              ).join('') + `</div>`;
-            }
-            if (u.text) {
-              const lines = u.text.split('\n').filter(l => l.trim());
-              html += `<ul class="update-text">${lines.map(l => `<li>${l.trim()}</li>`).join('')}</ul>`;
-            }
-            if (u.audioKey) {
-              html += `<audio class="update-audio" controls src="/.netlify/functions/get-media?key=${u.audioKey}"></audio>`;
-            }
-            item.innerHTML = html;
-            dayEl.appendChild(item);
+        // Pre-race posts in chronological order
+        Object.entries(preRaceGroups)
+          .sort(([a], [b]) => new Date(a) - new Date(b))
+          .forEach(([, entries], idx) => {
+            const dayEl = document.createElement('div');
+            dayEl.className = 'updates-day';
+            dayEl.innerHTML = `<div class="updates-day-label">Pre-Race ${String(idx + 1).padStart(2, '0')}</div>`;
+            renderEntries(entries, dayEl);
+            container.appendChild(dayEl);
           });
 
-          container.appendChild(dayEl);
-        });
+        // Race day posts
+        Object.entries(raceDayGroups)
+          .sort(([a], [b]) => a - b)
+          .forEach(([day, entries]) => {
+            const dayEl = document.createElement('div');
+            dayEl.className = 'updates-day';
+            dayEl.innerHTML = `<div class="updates-day-label">Day ${String(day).padStart(2, '0')}</div>`;
+            renderEntries(entries, dayEl);
+            container.appendChild(dayEl);
+          });
+
       } catch {}
     }
 
