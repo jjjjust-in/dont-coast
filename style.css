@@ -1098,6 +1098,17 @@ body::before {
     margin-bottom: 48px;
   }
 
+  .update-text {
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .update-stat-value {
+    overflow-wrap: break-word;
+    word-break: break-word;
+    min-width: 0;
+  }
+
   .tracker-map-col {
     padding: 40px 0;
   }
