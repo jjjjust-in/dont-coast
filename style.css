@@ -1,6 +1,8 @@
 /* ── RESET & BASE ── */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+html, body { overflow-x: hidden; }
+
 :root {
   --bg: #ece9e3;
   --fg: #1c1c1c;
@@ -1126,7 +1128,7 @@ body::before {
   .stat { border-right: none; border-bottom: 1px solid var(--border); }
   .stat:last-child { border-bottom: none; }
   .section-who .slider { width: 100vw; }
-  .bike-hotspot-wrap img { width: 100vw; }
+  .bike-hotspot-wrap img { width: 100%; }
   .section-what .section-content { display: none; }
   .hero-credit { padding: 0 0 24px; text-align: left; }
   .tracker-map-col { padding: 24px 0 16px; }
