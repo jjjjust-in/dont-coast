@@ -220,7 +220,6 @@ body::before {
   max-width: none;
   margin-bottom: 0;
   border: none;
-  border-bottom: 1px solid var(--border);
 }
 
 /* 50/50 split below stats */
@@ -228,6 +227,7 @@ body::before {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: stretch;
+  border-top: 1px solid var(--border);
 }
 
 .tracker-col-header {
