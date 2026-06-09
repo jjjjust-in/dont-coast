@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "id": 1780969086328,
+    "timestamp": 1780969086328,
+    "text": "Bike is boxed\nFlight in 12 hours",
+    "startTime": null,
+    "endTime": null,
+    "miles": null,
+    "elevation": null,
+    "startLocation": null,
+    "endLocation": null,
+    "imageKeys": [
+      "journal-images/1780969086328-0.jpeg"
+    ]
+  }
+]
