@@ -9,5 +9,19 @@
     "elevation": 9985,
     "startLocation": "Bbbb",
     "endLocation": "Nbbsb"
+  },
+  {
+    "id": 1780967834392,
+    "timestamp": 1780967834392,
+    "text": "Yup\nBig",
+    "startTime": "9p",
+    "endTime": "5a",
+    "miles": 5558,
+    "elevation": 3333,
+    "startLocation": "Bzbsbsbs",
+    "endLocation": "Pppo",
+    "imageKeys": [
+      "journal-images/1780967834392-0.jpeg"
+    ]
   }
 ]
