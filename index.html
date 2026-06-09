@@ -498,6 +498,8 @@
     </div><!-- /build-slider-track -->
     </div><!-- /build-slider -->
 
+    <div class="parts-list" id="partsList"></div>
+
   </section>
 
   <!-- LIGHTBOX -->
@@ -569,6 +571,15 @@
     }
 
     setupHotspots(document.getElementById('bikeWrap'), hotspots);
+
+    // Parts list
+    const partsList = document.getElementById('partsList');
+    hotspots.forEach(h => {
+      const item = document.createElement('div');
+      item.className = 'parts-list-item';
+      item.innerHTML = `<a href="${h.url}" target="_blank" rel="noopener">${h.name}</a><span>${h.brand}</span>`;
+      partsList.appendChild(item);
+    });
 
 
     // Route dot
