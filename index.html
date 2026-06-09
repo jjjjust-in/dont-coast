@@ -253,10 +253,11 @@
       routeTotalLength = offPath.getTotalLength();
 
       const img = document.getElementById('routeSvg');
+      const defaultLat = Date.now() < new Date('2026-06-12T07:30:00-06:00').getTime() ? LAT_BANFF : (LAT_BANFF + LAT_ANTELOPE) / 2;
       if (img.complete) {
-        placeRouteDot((LAT_BANFF + LAT_ANTELOPE) / 2, null);
+        placeRouteDot(defaultLat, null);
       } else {
-        img.addEventListener('load', () => placeRouteDot((LAT_BANFF + LAT_ANTELOPE) / 2, null));
+        img.addEventListener('load', () => placeRouteDot(defaultLat, null));
       }
     }
 
@@ -325,38 +326,92 @@
     // Updates timeline
     const RACE_START_MS = new Date('2026-06-12T07:30:00-06:00').getTime();
 
-    function renderEntries(entries, container) {
-      entries.forEach(u => {
-        const item = document.createElement('div');
-        item.className = 'update-item';
-        let html = '';
+    function linkify(text) {
+      const escaped = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      return escaped.replace(/(https?:\/\/[^\s<>"]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
+    }
 
-        const hasStats = u.startTime || u.endTime || u.miles || u.elevation || u.startLocation || u.endLocation;
-        if (hasStats) {
-          html += `<div class="update-stats">`;
-          html += `<div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">${u.startLocation || '—'}</span></div>`;
-          html += `<div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">${u.endLocation || '—'}</span></div>`;
-          html += `<div class="update-stat"><span class="update-stat-label">Miles</span><span class="update-stat-value">${u.miles != null ? u.miles : '—'}</span></div>`;
-          html += `<div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">${u.startTime || '—'}</span></div>`;
-          html += `<div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">${u.endTime || '—'}</span></div>`;
-          html += `<div class="update-stat"><span class="update-stat-label">Elevation</span><span class="update-stat-value">${u.elevation != null ? u.elevation.toLocaleString() + ' ft' : '—'}</span></div>`;
-          html += `</div>`;
-        }
-        if (u.imageKeys && u.imageKeys.length) {
-          html += `<div class="update-images">` + u.imageKeys.map(k =>
-            `<img class="update-img" src="/.netlify/functions/get-media?key=${k}" alt="" loading="lazy" />`
-          ).join('') + `</div>`;
-        }
-        if (u.text) {
-          const lines = u.text.split('\n').filter(l => l.trim());
-          html += `<ul class="update-text">${lines.map(l => `<li>${l.trim()}</li>`).join('')}</ul>`;
-        }
-        if (u.audioKey) {
-          html += `<audio class="update-audio" controls src="/.netlify/functions/get-media?key=${u.audioKey}"></audio>`;
-        }
-        item.innerHTML = html;
-        container.appendChild(item);
+    function initSlideshow(el) {
+      const imgs = el.querySelectorAll('.slideshow-img');
+      const dots = el.querySelectorAll('.slideshow-dot');
+      if (imgs.length < 2) return;
+      let current = 0;
+
+      function goTo(n) {
+        imgs[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = (n + imgs.length) % imgs.length;
+        imgs[current].classList.add('active');
+        dots[current].classList.add('active');
+      }
+
+      el.querySelector('.slideshow-prev').addEventListener('click', () => goTo(current - 1));
+      el.querySelector('.slideshow-next').addEventListener('click', () => goTo(current + 1));
+      dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+
+      // Swipe support
+      let touchX = null;
+      el.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+      el.addEventListener('touchend', e => {
+        if (touchX === null) return;
+        const dx = e.changedTouches[0].clientX - touchX;
+        if (Math.abs(dx) > 40) goTo(dx < 0 ? current + 1 : current - 1);
+        touchX = null;
       });
+    }
+
+    function renderDayEntries(entries, container) {
+      // Merge images, text, audio across all entries for this day
+      const allImageKeys = [];
+      const allLines = [];
+      const allAudio = [];
+      let stats = null;
+
+      entries.forEach(u => {
+        if (u.imageKeys) allImageKeys.push(...u.imageKeys);
+        if (u.text) u.text.split('\n').filter(l => l.trim()).forEach(l => allLines.push(l.trim()));
+        if (u.audioKey) allAudio.push(u.audioKey);
+        if (!stats && (u.startTime || u.endTime || u.miles || u.elevation || u.startLocation || u.endLocation)) stats = u;
+      });
+
+      const item = document.createElement('div');
+      item.className = 'update-item';
+      let html = '';
+
+      if (stats) {
+        html += `<div class="update-stats">`;
+        html += `<div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">${stats.startLocation || '—'}</span></div>`;
+        html += `<div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">${stats.endLocation || '—'}</span></div>`;
+        html += `<div class="update-stat"><span class="update-stat-label">Miles</span><span class="update-stat-value">${stats.miles != null ? stats.miles : '—'}</span></div>`;
+        html += `<div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">${stats.startTime || '—'}</span></div>`;
+        html += `<div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">${stats.endTime || '—'}</span></div>`;
+        html += `<div class="update-stat"><span class="update-stat-label">Elevation</span><span class="update-stat-value">${stats.elevation != null ? stats.elevation.toLocaleString() + ' ft' : '—'}</span></div>`;
+        html += `</div>`;
+      }
+
+      if (allImageKeys.length === 1) {
+        html += `<div class="update-images"><img class="update-img" src="/.netlify/functions/get-media?key=${allImageKeys[0]}" alt="" loading="lazy" /></div>`;
+      } else if (allImageKeys.length > 1) {
+        const imgHtml = allImageKeys.map((k, i) =>
+          `<img class="slideshow-img${i === 0 ? ' active' : ''}" src="/.netlify/functions/get-media?key=${k}" alt="" loading="lazy" />`
+        ).join('');
+        const dotHtml = allImageKeys.map((_, i) =>
+          `<button class="slideshow-dot${i === 0 ? ' active' : ''}"></button>`
+        ).join('');
+        html += `<div class="update-slideshow"><div class="slideshow-imgs">${imgHtml}</div><div class="slideshow-controls"><button class="slideshow-prev">←</button><div class="slideshow-dots">${dotHtml}</div><button class="slideshow-next">→</button></div></div>`;
+      }
+
+      if (allLines.length) {
+        html += `<ul class="update-text">${allLines.map(l => `<li>${linkify(l)}</li>`).join('')}</ul>`;
+      }
+
+      allAudio.forEach(k => {
+        html += `<audio class="update-audio" controls src="/.netlify/functions/get-media?key=${k}"></audio>`;
+      });
+
+      item.innerHTML = html;
+      item.querySelectorAll('.update-slideshow').forEach(initSlideshow);
+      container.appendChild(item);
     }
 
     async function loadUpdates() {
@@ -391,7 +446,7 @@
             const dayEl = document.createElement('div');
             dayEl.className = 'updates-day';
             dayEl.innerHTML = `<div class="updates-day-label">Pre-Race ${String(idx + 1).padStart(2, '0')}</div>`;
-            renderEntries(entries, dayEl);
+            renderDayEntries(entries, dayEl);
             container.appendChild(dayEl);
           });
 
@@ -402,7 +457,7 @@
             const dayEl = document.createElement('div');
             dayEl.className = 'updates-day';
             dayEl.innerHTML = `<div class="updates-day-label">Day ${String(day).padStart(2, '0')}</div>`;
-            renderEntries(entries, dayEl);
+            renderDayEntries(entries, dayEl);
             container.appendChild(dayEl);
           });
 
@@ -436,7 +491,7 @@
 
     // Update images: event delegation handles both static preview and dynamically loaded
     document.getElementById('updatesTimeline').addEventListener('click', e => {
-      if (e.target.classList.contains('update-img')) {
+      if (e.target.classList.contains('update-img') || e.target.classList.contains('slideshow-img')) {
         openLightbox(e.target.src, e.target.alt);
       }
     });

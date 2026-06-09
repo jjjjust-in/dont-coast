@@ -707,6 +707,70 @@ body::before {
   user-select: none;
 }
 
+.update-slideshow {
+  margin-bottom: 16px;
+  user-select: none;
+}
+
+.slideshow-imgs {
+  position: relative;
+}
+
+.slideshow-img {
+  display: none;
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+  filter: grayscale(100%);
+  cursor: zoom-in;
+}
+
+.slideshow-img.active {
+  display: block;
+}
+
+.slideshow-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0 0;
+}
+
+.slideshow-prev,
+.slideshow-next {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: var(--fg);
+  opacity: 0.4;
+  padding: 4px 0;
+  transition: opacity 0.15s;
+}
+
+.slideshow-prev:hover,
+.slideshow-next:hover { opacity: 1; }
+
+.slideshow-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.slideshow-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--border);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.15s;
+}
+
+.slideshow-dot.active {
+  background: var(--fg);
+}
+
 .update-img {
   height: 220px;
   width: auto;
