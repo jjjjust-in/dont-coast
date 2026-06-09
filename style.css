@@ -711,12 +711,15 @@ body::before {
   flex-shrink: 0;
   object-fit: cover;
   display: block;
+  filter: grayscale(100%);
 }
 
 /* single image goes full width */
 .update-images:has(> .update-img:only-child) .update-img {
   height: auto;
+  max-height: 480px;
   width: 100%;
+  filter: grayscale(100%);
 }
 
 .update-text {
