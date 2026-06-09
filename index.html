@@ -664,31 +664,6 @@
     updateRaceClock();
     setInterval(updateRaceClock, 60000);
 
-    // Slider
-    const slider = document.querySelector('.slider');
-    let isDown = false, startX, scrollLeft;
-    let paused = false, pos = 0, raf;
-
-    function animate() {
-      if (!paused) {
-        pos += 0.5;
-        if (pos >= slider.scrollWidth - slider.clientWidth) pos = 0;
-        slider.scrollLeft = pos;
-      }
-      raf = requestAnimationFrame(animate);
-    }
-
-    raf = requestAnimationFrame(animate);
-
-    slider.addEventListener('mousedown', e => { isDown = true; paused = true; slider.classList.add('grabbing'); startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
-    slider.addEventListener('mouseleave', () => { if (isDown) { isDown = false; slider.classList.remove('grabbing'); pos = slider.scrollLeft; paused = false; } });
-    slider.addEventListener('mouseup', () => { if (isDown) { isDown = false; slider.classList.remove('grabbing'); pos = slider.scrollLeft; paused = false; } });
-    slider.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); slider.scrollLeft = scrollLeft - (e.pageX - slider.offsetLeft - startX); });
-
-    let touchStartX, touchScrollLeft;
-    slider.addEventListener('touchstart', e => { paused = true; touchStartX = e.touches[0].pageX; touchScrollLeft = slider.scrollLeft; });
-    slider.addEventListener('touchmove', e => { slider.scrollLeft = touchScrollLeft - (e.touches[0].pageX - touchStartX); });
-    slider.addEventListener('touchend', () => { pos = slider.scrollLeft; paused = false; });
 
     // Updates timeline
     const RACE_START_MS = new Date('2026-06-12T07:30:00-06:00').getTime();
@@ -765,45 +740,6 @@
 
     loadUpdates();
 
-    // Timeline year click → thumbnail
-    const timelineWrap = document.getElementById('timelineVideoWrap');
-    const timelineThumb = document.getElementById('timelineVideoThumb');
-    const timelineLink = document.getElementById('timelineVideoLink');
-    const timelineItems = document.querySelectorAll('.timeline-item[data-video]');
-    let activeTimelineItem = null;
-
-    const timelineDotsRow = document.querySelector('.timeline-dots-row');
-    const thumbWidth = 400;
-
-    function positionThumbAbove(item) {
-      const rowRect = timelineDotsRow.getBoundingClientRect();
-      const itemRect = item.getBoundingClientRect();
-      const centerX = itemRect.left + itemRect.width / 2 - rowRect.left;
-      const left = Math.max(0, Math.min(centerX - thumbWidth / 2, rowRect.width - thumbWidth));
-      timelineWrap.style.left = left + 'px';
-    }
-
-    timelineItems.forEach(item => {
-      item.addEventListener('click', () => {
-        const id = item.dataset.video;
-        if (!id || id.startsWith('YOUTUBE_ID')) return;
-
-        if (activeTimelineItem === item) {
-          timelineWrap.classList.remove('active');
-          timelineItems.forEach(i => i.classList.remove('timeline-item--hovered'));
-          activeTimelineItem = null;
-          return;
-        }
-
-        timelineThumb.src = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
-        timelineLink.href = `https://youtu.be/${id}`;
-        positionThumbAbove(item);
-        timelineWrap.classList.add('active');
-        timelineItems.forEach(i => i.classList.remove('timeline-item--hovered'));
-        item.classList.add('timeline-item--hovered');
-        activeTimelineItem = item;
-      });
-    });
 
     // Lightbox
     const lightbox = document.getElementById('lightbox');
