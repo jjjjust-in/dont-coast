@@ -26,5 +26,21 @@
     "imageKeys": [
       "journal-images/1780972282874-0.jpeg"
     ]
+  },
+  {
+    "id": 1783354793217,
+    "timestamp": 1783354793217,
+    "text": "Pre-ride from airport\n2-day ride\nCamped @ Siebald Lake",
+    "startTime": "3:15 PM",
+    "endTime": null,
+    "miles": 116,
+    "elevation": 6000,
+    "startLocation": "YYC",
+    "endLocation": "Banff, AB",
+    "imageKeys": [
+      "journal-images/1783354793217-0.jpeg",
+      "journal-images/1783354793217-1.jpeg",
+      "journal-images/1783354793217-2.jpeg"
+    ]
   }
 ]
