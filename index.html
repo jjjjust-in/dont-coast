@@ -287,6 +287,12 @@
 
         if (lat && lng) {
           placeRouteDot(lat, lng);
+        }
+
+        if (data.finished) {
+          statusText.textContent = 'Finished';
+          statusDot.className = 'tracker-dot live';
+        } else if (lat && lng) {
           statusText.textContent = 'Live';
           statusDot.className = 'tracker-dot live';
         } else {
@@ -295,7 +301,7 @@
         }
 
         document.getElementById('statCovered').textContent   = distanceMiles ? distanceMiles.toLocaleString() : '--';
-        document.getElementById('statRemaining').textContent = distanceRemaining ? distanceRemaining.toLocaleString() : '--';
+        document.getElementById('statRemaining').textContent = data.finished ? '0' : (distanceRemaining ? distanceRemaining.toLocaleString() : '--');
         document.getElementById('statPercent').textContent   = percentComplete != null ? percentComplete + '%' : '--%';
       } catch (e) {
         statusText.textContent = 'Not Tracking';
@@ -307,10 +313,13 @@
     setInterval(updateRoutePosition, 5 * 60 * 1000);
 
     // Race clock
-    const raceStart = new Date('2026-06-12T07:30:00-06:00');
+    const raceStart  = new Date('2026-06-12T07:30:00-06:00');
+    const raceFinish = new Date('2026-07-02T21:25:00-06:00');
+    const FINAL_CLOCK = '20d 13h 55m';
 
     function updateRaceClock() {
       const el = document.getElementById('raceClock');
+      if (Date.now() >= raceFinish) { el.textContent = FINAL_CLOCK; return; }
       const diff = Date.now() - raceStart;
       if (diff < 0) { el.textContent = '--'; return; }
       const d = Math.floor(diff / 86400000);
@@ -541,3 +550,4 @@
 
 </body>
 </html>
+
