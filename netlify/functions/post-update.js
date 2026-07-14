@@ -42,8 +42,8 @@ exports.handler = async (event) => {
   let body;
   try { body = JSON.parse(event.body); } catch { return { statusCode: 400, body: 'Invalid JSON' }; }
 
-  const { text, images, startTime, endTime, miles, elevation, startLocation, endLocation } = body;
-  const id = Date.now();
+  const { text, images, startTime, endTime, miles, elevation, startLocation, endLocation, timestamp: tsOverride } = body;
+  const id = (tsOverride && Number.isFinite(tsOverride) && tsOverride > 0) ? Math.floor(tsOverride) : Date.now();
   const update = {
     id, timestamp: id,
     text: text || '',
@@ -99,3 +99,4 @@ exports.handler = async (event) => {
     body: JSON.stringify({ success: true, id })
   };
 };
+
