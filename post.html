@@ -259,6 +259,16 @@
 
   <h1>Ride Journal</h1>
 
+  <div class="section-label">Entry Date</div>
+  <div class="field" style="margin-bottom:8px">
+    <label>Date (leave blank for today)</label>
+    <input type="date" id="entryDate" />
+  </div>
+  <div class="field" style="margin-bottom:8px">
+    <label>GPX file (auto-fills stats)</label>
+    <input type="file" id="gpxInput" accept=".gpx" style="background:transparent;border:1px solid var(--border);border-radius:4px;padding:10px 12px;font-family:inherit;font-size:15px;color:var(--fg);width:100%" />
+  </div>
+
   <div class="section-label">Day Stats</div>
   <div class="grid-2">
     <div class="field">
@@ -322,6 +332,66 @@
     const tokenInput = document.getElementById('token');
     tokenInput.value = localStorage.getItem('dc_token') || '';
     tokenInput.addEventListener('change', () => localStorage.setItem('dc_token', tokenInput.value));
+
+    // GPX parser — fills miles, elevation, start/end time
+    document.getElementById('gpxInput').addEventListener('change', e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = ev => {
+        try {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(ev.target.result, 'application/xml');
+          const trkpts = [...doc.querySelectorAll('trkpt')];
+          if (!trkpts.length) return;
+
+          // Distance in miles via haversine
+          function haversine(lat1, lon1, lat2, lon2) {
+            const R = 3958.8;
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = Math.sin(dLat/2)**2 +
+              Math.cos(lat1*Math.PI/180) * Math.cos(lat2*Math.PI/180) * Math.sin(dLon/2)**2;
+            return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+          }
+
+          let dist = 0;
+          let elevGain = 0;
+          let prevEle = null;
+          const pts = trkpts.map(pt => ({
+            lat: parseFloat(pt.getAttribute('lat')),
+            lon: parseFloat(pt.getAttribute('lon')),
+            ele: parseFloat(pt.querySelector('ele')?.textContent || 0),
+            time: pt.querySelector('time')?.textContent
+          }));
+
+          for (let i = 1; i < pts.length; i++) {
+            dist += haversine(pts[i-1].lat, pts[i-1].lon, pts[i].lat, pts[i].lon);
+            const dEle = pts[i].ele - pts[i-1].ele;
+            if (dEle > 0) elevGain += dEle;
+          }
+
+          // Fill stats
+          document.getElementById('miles').value = Math.round(dist * 10) / 10;
+          document.getElementById('elevation').value = Math.round(elevGain * 3.28084); // m→ft
+
+          // Start/end times
+          if (pts[0].time) {
+            const start = new Date(pts[0].time);
+            document.getElementById('startTime').value =
+              start.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+          }
+          if (pts[pts.length-1].time) {
+            const end = new Date(pts[pts.length-1].time);
+            document.getElementById('endTime').value =
+              end.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
+          }
+        } catch (err) {
+          console.error('GPX parse error', err);
+        }
+      };
+      reader.readAsText(file);
+    });
 
     // Add bullet
     document.getElementById('addBullet').addEventListener('click', () => {
@@ -426,6 +496,14 @@
       if (total > 0) setProgress(80, 'Uploading…');
       else setProgress(50, 'Sending…');
 
+      // Optional date override for retroactive entries
+      let timestamp;
+      const dateVal = document.getElementById('entryDate').value;
+      if (dateVal) {
+        // Use noon local time on that date so ordering is sensible
+        timestamp = new Date(dateVal + 'T12:00:00').getTime();
+      }
+
       const body = {
         text: lines.join('\n'),
         startLocation: document.getElementById('startLocation').value.trim() || null,
@@ -435,6 +513,7 @@
         startTime:     document.getElementById('startTime').value.trim()     || null,
         endTime:       document.getElementById('endTime').value.trim()       || null,
         images: images.length ? images : undefined,
+        timestamp: timestamp || undefined,
       };
 
       try {
@@ -469,8 +548,9 @@
     }
 
     function clearForm() {
-      ['startLocation','endLocation','miles','elevation','startTime','endTime']
+      ['entryDate','startLocation','endLocation','miles','elevation','startTime','endTime']
         .forEach(id => document.getElementById(id).value = '');
+      document.getElementById('gpxInput').value = '';
       document.querySelectorAll('#bulletsList input').forEach(i => i.value = '');
       // remove added rows, keep first two
       const rows = [...document.querySelectorAll('#bulletsList .bullet-row')];
@@ -482,3 +562,4 @@
 
 </body>
 </html>
+
