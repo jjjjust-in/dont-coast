@@ -1,7 +1,13 @@
-exports.handler = async () => {
+const REPO = 'jjjjust-in/dont-coast';
+const RACES = ['tour-divide', 'colorado-trail', 'arizona-trail'];
+
+exports.handler = async (event) => {
+  const raceParam = event.queryStringParameters && event.queryStringParameters.race;
+  const race = RACES.includes(raceParam) ? raceParam : 'tour-divide';
+
   try {
     const res = await fetch(
-      'https://api.github.com/repos/jjjjust-in/dont-coast/contents/journal.json',
+      `https://api.github.com/repos/${REPO}/contents/journal/${race}.json`,
       {
         headers: {
           Authorization: `token ${process.env.GITHUB_TOKEN}`,

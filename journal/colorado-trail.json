@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1785724560000,
+    "timestamp": 1785724560000,
+    "text": "Placeholder entry — Day 1. Replace with real trail notes, weather, and moments from the day.",
+    "startTime": "4:00 AM",
+    "endTime": "4:36 PM",
+    "miles": 90,
+    "elevation": 6750,
+    "startLocation": "Waterton Canyon, Denver, CO",
+    "endLocation": "Kenosha Pass, CO",
+    "imageKeys": [
+      "images/placeholder-journal-photo.svg"
+    ]
+  },
+  {
+    "id": 1785811680000,
+    "timestamp": 1785811680000,
+    "text": "Placeholder entry — Day 2. Replace with real trail notes, weather, and moments from the day.",
+    "startTime": "4:07 AM",
+    "endTime": "4:48 PM",
+    "miles": 95,
+    "elevation": 9009,
+    "startLocation": "Kenosha Pass, CO",
+    "endLocation": "Salida, CO",
+    "imageKeys": [
+      "images/placeholder-journal-photo.svg"
+    ]
+  },
+  {
+    "id": 1785896640000,
+    "timestamp": 1785896640000,
+    "text": "Placeholder entry — Day 3. Replace with real trail notes, weather, and moments from the day.",
+    "startTime": "4:14 AM",
+    "endTime": "4:24 PM",
+    "miles": 85,
+    "elevation": 5941,
+    "startLocation": "Salida, CO",
+    "endLocation": "Sargents Mesa, CO",
+    "imageKeys": [
+      "images/placeholder-journal-photo.svg"
+    ]
+  },
+  {
+    "id": 1785982320000,
+    "timestamp": 1785982320000,
+    "text": "Placeholder entry — Day 4. Replace with real trail notes, weather, and moments from the day.",
+    "startTime": "4:21 AM",
+    "endTime": "4:12 PM",
+    "miles": 80,
+    "elevation": 4519,
+    "startLocation": "Sargents Mesa, CO",
+    "endLocation": "Lake City, CO",
+    "imageKeys": [
+      "images/placeholder-journal-photo.svg"
+    ]
+  },
+  {
+    "id": 1786070448000,
+    "timestamp": 1786070448000,
+    "text": "Placeholder entry — Day 5. Replace with real trail notes, weather, and moments from the day.",
+    "startTime": "4:28 AM",
+    "endTime": "4:41 PM",
+    "miles": 92,
+    "elevation": 7809,
+    "startLocation": "Lake City, CO",
+    "endLocation": "Silverton, CO",
+    "imageKeys": [
+      "images/placeholder-journal-photo.svg"
+    ]
+  },
+  {
+    "id": 1786155552000,
+    "timestamp": 1786155552000,
+    "text": "Placeholder entry — Day 6. Replace with real trail notes, weather, and moments from the day.",
+    "startTime": "4:35 AM",
+    "endTime": "4:19 PM",
+    "miles": 83,
+    "elevation": 7550,
+    "startLocation": "Silverton, CO",
+    "endLocation": "Durango, CO",
+    "imageKeys": [
+      "images/placeholder-journal-photo.svg"
+    ]
+  }
+]

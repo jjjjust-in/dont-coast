@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arizona Trail — Don't Coast</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;600&family=Work+Sans:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- FIXED CORNER LOGO -->
+  <a href="index.html" class="site-logo">
+    <img src="logo.png" alt="Don't Coast" />
+  </a>
+
+  <!-- ─── HERO BACKGROUND (fixed) ─── -->
+  <div class="hero-bg hero-bg-alt"></div>
+
+  <!-- ─── WHAT ─── -->
+  <section class="page-section section-what" id="what">
+    <div class="section-content">
+      <a href="index.html" class="race-back-link">← Triple Crown of Bikepacking</a>
+      <h1 class="section-headline">Arizona Trail</h1>
+      <p class="hero-date">October 1, 2026 · Upcoming</p>
+      <p class="section-body">An 800-mile self-supported traverse of Arizona, from the Mexican border at Coronado National Memorial to the North Rim of the Grand Canyon. Desert, forest, and canyon country end to end on a single line — the final leg of the Triple Crown.</p>
+      <p class="scroll-hint">SEE MORE ↓</p>
+    </div>
+  </section>
+
+  <!-- ─── TRACKER + UPDATES ─── -->
+  <section class="page-section section-when" id="when">
+
+    <!-- full-width header -->
+    <div class="tracker-header">
+      <h2 class="section-headline">JJJJustin Tracker</h2>
+      <div class="tracker-meta">
+        <span class="tracker-dot waiting"></span>
+        <span class="tracker-meta-text">Upcoming</span>
+      </div>
+    </div>
+
+    <!-- bordered box: stats + split -->
+    <div class="tracker-box">
+    <div class="stats-bar">
+      <div class="stat">
+        <span class="stat-value">--</span>
+        <span class="stat-label">Race Clock</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">--</span>
+        <span class="stat-label">Miles Covered</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">800</span>
+        <span class="stat-label">Miles Remaining</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">0%</span>
+        <span class="stat-label">Complete</span>
+      </div>
+    </div>
+    <!-- Stats above are static placeholders — update by hand once the ride is underway/finished -->
+
+    <!-- 50/50 split: updates | map -->
+    <div class="tracker-lower">
+
+      <div class="tracker-updates-col">
+        <div class="tracker-col-header">Ride Journal</div>
+        <div class="tracker-scroll-frame">
+        <div class="tracker-updates-scroll" id="updatesTimeline">
+        </div>
+        </div><!-- /tracker-scroll-frame -->
+      </div>
+
+      <div class="tracker-map-col">
+        <div class="tracker-col-header">The Route</div>
+        <div class="route-wrap route-wrap-static">
+          <img src="basemap.svg" alt="Basemap" class="basemap-svg" />
+        </div>
+        <p class="route-placeholder-note">Route map coming soon</p>
+      </div>
+
+    </div><!-- /tracker-lower -->
+    </div><!-- /tracker-box -->
+  </section>
+
+
+  <!-- ─── THE BUILD ─── -->
+  <section class="page-section section-build" id="build">
+
+    <div class="build-headline-wrap">
+      <h2 class="build-headline">
+        <button class="build-title active" data-panel="bike">The Bike</button>
+      </h2>
+    </div>
+
+    <div class="build-slider">
+    <div class="build-slider-track">
+
+    <!-- Bike panel -->
+    <div class="build-panel" id="panel-bike">
+    <div class="bike-photo">
+      <div class="bike-hotspot-wrap" id="bikeWrap">
+        <img src="images/DSC09399-2.jpg" alt="Arizona Trail bike" id="bikeImg" />
+        <img src="images/DSC09399-2color.jpg" alt="" class="bike-img-color" />
+
+        <button class="hotspot" style="left:32%;top:34.5%" data-index="0" aria-label="Rear Rack"></button>
+        <button class="hotspot" style="left:53.9%;top:51.3%" data-index="1" aria-label="Frame"></button>
+        <button class="hotspot" style="left:48%;top:47.5%" data-index="2" aria-label="Frame Bag"></button>
+        <button class="hotspot" style="left:69%;top:21%" data-index="3" aria-label="Aerobar Pak"></button>
+        <button class="hotspot" style="left:58.5%;top:25%" data-index="4" aria-label="Top Tube Bag"></button>
+        <button class="hotspot" style="left:34.8%;top:16.9%" data-index="5" aria-label="Saddle"></button>
+        <button class="hotspot" style="left:72.5%;top:65.8%" data-index="6" aria-label="Brakes"></button>
+        <button class="hotspot" style="left:78.3%;top:66.7%" data-index="7" aria-label="Front Hub"></button>
+        <button class="hotspot" style="left:72.1%;top:52.9%" data-index="8" aria-label="Fork"></button>
+        <button class="hotspot" style="left:77.3%;top:10.6%" data-index="9" aria-label="Aero Bars"></button>
+        <button class="hotspot" style="left:21.4%;top:44.2%" data-index="10" aria-label="Panniers"></button>
+        <button class="hotspot" style="left:53.4%;top:71.5%" data-index="11" aria-label="Pedals"></button>
+        <button class="hotspot" style="left:22.74%;top:65.47%" data-index="12" aria-label="Wheels"></button>
+        <button class="hotspot" style="left:41.68%;top:70%" data-index="13" aria-label="Chainring"></button>
+        <button class="hotspot" style="left:44.31%;top:70%" data-index="14" aria-label="Bottom Bracket"></button>
+        <button class="hotspot" style="left:41.94%;top:37.33%" data-index="15" aria-label="Bottle Mounts"></button>
+        <button class="hotspot" style="left:91.7%;top:57.13%" data-index="16" aria-label="Tires"></button>
+        <button class="hotspot" style="left:25.42%;top:25%" data-index="18" aria-label="Rear Bag Straps"></button>
+        <button class="hotspot" style="left:22.84%;top:28.91%" data-index="17" aria-label="Dry Bag"></button>
+
+        <div class="hotspot-card">
+          <p class="hotspot-card-name"></p>
+          <p class="hotspot-card-brand"></p>
+          <a class="hotspot-card-link" target="_blank" rel="noopener">Visit Site →</a>
+        </div>
+      </div>
+    </div>
+    </div><!-- /panel-bike -->
+
+    </div><!-- /build-slider-track -->
+    </div><!-- /build-slider -->
+
+    <div class="parts-list-wrap">
+      <div class="parts-list-label">Parts List</div>
+      <div class="parts-list" id="partsList"></div>
+    </div>
+
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true">
+    <button class="lightbox-close" aria-label="Close">&#x2715;</button>
+    <img class="lightbox-image" id="lightboxImg" src="" alt="" />
+  </div>
+
+  <footer class="footer">
+    <img src="smalltape.png" alt="" class="footer-tape" />
+    <p class="footer-copy">© 2026 Don't Coast. All rights reserved.</p>
+    <a class="footer-venmo" href="https://venmo.com/jjjjustin" target="_blank" rel="noopener">Buy me a Reese's @jjjjustin</a>
+  </footer>
+
+
+  <script>
+    const hotspots = [
+      { name: 'Rat Tail Rear Rack', brand: 'Mica Cycles', url: 'https://micacycles.com' },
+      { name: 'Fenrir Ti Frame', brand: 'Otso', url: 'https://otsocycles.com' },
+      { name: 'FramePak', brand: 'JPaks', url: 'https://www.jpaks.com' },
+      { name: 'Aerobar Pak', brand: 'JPaks', url: 'https://www.jpaks.com' },
+      { name: 'Footlong EXT', brand: 'JPaks', url: 'https://www.jpaks.com' },
+      { name: 'C13 Saddle', brand: 'Brooks', url: 'https://brooksengland.com' },
+      { name: 'Equal Brakes', brand: 'Growtac', url: 'https://velo-orange.com' },
+      { name: 'SON28 Hub Dynamo', brand: 'Schmidt', url: 'https://nabendynamo.de/en/products/hub-dynamos/for-standard-forks/' },
+      { name: 'Fox 32 Stepcast Fork', brand: 'Fox', url: 'https://ridefox.com' },
+      { name: 'Boner Aero Bars', brand: 'DOOM', url: 'https://www.doombars.com' },
+      { name: 'UL Panniers', brand: 'San Util', url: 'https://sanutildesign.com' },
+      { name: 'Waveform Pedals', brand: 'Wolf Tooth Components', url: 'https://wolftoothcomponents.com' },
+      { name: 'Wanderer Rims / Hydra2 Hubs', brand: 'WeAreOne / Industry Nine', url: 'https://industrynine.com' },
+      { name: '32x18 Chainring', brand: 'Wolf Tooth', url: 'https://wolftoothcomp.com' },
+      { name: 'Bottom Bracket', brand: 'Wolf Tooth', url: 'https://wolftoothcomp.com' },
+      { name: 'Hose Clamp Bottle Mounts', brand: 'King Cage', url: 'https://kingcage.com' },
+      { name: 'Mezcal 29x2.2" w/ Air Liner Inserts', brand: 'Vittoria', url: 'https://vittoria.com' },
+      { name: 'Ultra PE Dry Bag', brand: 'Rockgeist', url: 'https://rockgeist.com/product/dyneema-bikepacking-dry-bag/' },
+      { name: 'Rear Bag Straps', brand: 'Austere Manufacturing', url: 'https://austeremanufacturing.com' }
+    ];
+
+    function setupHotspots(wrapEl, itemsData) {
+      if (!wrapEl) return;
+      const card = wrapEl.querySelector('.hotspot-card');
+      const nameEl = card.querySelector('.hotspot-card-name');
+      const brandEl = card.querySelector('.hotspot-card-brand');
+      const linkEl = card.querySelector('.hotspot-card-link');
+      let hideTimer;
+
+      wrapEl.querySelectorAll('.hotspot').forEach(btn => {
+        btn.addEventListener('mouseenter', () => {
+          clearTimeout(hideTimer);
+          const d = itemsData[+btn.dataset.index];
+          if (!d) return;
+          nameEl.textContent = d.name;
+          brandEl.textContent = d.brand;
+          linkEl.href = d.url.startsWith('http') ? d.url : 'https://' + d.url;
+          const wRect = wrapEl.getBoundingClientRect();
+          const bRect = btn.getBoundingClientRect();
+          card.style.left = (bRect.left - wRect.left + bRect.width / 2) + 'px';
+          card.style.top = (bRect.top - wRect.top - 8) + 'px';
+          card.classList.add('visible');
+        });
+        btn.addEventListener('mouseleave', () => {
+          hideTimer = setTimeout(() => card.classList.remove('visible'), 200);
+        });
+      });
+
+      card.addEventListener('mouseenter', () => clearTimeout(hideTimer));
+      card.addEventListener('mouseleave', () => {
+        hideTimer = setTimeout(() => card.classList.remove('visible'), 200);
+      });
+    }
+
+    setupHotspots(document.getElementById('bikeWrap'), hotspots);
+
+    // Parts list
+    const partsList = document.getElementById('partsList');
+    hotspots.forEach(h => {
+      const item = document.createElement('div');
+      item.className = 'parts-list-item';
+      item.innerHTML = `<a href="${h.url}" target="_blank" rel="noopener">${h.brand}</a><span>${h.name}</span>`;
+      partsList.appendChild(item);
+    });
+
+
+    // Updates timeline
+    const RACE_START_MS = new Date('2026-10-01T06:00:00-07:00').getTime();
+
+    function linkify(text) {
+      const escaped = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      return escaped.replace(/(https?:\/\/[^\s<>"]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
+    }
+
+    function renderDayEntries(entries, container) {
+      const allImageKeys = [];
+      const allLines = [];
+      const allAudio = [];
+      let stats = null;
+
+      entries.forEach(u => {
+        if (u.imageKeys) allImageKeys.push(...u.imageKeys);
+        if (u.text) u.text.split('\n').filter(l => l.trim()).forEach(l => allLines.push(l.trim()));
+        if (u.audioKey) allAudio.push(u.audioKey);
+        if (!stats && (u.startTime || u.endTime || u.miles || u.elevation || u.startLocation || u.endLocation)) stats = u;
+      });
+
+      const item = document.createElement('div');
+      item.className = 'update-item';
+      let html = '';
+
+      if (stats) {
+        html += `<div class="update-stats">`;
+        html += `<div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">${stats.startLocation || '—'}</span></div>`;
+        html += `<div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">${stats.endLocation || '—'}</span></div>`;
+        html += `<div class="update-stat"><span class="update-stat-label">Miles</span><span class="update-stat-value">${stats.miles != null ? stats.miles : '—'}</span></div>`;
+        html += `<div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">${stats.startTime || '—'}</span></div>`;
+        html += `<div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">${stats.endTime || '—'}</span></div>`;
+        html += `<div class="update-stat"><span class="update-stat-label">Elevation</span><span class="update-stat-value">${stats.elevation != null ? stats.elevation.toLocaleString() + ' ft' : '—'}</span></div>`;
+        html += `</div>`;
+      }
+
+      if (allImageKeys.length) {
+        html += `<div class="update-images">` + allImageKeys.map(k =>
+          `<img class="update-img" src="/${k}" alt="" loading="lazy" />`
+        ).join('') + `</div>`;
+      }
+
+      if (allLines.length) {
+        html += `<ul class="update-text">${allLines.map(l => `<li>${linkify(l)}</li>`).join('')}</ul>`;
+      }
+
+      allAudio.forEach(k => {
+        html += `<audio class="update-audio" controls src="/${k}"></audio>`;
+      });
+
+      item.innerHTML = html;
+      container.appendChild(item);
+    }
+
+    async function loadUpdates() {
+      const container = document.getElementById('updatesTimeline');
+      try {
+        const res = await fetch('/.netlify/functions/get-updates?race=arizona-trail');
+        const updates = await res.json();
+        if (!updates.length) return;
+
+        const preRaceGroups = {};
+        const raceDayGroups = {};
+
+        updates.forEach(u => {
+          if (u.timestamp < RACE_START_MS) {
+            const key = new Date(u.timestamp).toDateString();
+            if (!preRaceGroups[key]) preRaceGroups[key] = [];
+            preRaceGroups[key].push(u);
+          } else {
+            const day = Math.max(1, Math.floor((u.timestamp - RACE_START_MS) / 86400000) + 1);
+            if (!raceDayGroups[day]) raceDayGroups[day] = [];
+            raceDayGroups[day].push(u);
+          }
+        });
+
+        container.innerHTML = '';
+
+        Object.entries(preRaceGroups)
+          .sort(([a], [b]) => new Date(a) - new Date(b))
+          .forEach(([, entries], idx) => {
+            const dayEl = document.createElement('div');
+            dayEl.className = 'updates-day';
+            dayEl.innerHTML = `<div class="updates-day-label">Pre-Ride ${String(idx + 1).padStart(2, '0')}</div>`;
+            renderDayEntries(entries, dayEl);
+            container.appendChild(dayEl);
+          });
+
+        Object.entries(raceDayGroups)
+          .sort(([a], [b]) => a - b)
+          .forEach(([day, entries]) => {
+            const dayEl = document.createElement('div');
+            dayEl.className = 'updates-day';
+            dayEl.innerHTML = `<div class="updates-day-label">Day ${String(day).padStart(2, '0')}</div>`;
+            renderDayEntries(entries, dayEl);
+            container.appendChild(dayEl);
+          });
+
+      } catch {}
+    }
+
+    loadUpdates();
+
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+
+    function openLightbox(src, alt) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || '';
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.slider-track img, .bike-hotspot-wrap img').forEach(img => {
+      img.classList.add('lightbox-trigger');
+      img.addEventListener('click', () => openLightbox(img.src, img.alt));
+    });
+
+    document.getElementById('updatesTimeline').addEventListener('click', e => {
+      if (e.target.classList.contains('update-img')) {
+        openLightbox(e.target.src, e.target.alt);
+      }
+    });
+
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // ── DRAG-TO-SCROLL for image strips ──
+    function makeDraggable(el) {
+      if (el.children.length < 2) return;
+      let isDown = false, startX, scrollLeft;
+      el.addEventListener('mousedown', e => {
+        isDown = true;
+        el.classList.add('is-dragging');
+        startX = e.pageX - el.offsetLeft;
+        scrollLeft = el.scrollLeft;
+        e.preventDefault();
+      });
+      window.addEventListener('mouseup', () => {
+        if (!isDown) return;
+        isDown = false;
+        el.classList.remove('is-dragging');
+      });
+      el.addEventListener('mousemove', e => {
+        if (!isDown) return;
+        const x = e.pageX - el.offsetLeft;
+        el.scrollLeft = scrollLeft - (x - startX);
+      });
+    }
+
+    document.querySelectorAll('.update-images').forEach(makeDraggable);
+
+    const updatesContainer = document.getElementById('updatesTimeline');
+    if (updatesContainer) {
+      new MutationObserver(() => {
+        updatesContainer.querySelectorAll('.update-images:not([data-drag])').forEach(el => {
+          el.dataset.drag = '1';
+          makeDraggable(el);
+        });
+      }).observe(updatesContainer, { childList: true, subtree: true });
+    }
+  </script>
+
+</body>
+</html>

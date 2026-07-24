@@ -1,0 +1,326 @@
+[
+  {
+    "id": 1780969086328,
+    "timestamp": 1780969086328,
+    "text": "Bike is boxed\nFlight in 12 hours",
+    "startTime": null,
+    "endTime": null,
+    "miles": null,
+    "elevation": null,
+    "startLocation": null,
+    "endLocation": null,
+    "imageKeys": [
+      "journal-images/tour-divide/1780969086328-0.jpeg"
+    ]
+  },
+  {
+    "id": 1780972282874,
+    "timestamp": 1780972282874,
+    "text": "Bike Check video is live\nhttps://youtu.be/Wp0-RZachsA",
+    "startTime": null,
+    "endTime": null,
+    "miles": null,
+    "elevation": null,
+    "startLocation": null,
+    "endLocation": null,
+    "imageKeys": [
+      "journal-images/tour-divide/1780972282874-0.jpeg"
+    ]
+  },
+  {
+    "id": 1783354793217,
+    "timestamp": 1783354793217,
+    "text": "Pre-ride from airport\n2-day ride\nCamped @ Siebald Lake",
+    "startTime": "3:15 PM",
+    "endTime": null,
+    "miles": 116,
+    "elevation": 6000,
+    "startLocation": "YYC",
+    "endLocation": "Banff, AB",
+    "imageKeys": [
+      "journal-images/tour-divide/1783354793217-0.jpeg",
+      "journal-images/tour-divide/1783354793217-1.jpeg",
+      "journal-images/tour-divide/1783354793217-2.jpeg"
+    ]
+  },
+  {
+    "id": 1781347104000,
+    "timestamp": 1781347104000,
+    "text": "Placeholder entry — Day 1. Replace with real trail notes, weather, and moments from the day.",
+    "startTime": "6.5:00 AM",
+    "endTime": "9:08 PM",
+    "miles": 141,
+    "elevation": 7755,
+    "startLocation": "Banff, AB",
+    "endLocation": "Elkford, BC",
+    "imageKeys": [
+      "images/placeholder-journal-photo.svg"
+    ]
+  },
+  {
+    "id": 1781428752000,
+    "timestamp": 1781428752000,
+    "text": "Placeholder entry — Day 2. Replace with real trail notes, weather, and moments from the day.",
+    "startTime": "6.5:07 AM",
+    "endTime": "7:49 PM",
+    "miles": 108,
+    "elevation": 7546,
+    "startLocation": "Elkford, BC",
+    "endLocation": "Fernie, BC",
+    "imageKeys": [
+      "images/placeholder-journal-photo.svg"
+    ]
+  },
+  {
+    "id": 1781516160000,
+    "timestamp": 1781516160000,
+    "text": "Placeholder entry — Day 3. Replace with real trail notes, weather, and moments from the day.",
+    "startTime": "6.5:14 AM",
+    "endTime": "8:06 PM",
+    "miles": 115,
+    "elevation": 5884,
+    "startLocation": "Fernie, BC",
+    "endLocation": "Eureka, MT",
+    "imageKeys": [
+      "images/placeholder-journal-photo.svg"
+    ]
+  },
+  {
+    "id": 1781601120000,
+    "timestamp": 1781601120000,
+    "text": "Placeholder entry — Day 4. Replace with real trail notes, weather, and moments from the day.",
+    "startTime": "6.5:21 AM",
+    "endTime": "7:42 PM",
+    "miles": 105,
+    "elevation": 4317,
+    "startLocation": "Eureka, MT",
+    "endLocation": "Whitefish, MT",
+    "imageKeys": [
+      "images/placeholder-journal-photo.svg"
+    ]
+  },
+  {
+    "id": 1781695728000,
+    "timestamp": 1781695728000,
+    "text": "Placeholder entry — Day 5. Replace with real trail notes, weather, and moments from the day.",
+    "startTime": "6.5:28 AM",
+    "endTime": "9:59 PM",
+    "miles": 162,
+    "elevation": 10111,
+    "startLocation": "Whitefish, MT",
+    "endLocation": "Ovando, MT",
+    "imageKeys": [
+      "images/placeholder-journal-photo.svg"
+    ]
+  },
+  {
+    "id": 1781776944000,
+    "timestamp": 1781776944000,
+    "text": "Placeholder entry — Day 6. Replace with real trail notes, weather, and moments from the day.",
+    "startTime": "6.5:35 AM",
+    "endTime": "8:32 PM",
+    "miles": 126,
+    "elevation": 8439,
+    "startLocation": "Ovando, MT",
+    "endLocation": "Helena, MT",
+    "imageKeys": [
+      "images/placeholder-journal-photo.svg"
+    ]
+  },
+  {
+    "id": 1781861040000,
+    "timestamp": 1781861040000,
+    "text": "Placeholder entry — Day 7. Replace with real trail notes, weather, and moments from the day.",
+    "startTime": "6.5:42 AM",
+    "endTime": "7:54 PM",
+    "miles": 110,
+    "elevation": 4895,
+    "startLocation": "Helena, MT",
+    "endLocation": "Butte, MT",
+    "imageKeys": [
+      "images/placeholder-journal-photo.svg"
+    ]
+  },
+  {
+    "id": 1781958384000,
+    "timestamp": 1781958384000,
+    "text": "Placeholder entry — Day 8. Replace with real trail notes, weather, and moments from the day.",
+    "startTime": "6.5:49 AM",
+    "endTime": "10:56 PM",
+    "miles": 186,
+    "elevation": 8505,
+    "startLocation": "Butte, MT",
+    "endLocation": "Lima, MT",
+    "imageKeys": [
+      "images/placeholder-journal-photo.svg"
+    ]
+  },
+  {
+    "id": 1782035280000,
+    "timestamp": 1782035280000,
+    "text": "Placeholder entry — Day 9. Replace with real trail notes, weather, and moments from the day.",
+    "startTime": "6.5:56 AM",
+    "endTime": "8:18 PM",
+    "miles": 120,
+    "elevation": 8146,
+    "startLocation": "Lima, MT",
+    "endLocation": "Island Park, ID",
+    "imageKeys": [
+      "images/placeholder-journal-photo.svg"
+    ]
+  },
+  {
+    "id": 1782129456000,
+    "timestamp": 1782129456000,
+    "text": "Placeholder entry — Day 10. Replace with real trail notes, weather, and moments from the day.",
+    "startTime": "6.5:03 AM",
+    "endTime": "10:28 PM",
+    "miles": 174,
+    "elevation": 10605,
+    "startLocation": "Island Park, ID",
+    "endLocation": "Pinedale, WY",
+    "imageKeys": [
+      "images/placeholder-journal-photo.svg"
+    ]
+  },
+  {
+    "id": 1782219312000,
+    "timestamp": 1782219312000,
+    "text": "Placeholder entry — Day 11. Replace with real trail notes, weather, and moments from the day.",
+    "startTime": "6.5:10 AM",
+    "endTime": "11:25 PM",
+    "miles": 198,
+    "elevation": 8035,
+    "startLocation": "Pinedale, WY",
+    "endLocation": "Rawlins, WY",
+    "imageKeys": [
+      "images/placeholder-journal-photo.svg"
+    ]
+  },
+  {
+    "id": 1782299664000,
+    "timestamp": 1782299664000,
+    "text": "Placeholder entry — Day 12. Replace with real trail notes, weather, and moments from the day.",
+    "startTime": "6.5:17 AM",
+    "endTime": "9:44 PM",
+    "miles": 156,
+    "elevation": 8231,
+    "startLocation": "Rawlins, WY",
+    "endLocation": "Brush Mountain Lodge, CO",
+    "imageKeys": [
+      "images/placeholder-journal-photo.svg"
+    ]
+  },
+  {
+    "id": 1782375984000,
+    "timestamp": 1782375984000,
+    "text": "Placeholder entry — Day 13. Replace with real trail notes, weather, and moments from the day.",
+    "startTime": "6.5:24 AM",
+    "endTime": "6:56 PM",
+    "miles": 86,
+    "elevation": 6020,
+    "startLocation": "Brush Mountain Lodge, CO",
+    "endLocation": "Steamboat Springs, CO",
+    "imageKeys": [
+      "images/placeholder-journal-photo.svg"
+    ]
+  },
+  {
+    "id": 1782469296000,
+    "timestamp": 1782469296000,
+    "text": "Placeholder entry — Day 14. Replace with real trail notes, weather, and moments from the day.",
+    "startTime": "6.5:31 AM",
+    "endTime": "8:52 PM",
+    "miles": 134,
+    "elevation": 7152,
+    "startLocation": "Steamboat Springs, CO",
+    "endLocation": "Silverthorne, CO",
+    "imageKeys": [
+      "images/placeholder-journal-photo.svg"
+    ]
+  },
+  {
+    "id": 1782555696000,
+    "timestamp": 1782555696000,
+    "text": "Placeholder entry — Day 15. Replace with real trail notes, weather, and moments from the day.",
+    "startTime": "6.5:38 AM",
+    "endTime": "8:52 PM",
+    "miles": 134,
+    "elevation": 5417,
+    "startLocation": "Silverthorne, CO",
+    "endLocation": "Salida, CO",
+    "imageKeys": [
+      "images/placeholder-journal-photo.svg"
+    ]
+  },
+  {
+    "id": 1782638640000,
+    "timestamp": 1782638640000,
+    "text": "Placeholder entry — Day 16. Replace with real trail notes, weather, and moments from the day.",
+    "startTime": "6.5:45 AM",
+    "endTime": "7:54 PM",
+    "miles": 110,
+    "elevation": 6642,
+    "startLocation": "Salida, CO",
+    "endLocation": "Del Norte, CO",
+    "imageKeys": [
+      "images/placeholder-journal-photo.svg"
+    ]
+  },
+  {
+    "id": 1782731952000,
+    "timestamp": 1782731952000,
+    "text": "Placeholder entry — Day 17. Replace with real trail notes, weather, and moments from the day.",
+    "startTime": "6.5:52 AM",
+    "endTime": "9:49 PM",
+    "miles": 158,
+    "elevation": 10774,
+    "startLocation": "Del Norte, CO",
+    "endLocation": "Abiquiu, NM",
+    "imageKeys": [
+      "images/placeholder-journal-photo.svg"
+    ]
+  },
+  {
+    "id": 1782806256000,
+    "timestamp": 1782806256000,
+    "text": "Placeholder entry — Day 18. Replace with real trail notes, weather, and moments from the day.",
+    "startTime": "6.5:59 AM",
+    "endTime": "6:28 PM",
+    "miles": 74,
+    "elevation": 3420,
+    "startLocation": "Abiquiu, NM",
+    "endLocation": "Cuba, NM",
+    "imageKeys": [
+      "images/placeholder-journal-photo.svg"
+    ]
+  },
+  {
+    "id": 1782912240000,
+    "timestamp": 1782912240000,
+    "text": "Placeholder entry — Day 19. Replace with real trail notes, weather, and moments from the day.",
+    "startTime": "6.5:06 AM",
+    "endTime": "11:54 PM",
+    "miles": 210,
+    "elevation": 9256,
+    "startLocation": "Cuba, NM",
+    "endLocation": "Silver City, NM",
+    "imageKeys": [
+      "images/placeholder-journal-photo.svg"
+    ]
+  },
+  {
+    "id": 1782984672000,
+    "timestamp": 1782984672000,
+    "text": "Placeholder entry — Day 20. Replace with real trail notes, weather, and moments from the day.",
+    "startTime": "6.5:13 AM",
+    "endTime": "8:01 PM",
+    "miles": 113,
+    "elevation": 7526,
+    "startLocation": "Silver City, NM",
+    "endLocation": "Antelope Wells, NM",
+    "imageKeys": [
+      "images/placeholder-journal-photo.svg"
+    ]
+  }
+]

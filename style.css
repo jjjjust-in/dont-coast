@@ -37,6 +37,7 @@ body::before {
   top: 28px;
   left: 28px;
   z-index: 100;
+  display: block;
 }
 
 .site-logo img {
@@ -149,6 +150,45 @@ body::before {
 
 .hero-credit a:hover {
   opacity: 1;
+}
+
+/* ── ALT HERO (no photo, for not-yet-shot races) ── */
+.hero-bg-alt {
+  background-image:
+    linear-gradient(160deg, #1c1c1c 0%, #2b2a26 55%, #3a3226 100%);
+}
+
+/* ── BACK LINK (race pages -> Triple Crown landing) ── */
+.race-back-link {
+  display: inline-block;
+  font-family: 'Inconsolata', monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ece9e3;
+  opacity: 0.55;
+  text-decoration: none;
+  margin-bottom: 28px;
+  transition: opacity 0.15s;
+}
+
+.race-back-link:hover {
+  opacity: 0.9;
+}
+
+/* ── STATIC PLACEHOLDER ROUTE MAP ── */
+.route-wrap-static .basemap-svg {
+  filter: grayscale(100%) opacity(0.9);
+}
+
+.route-placeholder-note {
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg);
+  opacity: 0.35;
+  margin-top: -8px;
 }
 
 /* ── SECTION LABELS ── */
@@ -1044,6 +1084,112 @@ body::before {
 
 .lightbox-trigger {
   cursor: pointer;
+}
+
+/* ── TRIPLE CROWN LANDING: RACE CARDS ── */
+.section-crown {
+  padding-top: 100px;
+  padding-bottom: 120px;
+}
+
+.crown-intro {
+  max-width: 640px;
+  margin-bottom: 64px;
+}
+
+.race-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.race-card {
+  background: var(--bg);
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: var(--fg);
+  transition: background 0.15s;
+}
+
+.race-card:hover {
+  background: #e2ddd3;
+}
+
+.race-card-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.55;
+  margin-bottom: 20px;
+}
+
+.race-card-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #888;
+  flex-shrink: 0;
+}
+
+.race-card.finished .race-card-status-dot { background: #4caf50; }
+.race-card.upcoming .race-card-status-dot { background: #e8b820; }
+
+.race-card-num {
+  font-family: 'Inconsolata', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  opacity: 0.35;
+  margin-bottom: 12px;
+}
+
+.race-card-title {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 900;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+
+.race-card-meta {
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  opacity: 0.5;
+  margin-bottom: 20px;
+}
+
+.race-card-desc {
+  font-size: 13px;
+  line-height: 1.7;
+  opacity: 0.7;
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+.race-card-cta {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+@media (max-width: 960px) {
+  .race-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 700px) {
+  .section-crown { padding-top: 60px; padding-bottom: 60px; }
+  .crown-intro { margin-bottom: 40px; }
 }
 
 /* ── FOOTER ── */
