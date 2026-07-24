@@ -67,7 +67,7 @@
       color: var(--muted);
     }
 
-    input, textarea {
+    input, textarea, select {
       background: transparent;
       border: 1px solid var(--border);
       border-radius: 4px;
@@ -81,7 +81,7 @@
       appearance: none;
     }
 
-    input:focus, textarea:focus {
+    input:focus, textarea:focus, select:focus {
       border-color: var(--fg);
     }
 
@@ -259,6 +259,16 @@
 
   <h1>Ride Journal</h1>
 
+  <div class="section-label">Race</div>
+  <div class="field" style="margin-bottom:8px">
+    <label>Race</label>
+    <select id="raceSelect">
+      <option value="tour-divide">Tour Divide</option>
+      <option value="colorado-trail">Colorado Trail</option>
+      <option value="arizona-trail">Arizona Trail</option>
+    </select>
+  </div>
+
   <div class="section-label">Entry Date</div>
   <div class="field" style="margin-bottom:8px">
     <label>Date (leave blank for today)</label>
@@ -332,6 +342,11 @@
     const tokenInput = document.getElementById('token');
     tokenInput.value = localStorage.getItem('dc_token') || '';
     tokenInput.addEventListener('change', () => localStorage.setItem('dc_token', tokenInput.value));
+
+    // Persist selected race in localStorage
+    const raceSelect = document.getElementById('raceSelect');
+    raceSelect.value = localStorage.getItem('dc_race') || 'tour-divide';
+    raceSelect.addEventListener('change', () => localStorage.setItem('dc_race', raceSelect.value));
 
     // GPX parser — fills miles, elevation, start/end time
     document.getElementById('gpxInput').addEventListener('change', e => {
@@ -505,6 +520,7 @@
       }
 
       const body = {
+        race: raceSelect.value,
         text: lines.join('\n'),
         startLocation: document.getElementById('startLocation').value.trim() || null,
         endLocation:   document.getElementById('endLocation').value.trim()   || null,

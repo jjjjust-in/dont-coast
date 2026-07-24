@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Don't Coast — Triple Crown of Bikepacking</title>
+  <title>Colorado Trail — Don't Coast</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500;600&family=Work+Sans:wght@400;500;600;700;900&display=swap" rel="stylesheet" />
   <link rel="icon" href="data:," />
@@ -12,62 +12,81 @@
 <body>
 
   <!-- FIXED CORNER LOGO -->
-  <div class="site-logo">
+  <a href="index.html" class="site-logo">
     <img src="logo.png" alt="Don't Coast" />
-  </div>
+  </a>
 
   <!-- ─── HERO BACKGROUND (fixed) ─── -->
-  <div class="hero-bg" style="background-image: linear-gradient(to top, rgba(28,28,28,0.72) 0%, rgba(28,28,28,0.2) 60%, transparent 100%), url('images/DSC08291 Large.jpeg');"></div>
+  <div class="hero-bg hero-bg-alt"></div>
 
   <!-- ─── WHAT ─── -->
   <section class="page-section section-what" id="what">
     <div class="section-content">
-      <span class="section-label">2026</span>
-      <h1 class="section-headline">Triple Crown of Bikepacking</h1>
-      <p class="section-body">Three self-supported bikepacking races, one calendar year: the Tour Divide, the Colorado Trail, and the Arizona Trail. No crew, no support — just a bike, a route, and whatever it takes to get to the other end.</p>
-      <p class="scroll-hint">SEE THE RACES ↓</p>
+      <a href="index.html" class="race-back-link">← Triple Crown of Bikepacking</a>
+      <h1 class="section-headline">Colorado Trail</h1>
+      <p class="hero-date">August 2, 2026 · Upcoming</p>
+      <p class="section-body">A 525-mile self-supported mountain bike route from Denver to Durango, climbing through the heart of the Colorado Rockies on singletrack and high alpine passes. Second leg of the Triple Crown, run at race pace with no crew and no support.</p>
+      <p class="scroll-hint">SEE MORE ↓</p>
     </div>
   </section>
 
-  <!-- ─── THE RACES ─── -->
-  <section class="page-section section-crown" id="races">
-    <div class="crown-intro">
-      <span class="section-label">The Attempt</span>
-      <h2 class="section-headline" style="font-size:40px;margin-bottom:16px;">Three Races</h2>
-      <p class="section-body">Each leg gets its own live tracker, ride journal, and gear breakdown. Tap in to follow along.</p>
+  <!-- ─── TRACKER + UPDATES ─── -->
+  <section class="page-section section-when" id="when">
+
+    <!-- full-width header -->
+    <div class="tracker-header">
+      <h2 class="section-headline">JJJJustin Tracker</h2>
+      <div class="tracker-meta">
+        <span class="tracker-dot waiting"></span>
+        <span class="tracker-meta-text">Upcoming</span>
+      </div>
     </div>
 
-    <div class="race-grid">
-
-      <a href="tour-divide.html" class="race-card finished">
-        <span class="race-card-status"><span class="race-card-status-dot"></span>Finished</span>
-        <span class="race-card-num">01 / Rockies</span>
-        <h3 class="race-card-title">Tour Divide</h3>
-        <p class="race-card-meta">Banff, AB → Antelope Wells, NM · 2,700 mi · June 12, 2026</p>
-        <p class="race-card-desc">A self-supported mountain bike race the length of the Continental Divide — the longest and hardest leg of the crown.</p>
-        <span class="race-card-cta">View Race →</span>
-      </a>
-
-      <a href="colorado-trail.html" class="race-card upcoming">
-        <span class="race-card-status"><span class="race-card-status-dot"></span>Upcoming</span>
-        <span class="race-card-num">02 / Colorado</span>
-        <h3 class="race-card-title">Colorado Trail</h3>
-        <p class="race-card-meta">Denver → Durango, CO · 525 mi · August 2, 2026</p>
-        <p class="race-card-desc">High alpine singletrack across the Colorado Rockies, ridden at race pace start to finish.</p>
-        <span class="race-card-cta">View Race →</span>
-      </a>
-
-      <a href="arizona-trail.html" class="race-card upcoming">
-        <span class="race-card-status"><span class="race-card-status-dot"></span>Upcoming</span>
-        <span class="race-card-num">03 / Arizona</span>
-        <h3 class="race-card-title">Arizona Trail</h3>
-        <p class="race-card-meta">Mexico Border → Grand Canyon North Rim, AZ · 800 mi · October 1, 2026</p>
-        <p class="race-card-desc">Desert to canyon country, end to end across Arizona — the closing leg of the Triple Crown.</p>
-        <span class="race-card-cta">View Race →</span>
-      </a>
-
+    <!-- bordered box: stats + split -->
+    <div class="tracker-box">
+    <div class="stats-bar">
+      <div class="stat">
+        <span class="stat-value">--</span>
+        <span class="stat-label">Race Clock</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">--</span>
+        <span class="stat-label">Miles Covered</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">525</span>
+        <span class="stat-label">Miles Remaining</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">0%</span>
+        <span class="stat-label">Complete</span>
+      </div>
     </div>
+    <!-- Stats above are static placeholders — update by hand once the ride is underway/finished -->
+
+    <!-- 50/50 split: updates | map -->
+    <div class="tracker-lower">
+
+      <div class="tracker-updates-col">
+        <div class="tracker-col-header">Ride Journal</div>
+        <div class="tracker-scroll-frame">
+        <div class="tracker-updates-scroll" id="updatesTimeline">
+        </div>
+        </div><!-- /tracker-scroll-frame -->
+      </div>
+
+      <div class="tracker-map-col">
+        <div class="tracker-col-header">The Route</div>
+        <div class="route-wrap route-wrap-static">
+          <img src="basemap.svg" alt="Basemap" class="basemap-svg" />
+        </div>
+        <p class="route-placeholder-note">Route map coming soon</p>
+      </div>
+
+    </div><!-- /tracker-lower -->
+    </div><!-- /tracker-box -->
   </section>
+
 
   <!-- ─── THE BUILD ─── -->
   <section class="page-section section-build" id="build">
@@ -85,7 +104,7 @@
     <div class="build-panel" id="panel-bike">
     <div class="bike-photo">
       <div class="bike-hotspot-wrap" id="bikeWrap">
-        <img src="images/DSC09399-2.jpg" alt="Don't Coast bike" id="bikeImg" />
+        <img src="images/DSC09399-2.jpg" alt="Colorado Trail bike" id="bikeImg" />
         <img src="images/DSC09399-2color.jpg" alt="" class="bike-img-color" />
 
         <button class="hotspot" style="left:32%;top:34.5%" data-index="0" aria-label="Rear Rack"></button>
@@ -138,6 +157,7 @@
     <p class="footer-copy">© 2026 Don't Coast. All rights reserved.</p>
     <a class="footer-venmo" href="https://venmo.com/jjjjustin" target="_blank" rel="noopener">Buy me a Reese's @jjjjustin</a>
   </footer>
+
 
   <script>
     const hotspots = [
@@ -206,6 +226,111 @@
       partsList.appendChild(item);
     });
 
+
+    // Updates timeline
+    const RACE_START_MS = new Date('2026-08-02T04:00:00-06:00').getTime();
+
+    function linkify(text) {
+      const escaped = text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      return escaped.replace(/(https?:\/\/[^\s<>"]+)/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
+    }
+
+    function renderDayEntries(entries, container) {
+      const allImageKeys = [];
+      const allLines = [];
+      const allAudio = [];
+      let stats = null;
+
+      entries.forEach(u => {
+        if (u.imageKeys) allImageKeys.push(...u.imageKeys);
+        if (u.text) u.text.split('\n').filter(l => l.trim()).forEach(l => allLines.push(l.trim()));
+        if (u.audioKey) allAudio.push(u.audioKey);
+        if (!stats && (u.startTime || u.endTime || u.miles || u.elevation || u.startLocation || u.endLocation)) stats = u;
+      });
+
+      const item = document.createElement('div');
+      item.className = 'update-item';
+      let html = '';
+
+      if (stats) {
+        html += `<div class="update-stats">`;
+        html += `<div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">${stats.startLocation || '—'}</span></div>`;
+        html += `<div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">${stats.endLocation || '—'}</span></div>`;
+        html += `<div class="update-stat"><span class="update-stat-label">Miles</span><span class="update-stat-value">${stats.miles != null ? stats.miles : '—'}</span></div>`;
+        html += `<div class="update-stat"><span class="update-stat-label">Start</span><span class="update-stat-value">${stats.startTime || '—'}</span></div>`;
+        html += `<div class="update-stat"><span class="update-stat-label">End</span><span class="update-stat-value">${stats.endTime || '—'}</span></div>`;
+        html += `<div class="update-stat"><span class="update-stat-label">Elevation</span><span class="update-stat-value">${stats.elevation != null ? stats.elevation.toLocaleString() + ' ft' : '—'}</span></div>`;
+        html += `</div>`;
+      }
+
+      if (allImageKeys.length) {
+        html += `<div class="update-images">` + allImageKeys.map(k =>
+          `<img class="update-img" src="/${k}" alt="" loading="lazy" />`
+        ).join('') + `</div>`;
+      }
+
+      if (allLines.length) {
+        html += `<ul class="update-text">${allLines.map(l => `<li>${linkify(l)}</li>`).join('')}</ul>`;
+      }
+
+      allAudio.forEach(k => {
+        html += `<audio class="update-audio" controls src="/${k}"></audio>`;
+      });
+
+      item.innerHTML = html;
+      container.appendChild(item);
+    }
+
+    async function loadUpdates() {
+      const container = document.getElementById('updatesTimeline');
+      try {
+        const res = await fetch('/.netlify/functions/get-updates?race=colorado-trail');
+        const updates = await res.json();
+        if (!updates.length) return;
+
+        const preRaceGroups = {};
+        const raceDayGroups = {};
+
+        updates.forEach(u => {
+          if (u.timestamp < RACE_START_MS) {
+            const key = new Date(u.timestamp).toDateString();
+            if (!preRaceGroups[key]) preRaceGroups[key] = [];
+            preRaceGroups[key].push(u);
+          } else {
+            const day = Math.max(1, Math.floor((u.timestamp - RACE_START_MS) / 86400000) + 1);
+            if (!raceDayGroups[day]) raceDayGroups[day] = [];
+            raceDayGroups[day].push(u);
+          }
+        });
+
+        container.innerHTML = '';
+
+        Object.entries(preRaceGroups)
+          .sort(([a], [b]) => new Date(a) - new Date(b))
+          .forEach(([, entries], idx) => {
+            const dayEl = document.createElement('div');
+            dayEl.className = 'updates-day';
+            dayEl.innerHTML = `<div class="updates-day-label">Pre-Ride ${String(idx + 1).padStart(2, '0')}</div>`;
+            renderDayEntries(entries, dayEl);
+            container.appendChild(dayEl);
+          });
+
+        Object.entries(raceDayGroups)
+          .sort(([a], [b]) => a - b)
+          .forEach(([day, entries]) => {
+            const dayEl = document.createElement('div');
+            dayEl.className = 'updates-day';
+            dayEl.innerHTML = `<div class="updates-day-label">Day ${String(day).padStart(2, '0')}</div>`;
+            renderDayEntries(entries, dayEl);
+            container.appendChild(dayEl);
+          });
+
+      } catch {}
+    }
+
+    loadUpdates();
+
+
     // Lightbox
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
@@ -222,9 +347,15 @@
       document.body.style.overflow = '';
     }
 
-    document.querySelectorAll('.bike-hotspot-wrap img').forEach(img => {
+    document.querySelectorAll('.slider-track img, .bike-hotspot-wrap img').forEach(img => {
       img.classList.add('lightbox-trigger');
       img.addEventListener('click', () => openLightbox(img.src, img.alt));
+    });
+
+    document.getElementById('updatesTimeline').addEventListener('click', e => {
+      if (e.target.classList.contains('update-img')) {
+        openLightbox(e.target.src, e.target.alt);
+      }
     });
 
     lightbox.addEventListener('click', e => {
@@ -236,6 +367,41 @@
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') closeLightbox();
     });
+
+    // ── DRAG-TO-SCROLL for image strips ──
+    function makeDraggable(el) {
+      if (el.children.length < 2) return;
+      let isDown = false, startX, scrollLeft;
+      el.addEventListener('mousedown', e => {
+        isDown = true;
+        el.classList.add('is-dragging');
+        startX = e.pageX - el.offsetLeft;
+        scrollLeft = el.scrollLeft;
+        e.preventDefault();
+      });
+      window.addEventListener('mouseup', () => {
+        if (!isDown) return;
+        isDown = false;
+        el.classList.remove('is-dragging');
+      });
+      el.addEventListener('mousemove', e => {
+        if (!isDown) return;
+        const x = e.pageX - el.offsetLeft;
+        el.scrollLeft = scrollLeft - (x - startX);
+      });
+    }
+
+    document.querySelectorAll('.update-images').forEach(makeDraggable);
+
+    const updatesContainer = document.getElementById('updatesTimeline');
+    if (updatesContainer) {
+      new MutationObserver(() => {
+        updatesContainer.querySelectorAll('.update-images:not([data-drag])').forEach(el => {
+          el.dataset.drag = '1';
+          makeDraggable(el);
+        });
+      }).observe(updatesContainer, { childList: true, subtree: true });
+    }
   </script>
 
 </body>

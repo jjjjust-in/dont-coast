@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#d8d3c8"/>
+  <rect x="16" y="16" width="768" height="568" fill="none" stroke="#1c1c1c" stroke-opacity="0.25" stroke-width="2" stroke-dasharray="10 8"/>
+  <g transform="translate(400,255)" fill="none" stroke="#1c1c1c" stroke-opacity="0.35" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="-70" y="-40" width="140" height="100" rx="8"/>
+    <rect x="-25" y="-58" width="50" height="20" rx="4"/>
+    <circle cx="0" cy="12" r="30"/>
+  </g>
+  <text x="400" y="360" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="2" fill="#1c1c1c" fill-opacity="0.45">PLACEHOLDER PHOTO</text>
+  <text x="400" y="388" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" letter-spacing="1" fill="#1c1c1c" fill-opacity="0.35">Replace with a real image from the ride</text>
+</svg>

@@ -1,5 +1,6 @@
 const REPO = 'jjjjust-in/dont-coast';
 const BRANCH = 'main';
+const RACES = ['tour-divide', 'colorado-trail', 'arizona-trail'];
 
 async function ghGet(path, token) {
   const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${path}`, {
@@ -42,7 +43,8 @@ exports.handler = async (event) => {
   let body;
   try { body = JSON.parse(event.body); } catch { return { statusCode: 400, body: 'Invalid JSON' }; }
 
-  const { text, images, startTime, endTime, miles, elevation, startLocation, endLocation, timestamp: tsOverride } = body;
+  const { text, images, startTime, endTime, miles, elevation, startLocation, endLocation, timestamp: tsOverride, race: raceParam } = body;
+  const race = RACES.includes(raceParam) ? raceParam : 'tour-divide';
   const id = (tsOverride && Number.isFinite(tsOverride) && tsOverride > 0) ? Math.floor(tsOverride) : Date.now();
   const update = {
     id, timestamp: id,
@@ -62,7 +64,7 @@ exports.handler = async (event) => {
       const { data, type } = images[i];
       if (!data) continue;
       const ext = (type || 'image/jpeg').split('/')[1] || 'jpg';
-      const filename = `journal-images/${id}-${i}.${ext}`;
+      const filename = `journal-images/${race}/${id}-${i}.${ext}`;
       try {
         await ghPut(filename, Buffer.from(data, 'base64'), `Add journal image ${id}-${i}`, undefined, ghToken);
         update.imageKeys.push(filename);
@@ -72,8 +74,9 @@ exports.handler = async (event) => {
     }
   }
 
-  // Read existing journal.json
-  const existing = await ghGet('journal.json', ghToken);
+  // Read existing journal for this race
+  const journalPath = `journal/${race}.json`;
+  const existing = await ghGet(journalPath, ghToken);
   let updates = [];
   if (existing && existing.content) {
     try { updates = JSON.parse(Buffer.from(existing.content, 'base64').toString()); } catch {}
@@ -83,9 +86,9 @@ exports.handler = async (event) => {
 
   try {
     await ghPut(
-      'journal.json',
+      journalPath,
       Buffer.from(JSON.stringify(updates, null, 2)),
-      `Journal entry ${id}`,
+      `Journal entry ${id} (${race})`,
       existing ? existing.sha : undefined,
       ghToken
     );
@@ -96,7 +99,6 @@ exports.handler = async (event) => {
   return {
     statusCode: 200,
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ success: true, id })
+    body: JSON.stringify({ success: true, id, race })
   };
 };
-
