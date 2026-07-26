@@ -4,7 +4,7 @@
 [functions]
   directory = "netlify/functions"
 
-[functions."sync-strava"]
+[functions."sync-strava-scheduled"]
   schedule = "0 13 * * *"
 
 [[plugins]]
