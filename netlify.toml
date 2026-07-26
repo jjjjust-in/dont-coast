@@ -4,5 +4,8 @@
 [functions]
   directory = "netlify/functions"
 
+[functions."sync-strava"]
+  schedule = "0 13 * * *"
+
 [[plugins]]
   package = "@netlify/plugin-functions-install-core"
