@@ -11,7 +11,8 @@
     "endLocation": null,
     "imageKeys": [
       "journal-images/tour-divide/1780969086328-0.jpeg"
-    ]
+    ],
+    "source": "manual"
   },
   {
     "id": 1780972282874,
@@ -25,7 +26,8 @@
     "endLocation": null,
     "imageKeys": [
       "journal-images/tour-divide/1780972282874-0.jpeg"
-    ]
+    ],
+    "source": "manual"
   },
   {
     "id": 1783354793217,
@@ -41,7 +43,8 @@
       "journal-images/tour-divide/1783354793217-0.jpeg",
       "journal-images/tour-divide/1783354793217-1.jpeg",
       "journal-images/tour-divide/1783354793217-2.jpeg"
-    ]
+    ],
+    "source": "manual"
   },
   {
     "id": 1781347104000,
@@ -55,7 +58,8 @@
     "endLocation": "Elkford, BC",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1781428752000,
@@ -69,7 +73,8 @@
     "endLocation": "Fernie, BC",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1781516160000,
@@ -83,7 +88,8 @@
     "endLocation": "Eureka, MT",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1781601120000,
@@ -97,7 +103,8 @@
     "endLocation": "Whitefish, MT",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1781695728000,
@@ -111,7 +118,8 @@
     "endLocation": "Ovando, MT",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1781776944000,
@@ -125,7 +133,8 @@
     "endLocation": "Helena, MT",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1781861040000,
@@ -139,7 +148,8 @@
     "endLocation": "Butte, MT",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1781958384000,
@@ -153,7 +163,8 @@
     "endLocation": "Lima, MT",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1782035280000,
@@ -167,7 +178,8 @@
     "endLocation": "Island Park, ID",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1782129456000,
@@ -181,7 +193,8 @@
     "endLocation": "Pinedale, WY",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1782219312000,
@@ -195,7 +208,8 @@
     "endLocation": "Rawlins, WY",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1782299664000,
@@ -209,7 +223,8 @@
     "endLocation": "Brush Mountain Lodge, CO",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1782375984000,
@@ -223,7 +238,8 @@
     "endLocation": "Steamboat Springs, CO",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1782469296000,
@@ -237,7 +253,8 @@
     "endLocation": "Silverthorne, CO",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1782555696000,
@@ -251,7 +268,8 @@
     "endLocation": "Salida, CO",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1782638640000,
@@ -265,7 +283,8 @@
     "endLocation": "Del Norte, CO",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1782731952000,
@@ -279,7 +298,8 @@
     "endLocation": "Abiquiu, NM",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1782806256000,
@@ -293,7 +313,8 @@
     "endLocation": "Cuba, NM",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1782912240000,
@@ -307,7 +328,8 @@
     "endLocation": "Silver City, NM",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1782984672000,
@@ -321,6 +343,7 @@
     "endLocation": "Antelope Wells, NM",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   }
 ]

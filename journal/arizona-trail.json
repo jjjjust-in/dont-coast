@@ -11,7 +11,8 @@
     "endLocation": "Patagonia, AZ",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1791011808000,
@@ -25,7 +26,8 @@
     "endLocation": "Sonoita, AZ",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1791097920000,
@@ -39,7 +41,8 @@
     "endLocation": "Colossal Cave, Tucson, AZ",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1791184176000,
@@ -53,7 +56,8 @@
     "endLocation": "Oracle, AZ",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1791270864000,
@@ -67,7 +71,8 @@
     "endLocation": "Superior, AZ",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1791357120000,
@@ -81,7 +86,8 @@
     "endLocation": "Payson, AZ",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1791443088000,
@@ -95,7 +101,8 @@
     "endLocation": "Pine, AZ",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1791530352000,
@@ -109,7 +116,8 @@
     "endLocation": "Flagstaff, AZ",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1791616320000,
@@ -123,7 +131,8 @@
     "endLocation": "Grand Canyon South Rim, AZ",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1791702720000,
@@ -137,6 +146,7 @@
     "endLocation": "Grand Canyon North Rim, AZ",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   }
 ]

@@ -11,7 +11,8 @@
     "endLocation": "Kenosha Pass, CO",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1785811680000,
@@ -25,7 +26,8 @@
     "endLocation": "Salida, CO",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1785896640000,
@@ -39,7 +41,8 @@
     "endLocation": "Sargents Mesa, CO",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1785982320000,
@@ -53,7 +56,8 @@
     "endLocation": "Lake City, CO",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1786070448000,
@@ -67,7 +71,8 @@
     "endLocation": "Silverton, CO",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   },
   {
     "id": 1786155552000,
@@ -81,6 +86,7 @@
     "endLocation": "Durango, CO",
     "imageKeys": [
       "images/placeholder-journal-photo.svg"
-    ]
+    ],
+    "source": "placeholder"
   }
 ]

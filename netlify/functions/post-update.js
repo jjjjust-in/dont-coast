@@ -54,7 +54,8 @@ exports.handler = async (event) => {
     miles: miles != null ? miles : null,
     elevation: elevation != null ? elevation : null,
     startLocation: startLocation || null,
-    endLocation: endLocation || null
+    endLocation: endLocation || null,
+    source: 'manual'
   };
 
   // Upload images to GitHub
