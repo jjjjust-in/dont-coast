@@ -155,11 +155,12 @@ async function buildEntryFromActivity(activity, accessToken, race) {
   };
 }
 
-async function syncRace(race, accessToken) {
+async function syncRace(race, accessToken, windowDaysOverride) {
   const cfg = RACES[race];
+  const windowDays = windowDaysOverride || cfg.windowDays;
   const raceStartMs = new Date(cfg.start).getTime();
   const afterSec = Math.floor(raceStartMs / 1000) - 3600; // small buffer before start
-  const beforeSec = Math.floor(raceStartMs / 1000) + cfg.windowDays * 86400;
+  const beforeSec = Math.floor(raceStartMs / 1000) + windowDays * 86400;
 
   const activities = (await fetchActivities(accessToken, afterSec, beforeSec))
     .filter(a => BIKE_TYPES.has(a.type || a.sport_type));
@@ -215,14 +216,17 @@ exports.handler = async (event) => {
     if (!token || token !== process.env.UPDATE_SECRET) return { statusCode: 401, body: 'Unauthorized' };
   }
 
-  const raceParam = event.queryStringParameters && event.queryStringParameters.race;
+  const params = event.queryStringParameters || {};
+  const raceParam = params.race;
   const racesToSync = RACES[raceParam] ? [raceParam] : Object.keys(RACES);
+  const daysParam = parseInt(params.days, 10);
+  const windowDaysOverride = Number.isFinite(daysParam) && daysParam > 0 ? daysParam : undefined;
 
   try {
     const accessToken = await getStravaAccessToken();
     const results = [];
     for (const race of racesToSync) {
-      results.push(await syncRace(race, accessToken));
+      results.push(await syncRace(race, accessToken, windowDaysOverride));
     }
     return {
       statusCode: 200,
