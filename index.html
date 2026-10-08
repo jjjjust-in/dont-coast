@@ -26,6 +26,26 @@
       isolation: isolate;
     }
 
+    /* Parallax layers (transforms set by JS) */
+    .bg-layer {
+      position: absolute;
+      inset: -3%;
+      z-index: -3;
+      will-change: transform;
+    }
+    .logo-layer {
+      perspective: 900px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+    .logo-tilt {
+      display: flex;
+      justify-content: center;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
     /* Photo: slow drift, heavily darkened */
     .splash-bg {
       position: absolute;
@@ -121,8 +141,54 @@
 </head>
 <body>
   <main class="splash">
-    <div class="splash-bg" aria-hidden="true"></div>
-    <h1><img class="logo" src="logo.png" alt="Don't Coast" width="3021" height="2017" /></h1>
+    <div class="bg-layer" id="bgLayer" aria-hidden="true">
+      <div class="splash-bg"></div>
+    </div>
+    <div class="logo-layer">
+      <h1 class="logo-tilt" id="logoTilt"><img class="logo" src="logo.png" alt="Don't Coast" width="3021" height="2017" /></h1>
+    </div>
   </main>
+
+  <script>
+    (() => {
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      const logo = document.getElementById('logoTilt');
+      const bg = document.getElementById('bgLayer');
+
+      // target and current positions, -1..1 from center
+      let tx = 0, ty = 0, cx = 0, cy = 0;
+
+      const setTarget = (x, y) => {
+        tx = Math.max(-1, Math.min(1, x));
+        ty = Math.max(-1, Math.min(1, y));
+      };
+
+      window.addEventListener('pointermove', e => {
+        if (e.pointerType === 'touch') return;
+        setTarget((e.clientX / innerWidth) * 2 - 1, (e.clientY / innerHeight) * 2 - 1);
+      });
+      document.addEventListener('pointerleave', () => setTarget(0, 0));
+
+      // Phones: tilt the device (Android; iOS requires a permission prompt, so it stays still)
+      window.addEventListener('deviceorientation', e => {
+        if (e.gamma == null) return;
+        setTarget(e.gamma / 25, (e.beta - 45) / 25);
+      });
+
+      const tick = () => {
+        cx += (tx - cx) * 0.06;
+        cy += (ty - cy) * 0.06;
+
+        logo.style.transform =
+          `translate3d(${cx * 18}px, ${cy * 12}px, 0) rotateY(${cx * 7}deg) rotateX(${-cy * 6}deg)`;
+        bg.style.transform =
+          `translate3d(${-cx * 22}px, ${-cy * 14}px, 0)`;
+
+        requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    })();
+  </script>
 </body>
 </html>
