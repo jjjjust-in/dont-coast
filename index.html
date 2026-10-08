@@ -166,8 +166,8 @@
       });
 
       const tick = () => {
-        cx += (tx - cx) * 0.06;
-        cy += (ty - cy) * 0.06;
+        cx += (tx - cx) * 0.02;
+        cy += (ty - cy) * 0.02;
 
         logo.style.transform =
           `translate3d(${cx * 18}px, ${cy * 12}px, 0) rotateY(${cx * 7}deg) rotateX(${-cy * 6}deg)`;
