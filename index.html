@@ -8,6 +8,8 @@
   <meta name="theme-color" content="#0b0b0b" />
   <link rel="icon" href="data:," />
   <link rel="preload" as="image" href="logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -35,6 +37,7 @@
     }
     .logo-layer {
       margin-top: -6vh;
+      transition: transform 1.4s cubic-bezier(.22,.8,.22,1);
       perspective: 900px;
       width: 100%;
       display: flex;
@@ -118,6 +121,66 @@
 
     h1 { width: 100%; display: flex; justify-content: center; }
 
+    /* Revealed on scroll attempt */
+    .revealed .logo-layer { transform: translateY(-9vh); }
+
+    .busy {
+      position: absolute;
+      left: 50%;
+      bottom: max(16vh, 96px);
+      width: min(90vw, 560px);
+      transform: translate(-50%, 24px);
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity 1.2s ease .25s,
+        transform 1.4s cubic-bezier(.22,.8,.22,1) .25s,
+        visibility 0s linear 1.6s;
+      text-align: center;
+      font-family: 'Inconsolata', ui-monospace, 'SF Mono', Menlo, monospace;
+      color: #e9e7e2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+    .revealed .busy {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, 0);
+      transition:
+        opacity 1.2s ease .25s,
+        transform 1.4s cubic-bezier(.22,.8,.22,1) .25s,
+        visibility 0s;
+    }
+    .busy-line {
+      font-size: clamp(15px, 1.6vw, 18px);
+      line-height: 1.5;
+      text-wrap: balance;
+    }
+    .busy-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px 28px;
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .busy a {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: rgba(233,231,226,.4);
+      text-underline-offset: 4px;
+      transition: text-decoration-color .2s ease;
+    }
+    .busy a:hover,
+    .busy a:focus-visible { text-decoration-color: currentColor; }
+    .busy a:focus-visible { outline: 1px solid currentColor; outline-offset: 4px; }
+    .busy-links a { text-decoration: none; color: #a9a7a1; transition: color .2s ease; }
+    .busy-links a:hover,
+    .busy-links a:focus-visible { color: #e9e7e2; }
+
     @media (max-width: 600px) {
       .logo { width: 112vw; max-width: none; flex: none; }
     }
@@ -126,6 +189,7 @@
       .splash-bg { animation: none; opacity: 1; transform: scale(1.04); }
       .splash::after { animation: none; }
       .logo { animation: none; opacity: 1; }
+      .logo-layer, .busy, .revealed .busy { transition: none; }
     }
   </style>
 </head>
@@ -137,9 +201,41 @@
     <div class="logo-layer">
       <h1 class="logo-tilt" id="logoTilt"><img class="logo" src="logo.png" alt="Don't Coast" width="3021" height="2017" /></h1>
     </div>
+    <div class="busy" id="busy">
+      <p class="busy-line">JJJJustin is busy working on <a href="https://tourdividesupply.com" target="_blank" rel="noopener">Tour Divide Supply</a>.</p>
+      <nav class="busy-links" aria-label="Elsewhere">
+        <a href="https://jjjjust.in" target="_blank" rel="noopener">Portfolio ↗</a>
+      </nav>
+    </div>
   </main>
 
   <script>
+    // Any attempt to scroll reveals the note under the logo
+    (() => {
+      const splash = document.querySelector('.splash');
+      let touchY = null;
+      const reveal = () => splash.classList.add('revealed');
+      const hide = () => splash.classList.remove('revealed');
+
+      window.addEventListener('wheel', e => {
+        if (e.deltaY > 4) reveal();
+        else if (e.deltaY < -4) hide();
+      }, { passive: true });
+
+      window.addEventListener('touchstart', e => { touchY = e.touches[0].clientY; }, { passive: true });
+      window.addEventListener('touchmove', e => {
+        if (touchY == null) return;
+        const dy = touchY - e.touches[0].clientY;
+        if (dy > 30) { reveal(); touchY = null; }
+        else if (dy < -30) { hide(); touchY = null; }
+      }, { passive: true });
+
+      window.addEventListener('keydown', e => {
+        if (['ArrowDown', 'PageDown', ' ', 'End', 'Tab'].includes(e.key)) reveal();
+        else if (['ArrowUp', 'PageUp', 'Home', 'Escape'].includes(e.key)) hide();
+      });
+    })();
+
     (() => {
       if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
