@@ -84,21 +84,14 @@
       pointer-events: none;
     }
 
-    /* Logo: chalk-stroke wipe, left to right along the slant */
+    /* Logo: simple fade in */
     .logo {
       width: min(78vw, 860px);
       height: auto;
       display: block;
-      -webkit-mask-image: linear-gradient(100deg, #000 0%, #000 45%, transparent 55%, transparent 100%);
-              mask-image: linear-gradient(100deg, #000 0%, #000 45%, transparent 55%, transparent 100%);
-      -webkit-mask-size: 260% 100%;
-              mask-size: 260% 100%;
-      -webkit-mask-position: 100% 0;
-              mask-position: 100% 0;
+      opacity: 0;
       filter: drop-shadow(0 0 40px rgba(0,0,0,.6));
-      animation:
-        reveal 1.9s cubic-bezier(.65,0,.35,1) 1.1s forwards,
-        breathe 7s ease-in-out 3.5s infinite;
+      animation: fade-in 1.6s ease-out .6s forwards;
       user-select: none;
       -webkit-user-drag: none;
     }
@@ -110,12 +103,8 @@
       from { transform: scale(1.04) translate3d(0, 0, 0); }
       to   { transform: scale(1.12) translate3d(-1.5%, -1%, 0); }
     }
-    @keyframes reveal {
-      to { -webkit-mask-position: 0 0; mask-position: 0 0; }
-    }
-    @keyframes breathe {
-      0%, 100% { transform: scale(1); }
-      50%      { transform: scale(1.015); }
+    @keyframes fade-in {
+      to { opacity: 1; }
     }
     @keyframes grain {
       0%   { transform: translate(0, 0); }
@@ -135,7 +124,7 @@
     @media (prefers-reduced-motion: reduce) {
       .splash-bg { animation: none; opacity: 1; transform: scale(1.04); }
       .splash::after { animation: none; }
-      .logo { animation: none; -webkit-mask-image: none; mask-image: none; }
+      .logo { animation: none; opacity: 1; }
     }
   </style>
 </head>
