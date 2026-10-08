@@ -122,12 +122,12 @@
     h1 { width: 100%; display: flex; justify-content: center; }
 
     /* Revealed on scroll attempt */
-    .revealed .logo-layer { transform: translateY(-9vh); }
+    .revealed .logo-layer { transform: translateY(-4vh); }
 
     .busy {
       position: absolute;
       left: 50%;
-      bottom: max(16vh, 96px);
+      bottom: calc(max(5vh, 32px) + env(safe-area-inset-bottom, 0px));
       width: min(90vw, 560px);
       transform: translate(-50%, 24px);
       opacity: 0;
@@ -154,18 +154,10 @@
         visibility 0s;
     }
     .busy-line {
-      font-size: clamp(15px, 1.6vw, 18px);
+      font-size: 13px;
+      letter-spacing: .02em;
       line-height: 1.5;
       text-wrap: balance;
-    }
-    .busy-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px 28px;
-      font-size: 12px;
-      letter-spacing: .14em;
-      text-transform: uppercase;
     }
     .busy a {
       color: inherit;
@@ -177,9 +169,7 @@
     .busy a:hover,
     .busy a:focus-visible { text-decoration-color: currentColor; }
     .busy a:focus-visible { outline: 1px solid currentColor; outline-offset: 4px; }
-    .busy-links a { text-decoration: none; color: #a9a7a1; transition: color .2s ease; }
-    .busy-links a:hover,
-    .busy-links a:focus-visible { color: #e9e7e2; }
+
 
     @media (max-width: 600px) {
       .logo { width: 112vw; max-width: none; flex: none; }
@@ -202,10 +192,7 @@
       <h1 class="logo-tilt" id="logoTilt"><img class="logo" src="logo.png" alt="Don't Coast" width="3021" height="2017" /></h1>
     </div>
     <div class="busy" id="busy">
-      <p class="busy-line">JJJJustin is busy working on <a href="https://tourdividesupply.com" target="_blank" rel="noopener">Tour Divide Supply</a>.</p>
-      <nav class="busy-links" aria-label="Elsewhere">
-        <a href="https://jjjjust.in" target="_blank" rel="noopener">Portfolio ↗</a>
-      </nav>
+      <p class="busy-line"><a href="https://jjjjust.in" target="_blank" rel="noopener">JJJJustin</a> is busy working on <a href="https://tourdividesupply.com" target="_blank" rel="noopener">Tour Divide Supply</a>.</p>
     </div>
   </main>
 
